@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+
+<head>
+
+
+	<meta charset="utf-8">
+
+	<title>hackBCA IV – Coming Soon</title>
+
+	<!-- Behavioral Metadata -->
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+	<!-- Basic Metadata -->
+	<meta name="title" content="hackBCA IV – Coming Soon">
+	<meta property="description" content="">
+	<meta name="keywords" content="hack, bca, hackathon">
+
+
+	<!-- Open Graph Data -->
+	<meta property="og:title" content="hackBCA IV – Coming Soon">
+	<meta property="og:description" content="">
+	<meta name="og:keywords" content="hack, bca, hackathon">
+	<meta name="og:image" content="">
+
+
+	<!-- Favicons -->
+	<link rel="icon" type="x-icon" size="32x32" href="assets/icons/torch-favicon.ico">
+	<link rel="icon" type="png" size="32x32" href="assets/icons/torch-favicon.png">
+	<link rel="apple-touch-icon" href="assets/icons/torch-apple-touch-icon.png">
+
+
+	<!-- Vendor -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+	<script src="js/vendor/modernizr-2.8.3.min.js"></script>
+	<script src="js/vendor/velocity.min.js"></script>
+
+
+	<!-- Styles -->
+	<link rel="stylesheet" href="ss/css/main.css" type="text/css">
+	 <link rel="stylesheet" href="{{ url_for('static', filename='ss/css/style.css') }}">
+
+
+	<!-- Scripts -->
+	<script src="js/app.js"></script>
+
+
+</head>
+
+<body>
+	<section class="flex--vertical-space-between">
+		<div class="bg" style="background-image: url('{{ url_for('static', filename='images/bg.png') }}');"></div>
+		<div id="line_top" class="flex flex--vertical-center line">
+			<hr>
+			<img id="logo" src="{{ url_for('static', filename='brand/logo.svg')}}"/>
+			<hr>
+		</div>
+		<div class="block">
+			<hgroup class="jumbo">
+				<h1 class="jumbo_title">hackBCA IV</h1>
+				<h2 class="jumbo_subtitle">March 25-26, 2017. Lighting the Torch.</h2>
+			</hgroup>
+			<form method="">
+				<input type="text" placeholder="Email Address">
+				<button type="button">Get Updates</button>
+			</form>
+		</div>
+		<div id="line_bottom" class="flex flex--vertical-center line">
+			<hr>
+			<ul class="icon-set">
+				<li id="icon_facebook" class="icon">
+					<a href="http://facebook.com/hackBCA"><img src="{{ url_for('static', filename='icons/facebook.svg')}}"/></a>
+				</li>
+				<li id="icon_instagram" class="icon">
+					<a href="http://instagram.com/hackBCA"><img src="{{ url_for('static', filename='icons/instagram.svg')}}" /></a>
+				</li>
+				<li id="icon_twitter" class="icon">
+					<a href="http://twitter.com/hackBCA"><img src="{{ url_for('static', filename='icons/twitter.svg')}}" /></a>
+				</li>
+				<li id="icon_email" class="icon">
+					<a href="mailto:contact@hackbca.com"><img src="{{ url_for('static', filename='icons/email.svg')}}" /></a>
+				</li>
+			</ul>
+			<hr>
+		</div>
+	</section>
+</body>
+
+</html>
