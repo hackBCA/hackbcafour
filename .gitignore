@@ -1,6 +1,7 @@
-#virtualenv 
+
 venv/
-__pycache__/
+application/__pycache__/
+config.py
 *.pyc
 
 # Windows image file caches
