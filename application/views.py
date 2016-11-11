@@ -23,4 +23,3 @@ from . import controllers as controller
 def index():
 	form = MailList()
 	return render_template('index.html', form=form)
- 
