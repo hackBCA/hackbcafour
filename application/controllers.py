@@ -7,6 +7,6 @@ def add_list(email):
 	db = client.get_default_database()
 	mailing_list = db.mailing_list
 
-	email_address = {'email_address': email_string}
+	email_address = {'email_address': email}
 	mailing_list.insert(email_address)
 

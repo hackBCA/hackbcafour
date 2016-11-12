@@ -1,15 +1,3 @@
-# from flask import render_template, request, redirect, url_for
-# from application import app
-# from .forms import *
-# from . import controllers as controller
-
-
-# @app.route("/")
-# @app.route("/index")
-# def index():
-# 	return render_template('index.html')
-
-
 from flask import render_template, request, redirect, url_for
 from application import app
 from pymongo import MongoClient
@@ -22,4 +10,7 @@ from . import controllers as controller
 @app.route('/', methods=['GET', 'POST'])
 def index():
 	form = MailList()
+	if request.method == 'POST':
+			controller.add_list(request.form['email'])
+			return redirect('/')
 	return render_template('index.html', form=form)
