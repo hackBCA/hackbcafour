@@ -26,9 +26,9 @@
 
 
 	<!-- Favicons -->
-	<link rel="icon" type="x-icon" size="32x32" href="assets/icons/torch-favicon.ico">
-	<link rel="icon" type="png" size="32x32" href="assets/icons/torch-favicon.png">
-	<link rel="apple-touch-icon" href="assets/icons/torch-apple-touch-icon.png">
+	<link rel="icon" type="x-icon" size="32x32" href="{{ url_for('static', filename='icons/torch-favicon.ico') }}">
+	<link rel="icon" type="png" size="32x32" href="{{ url_for('static', filename='icons/torch-favicon.png') }}">
+	<link rel="apple-touch-icon" href="{{ url_for('static', filename='icons/torch-apple-touch-icon.png') }}>
 
 
 	<!-- Vendor -->
@@ -39,7 +39,7 @@
 
 	<!-- Styles -->
 	<link rel="stylesheet" href="ss/css/main.css" type="text/css">
-	 <link rel="stylesheet" href="{{ url_for('static', filename='ss/css/style.css') }}">
+	 <link rel="stylesheet" href="{{ url_for('static', filename='ss/css/main.css') }}">
 
 
 	<!-- Scripts -->
