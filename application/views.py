@@ -1,4 +1,4 @@
-from flask import render_template, request, redirect, url_for
+from flask import render_template, request, flash, redirect, url_for
 from application import app
 from pymongo import MongoClient
 from bson.objectid import ObjectId
@@ -12,5 +12,6 @@ def index():
 	form = MailList()
 	if request.method == 'POST':
 			controller.add_list(request.form['email'])
+			flash('d')
 			return redirect('/')
 	return render_template('index.html', form=form)

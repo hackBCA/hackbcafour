@@ -89,7 +89,7 @@ hr {
 .jumbo_title,
 .jumbo_subtitle {
   text-align: center;
-  font-family: 'Atlas Grotesk';
+  font-family: 'Azo Sans', 'Atlas Grotesk';
   /* Test Font */ }
 
 .jumbo_title {
@@ -139,7 +139,7 @@ form {
   opacity: 0;
   animation-fill-mode: forwards; }
 
-input[type="text"] {
+input[type="email"] {
   height: 48px;
   width: 400px;
   padding-left: 24px;
@@ -150,7 +150,7 @@ input[type="text"] {
   -ms-transition: all ease-in-out 0.4s;
   -o-transition: all ease-in-out 0.4s;
   transition: all ease-in-out 0.4s; }
-  input[type="text"]:hover::-webkit-input-placeholder {
+  input[type="email"]:hover::-webkit-input-placeholder {
     -webkit-transition: all ease-in-out 0.4s;
     -moz-transition: all ease-in-out 0.4s;
     -ms-transition: all ease-in-out 0.4s;
@@ -158,26 +158,26 @@ input[type="text"] {
     transition: all ease-in-out 0.4s;
     opacity: 0.6; }
 
-input[type="text"]::-webkit-input-placeholder {
+input[type="email"]::-webkit-input-placeholder {
   text-transform: uppercase;
   margin: 0;
   border: 0; }
 
-input[type="text"]:focus {
+input[type="email"]:focus {
   outline: none; }
 
-input[type="text"],
-button {
+input[type="email"],
+.button {
   font-size: 0.88rem;
   margin: 0; }
 
-button {
+.button {
   text-transform: uppercase;
   margin: 0;
   border: none;
   outline: none;
   color: #FFFFFF;
-  background-color: #8BDA48;
+  background-color: #000000;
   height: 50px;
   padding-top: auto;
   padding-bottom: auto;
@@ -185,13 +185,18 @@ button {
   line-height: normal;
   padding-left: 24px;
   padding-right: 24px;
+  border: 2px solid #FFFFFF;
   -webkit-transition: all ease-in-out 0.4s;
   -moz-transition: all ease-in-out 0.4s;
   -ms-transition: all ease-in-out 0.4s;
   -o-transition: all ease-in-out 0.4s;
   transition: all ease-in-out 0.4s; }
-  button:focus {
+  .button:focus {
     outline: none; }
+  .button:hover {
+    background-color: #8BDA48;
+    color: #ffffff;
+    border: 2px solid #8BDA48; }
 
 .flex {
   display: flex; }
@@ -212,6 +217,7 @@ ul {
   padding-bottom: 0;
   padding-left: 16px;
   display: flex;
+  list-style: none;
   align-items: center; }
 
 .icon {
@@ -220,6 +226,7 @@ ul {
 
 .icon-set {
   display: flex;
+  position: relative;
   padding-left: 56px;
   padding-right: 56px;
   height: auto; }
@@ -249,8 +256,8 @@ li {
     height: calc(100vh - 48px * 2);
     padding: 48px; }
 
-  input[type="text"],
-  button {
+  input[type="email"],
+  .button {
     font-size: 1.16rem; }
 
   #logo {
@@ -273,19 +280,19 @@ li {
   form {
     width: 100%; }
 
-  input[type="text"] {
+  input[type="email"] {
     display: block;
     padding: 0;
     width: 100%;
     text-align: center; }
 
-  button {
+  .button {
     display: block;
     margin-top: 16px;
     width: 100%;
     margin-left: 0px; }
 
-  input[type="text"]::-webkit-input-placeholder {
+  input[type="email"]::-webkit-input-placeholder {
     text-align: center; } }
 @media (max-width: 600px) {
   html {
@@ -302,8 +309,8 @@ li {
   hr {
     border-bottom-width: 1px; }
 
-  input[type="text"],
-  button {
+  input[type="email"],
+  .button {
     font-size: 1.24rem; } }
 @media (max-width: 500px) {
   html {
@@ -322,11 +329,11 @@ li {
     padding-left: 56px;
     padding-right: 56px; }
 
-  input[type="text"],
-  button {
+  input[type="email"],
+  .button {
     font-size: 1.48rem; }
 
-  button:hover {
+  .button:hover {
     transform: scale(1);
     opacity: 1; }
 

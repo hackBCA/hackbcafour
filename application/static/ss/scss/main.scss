@@ -131,7 +131,7 @@ hr {
 .jumbo_title,
 .jumbo_subtitle {
 	text-align: center;
-	font-family: 'Atlas Grotesk', sans-serif;
+	font-family: 'Azo Sans', 'Atlas Grotesk';
 	/* Test Font */
 }
 
@@ -186,7 +186,7 @@ form {
 	animation-fill-mode: forwards;
 }
 
-input[type="text"] {
+input[type="email"] {
 	height: 48px;
 	width: 400px;
 	padding-left: 24px;
@@ -203,29 +203,29 @@ input[type="text"] {
 	}
 }
 
-input[type="text"]::-webkit-input-placeholder {
+input[type="email"]::-webkit-input-placeholder {
 	text-transform: uppercase;
 	margin: 0;
 	border: 0;
 }
 
-input[type="text"]:focus {
+input[type="email"]:focus {
 	outline: none;
 }
 
-input[type="text"],
-button {
+input[type="email"],
+.button {
 	font-size: 0.88rem;
 	margin: 0;
 }
 
-button {
+.button {
 	text-transform: uppercase;
 	margin: 0;
 	border: none;
 	outline: none;
 	color: #FFFFFF;
-	background-color: #8BDA48;
+	background-color: #000000;
 	height: 50px;
 	padding-top: auto;
 	padding-bottom: auto;
@@ -233,11 +233,17 @@ button {
 	line-height: normal;
 	padding-left: 24px;
 	padding-right: 24px;
+	border: 2px solid #FFFFFF;
 	@include transition(all,
 	ease-in-out,
 	0.4s);
 	&:focus {
 		outline: none;
+	}
+	&:hover {
+		background-color: #8BDA48;
+		color: #ffffff;
+		border: 2px solid #8BDA48;
 	}
 }
 
@@ -263,6 +269,7 @@ ul {
 	padding-bottom: 0;
 	padding-left: 16px;
 	display: flex;
+	list-style: none;
 	align-items: center;
 }
 
@@ -273,10 +280,23 @@ ul {
 
 .icon-set {
 	display: flex;
+	position: relative;
 	padding-left: 56px;
 	padding-right: 56px;
 	height: auto;
 }
+
+// .icon-img{
+//     @include transition(all,
+// 	ease-in-out,
+// 	0.3s);
+
+// 	&:hover {
+// 		margin-top: -5px;
+// 		color: #FFF;
+// 		opacity: 1;
+// 	}
+// }
 
 li {
 	margin: 0;
@@ -315,8 +335,8 @@ li {
 		height: calc(100vh - 48px * 2);
 		padding: 48px;
 	}
-	input[type="text"],
-	button {
+	input[type="email"],
+	.button {
 		font-size: 1.16rem;
 	}
 	#logo {
@@ -342,19 +362,19 @@ li {
 	form {
 		width: 100%;
 	}
-	input[type="text"] {
+	input[type="email"] {
 		display: block;
 		padding: 0;
 		width: 100%;
 		text-align: center;
 	}
-	button {
+	.button {
 		display: block;
 		margin-top: 16px;
 		width: 100%;
 		margin-left: 0px;
 	}
-	input[type="text"]::-webkit-input-placeholder {
+	input[type="email"]::-webkit-input-placeholder {
 		text-align: center;
 	}
 }
@@ -374,8 +394,8 @@ li {
 	hr {
 		border-bottom-width: 1px;
 	}
-	input[type="text"],
-	button {
+	input[type="email"],
+	.button {
 		font-size: 1.24rem;
 	}
 }
@@ -397,11 +417,11 @@ li {
 		padding-left: 56px;
 		padding-right: 56px;
 	}
-	input[type="text"],
-	button {
+	input[type="email"],
+	.button {
 		font-size: 1.48rem;
 	}
-	button:hover {
+	.button:hover {
 		transform: scale(1);
 		opacity: 1;
 	}

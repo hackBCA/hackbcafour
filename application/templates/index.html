@@ -3,7 +3,6 @@
 
 <head>
 
-
 	<meta charset="utf-8">
 
 	<title>hackBCA IV – Coming Soon</title>
@@ -31,26 +30,26 @@
 	<link rel="apple-touch-icon" href="{{ url_for('static', filename='icons/torch-apple-touch-icon.png') }}">
 
 
+
 	<!-- Vendor -->
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-	<script src="js/vendor/modernizr-2.8.3.min.js"></script>
-	<script src="js/vendor/velocity.min.js"></script>
+	<script src="{{ url_for('static', filename='js/vendor/modernizr-2.8.3.min.js') }}"></script>
+	<script src="{{ url_for('static', filename='js/vendor/velocity.min.js') }}"></script>
 
 
 	<!-- Styles -->
-	<link rel="stylesheet" href="ss/css/main.css" type="text/css">
-	 <link rel="stylesheet" href="{{ url_for('static', filename='ss/css/main.css') }}">
-
+	<link rel="stylesheet" href="{{ url_for('static', filename='ss/scss/main.css') }}">
 
 	<!-- Scripts -->
-	<script src="js/app.js"></script>
-
+	<script src="{{ url_for('static', filename='js/app.js') }}"></script>
+	<script src="https://use.typekit.net/cdh1lxe.js"></script>
+	<script>try{Typekit.load({ async: true });}catch(e){}</script>
 
 </head>
 
 <body>
 	<section class="flex--vertical-space-between">
-		<div class="bg" style="background-image: url('{{ url_for('static', filename='images/bg.png') }}');"></div>
+		<div class="bg" style="background-image: url('{{ url_for('static', filename='images/bg.png') }}');"></div></div>
 		<div id="line_top" class="flex flex--vertical-center line">
 			<hr>
 			<img id="logo" src="{{ url_for('static', filename='brand/logo.svg')}}"/>
@@ -62,9 +61,8 @@
 				<h2 class="jumbo_subtitle">March 25-26, 2017. Lighting the Torch.</h2>
 			</hgroup>
 			<form method="POST">
-				{{ form.email(placeholder="Email Address") }}
-				<!-- <input type="text" placeholder="Email Address"> -->
-				<button type="button">Get Updates</button>
+				{{ form.email(placeholder="Email Address", type="email") }}
+				<input type="submit" value="GET UPDATES" class="button">
 			</form>
 		</div>
 		<div id="line_bottom" class="flex flex--vertical-center line">
