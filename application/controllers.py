@@ -1,6 +1,7 @@
 from application import app
 from pymongo import MongoClient
 from bson.objectid import ObjectId
+from flask import flash
 
 def add_list(email):
 	client = MongoClient(app.config['MONGOLAB_URL'])
@@ -9,4 +10,4 @@ def add_list(email):
 
 	email_address = {'email_address': email}
 	mailing_list.insert(email_address)
-
+	

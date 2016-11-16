@@ -64,6 +64,15 @@
 				{{ form.email(placeholder="Email Address", type="email") }}
 				<input type="submit" value="GET UPDATES" class="button">
 			</form>
+			{% with messages = get_flashed_messages() %}
+				{% if messages %}
+			    <ul class=flashes>
+			    {% for message in messages %}
+			      <h1 id="success" style="color: white">{{ message }}</h1>
+			    {% endfor %}
+			    </ul>
+				{% endif %}
+			{% endwith %}
 		</div>
 		<div id="line_bottom" class="flex flex--vertical-center line">
 			<hr>
