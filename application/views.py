@@ -16,3 +16,13 @@ def index():
 			return redirect(url_for("index"))
 
 	return render_template('index.html', form=form)
+
+@app.route("/sponsors", methods = ["GET"])
+def sponsors():
+    return app.send_static_file("prospectus.pdf")
+
+@app.route("/sponsors.pdf", methods = ["GET"])
+@app.route("/sponsor.pdf", methods = ["GET"])
+@app.route("/sponsor", methods = ["GET"])
+def foward_sponsors():
+    return redirect("/sponsors")
