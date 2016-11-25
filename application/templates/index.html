@@ -9,7 +9,7 @@
 
 	<!-- Behavioral Metadata -->
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
+	<meta http-equiv="X-UA-Compatible" content="IE=edge, chrome-1">
 
 	<!-- Basic Metadata -->
 	<meta name="title" content="hackBCA IV – Coming Soon">
@@ -38,7 +38,7 @@
 
 
 	<!-- Styles -->
-	<link rel="stylesheet" href="{{ url_for('static', filename='ss/scss/main.css') }}">
+	<link rel="stylesheet" href="{{ url_for('static', filename='ss/main.min.css') }}" type="text/css">
 
 	<!-- Scripts -->
 	<script src="{{ url_for('static', filename='js/app.js') }}"></script>
@@ -49,45 +49,52 @@
 
 <body>
 	<section class="flex--vertical-space-between">
-		<div class="bg" style="background-image: url('{{ url_for('static', filename='images/bg.png') }}');"></div></div>
-		<div id="line_top" class="flex flex--vertical-center line">
+		<div class="bg" style="background-image: url('{{ url_for('static', filename='images/bg.png') }}');"></div>
+		<div id="line__top" class="flex flex--vertical-center line">
 			<hr>
 			<img id="logo" src="{{ url_for('static', filename='brand/logo.svg')}}"/>
 			<hr>
 		</div>
+		
 		<div class="block">
 			<hgroup class="jumbo">
-				<h1 class="jumbo_title">hackBCA IV</h1>
-				<h2 class="jumbo_subtitle">March 25-26, 2017. Lighting the Torch.</h2>
+				<h1 class="jumbo__title">hackBCA IV</h1>
+				<h2 class="jumbo__subtitle">March 25-26, 2017. Lighting the Torch.</h2>
 			</hgroup>
 			<form method="POST">
-				{{ form.email(placeholder="Email Address", type="email") }}
+				{{ form.email(type="email", placeholder="Enter Your Email", required=required) }}
 				<input type="submit" value="GET UPDATES" class="button">
 			</form>
+			 
 			{% with messages = get_flashed_messages() %}
 				{% if messages %}
-			    <ul class=flashes>
+			 
 			    {% for message in messages %}
-			      <h1 id="success" style="color: white">{{ message }}</h1>
+			      	{% if message == "Awesome! You\'ll hear from us soon." %}
+					    <div id="confirmation"><img src="{{ url_for('static', filename='images/check.png') }}" /><h3>{{ message }}</h3></div>
+					<!-- add duplicate email styling down below -->
+					{% else %}
+					    <div id="confirmation"><img src="{{ url_for('static', filename='images/check.png') }}" /><h3>{{ message }}</h3></div>
+					{% endif %}
 			    {% endfor %}
-			    </ul>
 				{% endif %}
 			{% endwith %}
+
 		</div>
-		<div id="line_bottom" class="flex flex--vertical-center line">
+		<div id="line__bottom" class="flex flex--vertical-center line">
 			<hr>
 			<ul class="icon-set">
-				<li id="icon_facebook" class="icon">
-					<a href="http://facebook.com/hackBCA"><img src="{{ url_for('static', filename='icons/facebook.svg')}}"/></a>
+				<li id="icon__facebook" class="icon">
+					<a href="https://www.facebook.com/BCAhackathon/"><img src="{{ url_for('static', filename='icons/facebook.svg')}}" class="icon-img" /></a>
 				</li>
-				<li id="icon_instagram" class="icon">
-					<a href="http://instagram.com/hackBCA"><img src="{{ url_for('static', filename='icons/instagram.svg')}}" /></a>
+				<li id="icon__instagram" class="icon">
+					<a href="http://instagram.com/hackBCA"><img src="{{ url_for('static', filename='icons/instagram.svg')}}" class="icon-img" /></a>
 				</li>
-				<li id="icon_twitter" class="icon">
-					<a href="http://twitter.com/hackBCA"><img src="{{ url_for('static', filename='icons/twitter.svg')}}" /></a>
+				<li id="icon__twitter" class="icon">
+					<a href="http://twitter.com/hackBCA"><img src="{{ url_for('static', filename='icons/twitter.svg')}}" class="icon-img" /></a>
 				</li>
-				<li id="icon_email" class="icon">
-					<a href="mailto:contact@hackbca.com"><img src="{{ url_for('static', filename='icons/email.svg')}}" /></a>
+				<li id="icon__email" class="icon">
+					<a href="mailto:contact@hackbca.com"><img src="{{ url_for('static', filename='icons/email.svg')}}" class="icon-img" /></a>
 				</li>
 			</ul>
 			<hr>

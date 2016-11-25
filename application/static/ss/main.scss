@@ -1,9 +1,27 @@
-@mixin transition ($props, $easing, $timing) {
-	-webkit-transition: $props $easing $timing;
-	-moz-transition: $props $easing $timing;
-	-ms-transition: $props $easing $timing;
-	-o-transition: $props $easing $timing;
-	transition: $props $easing $timing;
+// Colors
+$green: #8BDA48;
+// Mixins
+@mixin crossBrowser($property, $value) {
+	-webkit-#{$property}: $value;
+	-moz-#{$property}: $value;
+	-ms-#{$property}: $value;
+	-o-#{$property}: $value;
+	$property: $value;
+}
+
+@mixin keyframes($name) {
+	@-webkit-keyframes #{$name} {
+		@content;
+	}
+	@-moz-keyframes #{$name} {
+		@content;
+	}
+	@-o-keyframes #{$name} {
+		@content;
+	}
+	@keyframes #{$name} {
+		@content;
+	}
 }
 
 html {
@@ -11,14 +29,15 @@ html {
 	width: 100%;
 }
 
-* {
-	-webkit-font-smoothing: antialiased;
-	-moz-font-smoothing: antialiased;
-	-ms-font-smoothing: antialiased;
-	-o-font-smoothing: antialiased;
+body {
+	font-family: 'azo-sans-web', 'Atlas Grotesk';
 }
 
-@keyframes float {
+* {
+	@include crossBrowser(font-smoothing, antialiased);
+}
+
+@include keyframes(float) {
 	0% {
 		transform: translateY(0);
 	}
@@ -30,7 +49,7 @@ html {
 	}
 }
 
-@keyframes fade-in {
+@include keyframes (fade-in) {
 	0% {
 		opacity: 0;
 	}
@@ -39,7 +58,7 @@ html {
 	}
 }
 
-@keyframes fade-to-left {
+@include keyframes (fade-to-left) {
 	0% {
 		opacity: 0;
 		transform: translateX(10vw);
@@ -50,7 +69,7 @@ html {
 	}
 }
 
-@keyframes fade-to-right {
+@include keyframes (fade-to-right) {
 	0% {
 		opacity: 0;
 		transform: translateX(-10vw);
@@ -61,7 +80,7 @@ html {
 	}
 }
 
-@keyframes fade-down {
+@include keyframes(fade-down) {
 	0% {
 		transform: translateY(-4vh);
 		opacity: 0;
@@ -72,7 +91,7 @@ html {
 	}
 }
 
-@keyframes fade-up {
+@include keyframes(fade-up) {
 	0% {
 		transform: translateY(4vh);
 		opacity: 0;
@@ -103,12 +122,13 @@ body {
 	left: 0;
 	margin: 0;
 	z-index: -1;
-	opacity: 0.48;
+	opacity: 0.40;
 	background: url("../../assets/images/bg.png");
 	background-size: cover;
 	background-repeat: no-repeat;
 }
 
+// Default for divs
 div {
 	width: 100%;
 }
@@ -122,22 +142,48 @@ hr {
 	width: 100%;
 }
 
-#line_bottom {
-	animation: fade-to-right 2.4s ease;
+#line__bottom {
+	@include crossBrowser(animation,
+	fade-to-right 2.4s ease);
 }
 
-#line_top {
-	animation: fade-to-left 2.4s ease;
+#line__top {
+	@include crossBrowser (animation,
+	fade-to-left 2.4s ease);
 }
 
-.jumbo_title,
-.jumbo_subtitle {
+#confirmation {
+	position: absolute;
+	width: 100%;
+	padding: 10px 0 10px 40px;
+	top: 0;
+	left: 0;
+	color: #FFFFFF;
+	background-color: $green;
+	opacity: 0.95;
+	img {
+		display: inline-block;
+		align: left;
+		width: 2.5%;
+		height: 100%;
+		float: left;
+	}
+	h3 {
+		margin: 0;
+		padding: 5px 0;
+		margin-left: 4%;
+		font-weight: 100;
+	}
+}
+
+.jumbo__title,
+.jumbo__subtitle {
 	text-align: center;
 	font-family: 'azo-sans-web', 'Atlas Grotesk';
 	/* Test Font */
 }
 
-.jumbo_title {
+.jumbo__title {
 	font-size: 5rem;
 	font-weight: 100;
 	width: fit-content;
@@ -148,7 +194,7 @@ hr {
 	animation-fill-mode: forwards;
 }
 
-.jumbo_subtitle {
+.jumbo__subtitle {
 	font-size: 1.24rem;
 	font-size: 2rem;
 	font-weight: 400;
@@ -169,13 +215,8 @@ hgroup {
 }
 
 a {
-	@include transition(all,
-	ease-in-out,
-	0.2);
-}
-
-a:hover {
-	opacity: 0.8;
+	@include crossBrowser(transition,
+	all ease-in-out 0.2s);
 }
 
 form {
@@ -194,25 +235,21 @@ input[type="email"] {
 	padding-left: 24px;
 	border: none;
 	outline: none;
-	@include transition(all,
-	ease-in-out,
-	0.4s);
+	@include crossBrowser(transition,
+	all ease-in-out 0.4s);
 	&:hover::-webkit-input-placeholder {
-		@include transition(all,
-		ease-in-out,
-		0.4s);
+		@include crossBrowser(transition,
+		all ease-in-out 0.4s);
 		opacity: 0.6;
 	}
-}
-
-input[type="email"]::-webkit-input-placeholder {
-	text-transform: uppercase;
-	margin: 0;
-	border: 0;
-}
-
-input[type="email"]:focus {
-	outline: none;
+	&::-webkit-input-placeholder {
+		text-transform: uppercase;
+		margin: 0;
+		border: 0;
+	}
+	&:focus {
+		outline: none;
+	}
 }
 
 input[type="email"],
@@ -237,16 +274,15 @@ input[type="email"],
 	padding-left: 24px;
 	padding-right: 24px;
 	border: 2px solid #FFFFFF;
-	@include transition(all,
-	ease-in-out,
-	0.4s);
+	@include crossBrowser(transition,
+	all ease-in-out 0.4s);
 	&:focus {
 		outline: none;
 	}
 	&:hover {
-		background-color: #8BDA48;
+		background-color: $green;
 		color: #ffffff;
-		border: 2px solid #8BDA48;
+		border: 2px solid $green;
 	}
 }
 
@@ -279,6 +315,12 @@ ul {
 .icon {
 	padding-left: 24px;
 	padding-right: 24px;
+	opacity: 0.8;
+	&:hover {
+		opacity: 1;
+		@include crossBrowser(transition,
+		all ease-in-out 0.6s);
+	}
 }
 
 .icon-set {
@@ -288,18 +330,6 @@ ul {
 	padding-right: 56px;
 	height: auto;
 }
-
-// .icon-img{
-//     @include transition(all,
-// 	ease-in-out,
-// 	0.3s);
-
-// 	&:hover {
-// 		margin-top: -5px;
-// 		color: #FFF;
-// 		opacity: 1;
-// 	}
-// }
 
 li {
 	margin: 0;
@@ -322,13 +352,13 @@ li {
 	height: 96px;
 	padding-left: 64px;
 	padding-right: 64px;
-	@include transition(all,
-	ease-in-out,
-	0.4s);
+	@include crossBrowser(transition,
+	all ease-in-out 0.4s);
 	animation: float ease 8s;
 	animation-iteration-count: infinite;
 }
 
+// Responsive
 @media (max-width: 800px) {
 	html {
 		font-size: 80%;
@@ -345,6 +375,14 @@ li {
 	#logo {
 		padding-left: 32px;
 		padding-right: 32px;
+	}
+	.button {
+		background-color: $green;
+		border: none;
+		&:hover {
+			transform: scale(1);
+			opacity: 1;
+		}
 	}
 }
 
@@ -423,10 +461,6 @@ li {
 	input[type="email"],
 	.button {
 		font-size: 1.48rem;
-	}
-	.button:hover {
-		transform: scale(1);
-		opacity: 1;
 	}
 	.icon-set {
 		padding: 0;
