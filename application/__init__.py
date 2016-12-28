@@ -8,7 +8,7 @@
 # app.register_blueprint(web_module)
 
 from flask import Flask, render_template, redirect, request
-# from mongoengine import register_connection
+from mongoengine import register_connection
 import jinja2
 from flask_caching import Cache
 
@@ -29,17 +29,18 @@ class FlaskApp(Flask):
         self.jinja_loader.loaders[1].mapping[blueprint.name] = blueprint.jinja_loader
 
 app = FlaskApp()
-CONFIG = app.config.from_object('config')
+app.config.from_pyfile("../config.cfg")
+CONFIG = app.config
 
 # MongoLab
-# register_connection (
-#     alias = "default", 
-#     name = CONFIG["DB_NAME"],
-#     username = CONFIG["DB_USERNAME"],
-#     password = CONFIG["DB_PASSWORD"],
-#     host = CONFIG["DB_HOST"],
-#     port = CONFIG["DB_PORT"]
-# )
+register_connection (
+    alias = "default", 
+    name = CONFIG["DB_NAME"],
+    username = CONFIG["DB_USERNAME"],
+    password = CONFIG["DB_PASSWORD"],
+    host = CONFIG["DB_HOST"],
+    port = CONFIG["DB_PORT"]
+)
 
 # Cache
 cache = Cache(app,config={"CACHE_TYPE": "simple", "CACHE_DEFAULT_TIMEOUT": 60 * 60 * 24 * 7})

@@ -3,6 +3,64 @@ from wtforms import Form, TextField, PasswordField, SelectField, TextAreaField, 
 import re
 
 
+gender_choices = [
+    ("", "Gender"),
+    ("male", "Male"),
+    ("female", "Female"),
+    ("other", "Other"),
+    ("rns", "Rather Not Say")
+]
+
+beginner_choices = [
+    ("", "Are you a beginner?"),
+    ("yes", "Yes"),
+    ("no", "No")
+]
+
+
+ethnicity_choices = [
+    ("", "Ethnicity"),
+    ("white", "White"),
+    ("african_american", "African American"),
+    ("asian_pacific", "Asian or Pacific Islander"),
+    ("american_indian_alaskan_native", "American Indian or Alaskan Native"),
+    ("multiracial", "Multiracial"),
+    ("hispanic", "Hispanic origin"),
+    ("other", "Other"),
+    ("rns", "Rather Not Say")
+]
+
+num_hackathons_choices = [
+    ("", "How many hackathons have you been to?"),
+    ("0", "0"),
+    ("1", "1"),
+    ("2", "2"),
+    ("3", "3"),
+    ("4", "4"),
+    ("5", "5+")
+]
+
+grade_choices = [
+    ("", "What grade are you in?"),
+    ("9", "9th"),
+    ("10", "10th"),
+    ("11", "11th"),
+    ("12", "12th")
+]
+
+shirt_sizes = [
+    ("", "What is your shirt size?"),
+    ("XS", "Extra Small"),
+    ("S", "Small"),
+    ("M", "Medium"),
+    ("L", "Large"),
+    ("XL", "Extra Large")
+]
+
+
+free_response1_prompt = "Why do you want to come to hackBCA?"
+
+
 class RegistrationForm(Form):
     email = TextField("Email", [
         validators.Required(message = "Enter an email."),
@@ -21,9 +79,11 @@ class RegistrationForm(Form):
 
     gender = SelectField("Gender", [validators.Required(message = "You must select an option.")], choices = gender_choices, description = "Gender")
     other_gender = TextField("Other Gender", description = "Other Gender")
+    beginner = SelectField("Are you a beginner?", [validators.Required(message = "You must select an option.")], choices = beginner_choices, description = "Are you a beginner?")
     ethnicity = SelectField("Ethnicity", [validators.Required(message = "You must select an option.")], choices = ethnicity_choices, description = "Ethnicity")
     grade = SelectField("Grade", [validators.Required(message = "You must select an option.")], choices = grade_choices, description = "Grade")
- 
+    num_hackathons = SelectField("How many hackathons have you attended?", [validators.Required(message = "You must select an option.")], choices = num_hackathons_choices, description = "How many hackathons have you attended?")
+
     link1 = TextField("Link #1", [
         validators.optional(),
         validators.URL(message = "Invalid URL.")
@@ -62,6 +122,33 @@ class RegistrationForm(Form):
         password = form['password'].data
         if len(password) >= 8 and password != field.data:
             raise ValidationError("Passwords must match.")
+    def validate(self): #Man I love validators.URL
+        links = ["link1", "link2", "link3"]
+        originalValues = {}
+
+        for link in links: #Temporarily prefix all links with http:// if they are missing it
+            attr = getattr(self, link)
+            val = attr.data
+            originalValues[link] = val
+            if re.match("^(http|https)://", val) is None:
+                val = "http://" + val
+            attr.data = val
+            setattr(self, link, attr)
+
+        rv = Form.validate(self)
+
+        for link in links: #Revert link values back to actual values
+            attr = getattr(self, link)
+            attr.data = originalValues[link]
+            setattr(self, link, attr)
+
+        if not rv:
+            return False
+        return True
+
+    def validate_other_gender(form, field):
+        if form['gender'].data == 'other' and field.data == "":
+            raise ValidationError("Enter your gender.")
 
 class LoginForm(Form):
     email = TextField("Email", [
@@ -113,75 +200,8 @@ class ChangePasswordForm(Form):
         if len(password) >= 8 and password != field.data:
             raise ValidationError("Passwords must match.")
 
-gender_choices = [
-    ("", "Gender"),
-    ("male", "Male"),
-    ("female", "Female"),
-    ("other", "Other"),
-    ("rns", "Rather Not Say")
-]
 
-
-ethnicity_choices = [
-    ("", "Ethnicity"),
-    ("white", "White"),
-    ("african_american", "African American"),
-    ("asian_pacific", "Asian or Pacific Islander"),
-    ("american_indian_alaskan_native", "American Indian or Alaskan Native"),
-    ("multiracial", "Multiracial"),
-    ("hispanic", "Hispanic origin"),
-    ("other", "Other"),
-    ("rns", "Rather Not Say")
-]
-
-
-
-grade_choices = [
-    ("", "What grade are you in?"),
-    ("9", "9th"),
-    ("10", "10th"),
-    ("11", "11th"),
-    ("12", "12th")
-]
-
-shirt_sizes = [
-    ("", "What is your shirt size?"),
-    ("XS", "Extra Small"),
-    ("S", "Small"),
-    ("M", "Medium"),
-    ("L", "Large"),
-    ("XL", "Extra Large")
-]
-
-
-free_response1_prompt = "Why do you want to come to hackBCA?"
 
   
 
-    def validate(self): #Man I love validators.URL
-        links = ["link1", "link2", "link3", "link4"]
-        originalValues = {}
-
-        for link in links: #Temporarily prefix all links with http:// if they are missing it
-            attr = getattr(self, link)
-            val = attr.data
-            originalValues[link] = val
-            if re.match("^(http|https)://", val) is None:
-                val = "http://" + val
-            attr.data = val
-            setattr(self, link, attr)
-
-        rv = Form.validate(self)
-
-        for link in links: #Revert link values back to actual values
-            attr = getattr(self, link)
-            attr.data = originalValues[link]
-            setattr(self, link, attr)
-
-        if not rv:
-            return False
-        return True
-
-    def validate_other_gender(form, field):
-        if form['gender'].data == 'other' and field.data == "":
-            raise ValidationError("Enter your gender.")
+    
