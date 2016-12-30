@@ -39,9 +39,7 @@ def load_user(user_id):
 	checked_in = False
 	if "checked_in" in currUser:
 		checked_in = currUser.checked_in
-
 	user = User(currUser.id, currUser.email, currUser.firstname, currUser.lastname, currUser.type_account) 
-
 	return user
 
 def get_user(email):
@@ -55,10 +53,8 @@ def get_user(email):
 
 def verify_user(email, password):
 	currUser = get_user(email)
-
 	if currUser is None:
 		return None
-
 	hashed = currUser.hashed		
 
 	if bcrypt.hashpw(password.encode("utf-8"), hashed.encode("utf-8")) == hashed.encode("utf-8"):
@@ -68,7 +64,6 @@ def verify_user(email, password):
 
 def login(email):
 	user = load_user(get_user(email).id)
-
 	if user != None:
 		login_user(user)
 	else:
@@ -90,6 +85,7 @@ def add_user(email, firstname, lastname, password, school, gender, beginner, eth
 
 def tokenize_email(email):
 	return ts.dumps(email, salt = CONFIG["EMAIL_TOKENIZER_SALT"])
+
 def detokenize_email(token):
 	return ts.loads(token, salt = CONFIG["EMAIL_TOKENIZER_SALT"], max_age = 86400 * 60)
 
@@ -100,18 +96,15 @@ def send_recovery_email(email):
 		raise UserDoesNotExistError
 
 	token = tokenize_email(email)
-	message = sendgrid.Mail()
-	message.add_to(email)
-	message.set_from("contact@hackbca.com")
-	message.set_subject("hackBCA III - Account Recovery")
-	message.set_html("<p></p>")
-
-	message.add_filter("templates", "enable", "1")
-	message.add_filter("templates", "template_id", CONFIG["SENDGRID_ACCOUNT_RECOVERY_TEMPLATE"])
-	message.add_substitution("prefix", "www")
-	message.add_substitution("token", token)	
-
-	status, msg = sg.send(message)
+	from_email = Email("contact@hackbca.com")
+	to_email = Email(email)
+	subject = "hackBCA IV - Account Recovery"
+	content = Content("text/html", "<p></p>")
+	mail = Mail(from_email, subject, to_email, content)
+	mail.template_id = CONFIG["SENDGRID_ACCOUNT_RECOVERY_TEMPLATE"]
+	mail.personalizations[0].add_substitution(Substitution("%prefix%", "www")) 
+	mail.personalizations[0].add_substitution(Substitution("%token%", token)) 
+	response = sg.client.mail.send.post(request_body=mail.get())
 
 def change_name(email, firstname, lastname):
 	account = get_user(email)
@@ -135,19 +128,18 @@ def change_password(email, password):
 	account.hashed = hashed
 	account.save()
 
-def change_account_type(email, account_type):
-	account = get_user(email)
+# def change_account_type(email, account_type):
+# 	account = get_user(email)
 
-	if account.type_account == account_type:
-		return
+# 	if account.type_account == account_type:
+# 		return
+# 	account.type_account = account_type
 
-	account.type_account = account_type
+# 	clear_application(account.email)
 
-	clear_application(account.email)
+# 	account.save()
 
-	account.save()
-
-	login(email)
+# 	login(email)
 
 def delete_account(email):
 	account = get_user(email)
@@ -176,7 +168,6 @@ def confirm_email(token):
 
 def get_user_attr(email, attr):
 	user = get_user(email)
-
 	if user is None:
 		raise UserDoesNotExistError
 	
@@ -184,7 +175,6 @@ def get_user_attr(email, attr):
 
 def set_user_attr(email, attr, value):
 	user = get_user(email)
-
 	if user is None:
 		raise UserDoesNotExistError
 	
@@ -197,7 +187,6 @@ def clear_application(email):
 
 	if user is None:
 		raise UserDoesNotExistError
-
 	for key in application_fields:
 		setattr(user, key, None)
 
@@ -205,10 +194,8 @@ def clear_application(email):
 
 def get_application(email):
 	user = get_user(email)
-	
 	if user is None:
 		raise UserDoesNotExistError
-
 	app = {}
 	for key in application_fields:
 		if getattr(user, key) is not None:
@@ -220,7 +207,6 @@ def save_form_data(email, app):
 	
 	if user is None:
 		raise UserDoesNotExistError
-
 	for key in app:		
 		if key == "save" or key == "submit":
 			continue

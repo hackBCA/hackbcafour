@@ -53,17 +53,17 @@ class UserEntry(Document):
 
 
 class User(UserMixin):
-	def __init__(self, uid, email, firstname, lastname, type_account, status, decision, attending, checked_in):
-
+	def __init__(self, uid, email, firstname, lastname, type_account):
+		#  status, decision, attending, checked_i
 		self.uid = str(uid)
 		self.email = email
 		self.firstname = firstname
 		self.lastname = lastname
 		self.type_account = type_account
-		self.status = status
-		self.decision = decision
-		self.attending = attending
-		self.checked_in = checked_in
+		# self.status = status
+		# self.decision = decision
+		# self.attending = attending
+		# self.checked_in = checked_in
 
 	def is_authenticated(self):
 		return True

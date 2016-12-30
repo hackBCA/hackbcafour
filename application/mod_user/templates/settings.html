@@ -1,0 +1,100 @@
+{% block content %}
+
+<div class="page-container">
+  <div class="page-section" id="settings">
+    <div class="container">
+      <div class="header">
+        <div class="head-cover">
+          
+          <h2>Account Settings</h2>
+          <h4>Edit your settings here!</h4>
+        </div>
+      </div>
+      <div class="info">
+        <h5>Change your name</h5>
+        <form id="name-form" method="POST" action="/account/settings">
+          <input type="hidden" name="setting" value="name"/>
+          {% from "user._formhelpers.html" import render_field %}
+            {% for field in name_form %}
+              {{ render_field(field) }}
+            {% endfor %}
+          <div class="buttons">
+            <button class="btn" type="submit">Change Name</button>
+          </div>
+          {% with messages = get_flashed_messages(with_categories=true) %}
+  {% if messages %}
+    <ul class=flashes>
+    {% for category, message in messages %}
+      <li class="{{ category }}">{{ message }}</li>
+    {% endfor %}
+    </ul>
+  {% endif %}
+{% endwith %}
+        </form>
+
+
+
+        <h5>Change your password</h5>
+        <form id="password-form" method="POST" action="/account/settings">
+          <input type="hidden" name="setting" value="password"/>
+          {% from "user._formhelpers.html" import render_field %}
+            {% for field in password_form %}
+              {{ render_field(field) }}
+            {% endfor %}
+          <div class="buttons">
+            <button class="btn" type="submit">Change Password</button>
+          </div>
+{% with messages = get_flashed_messages(with_categories=true) %}
+  {% if messages %}
+    <ul class=flashes>
+    {% for category, message in messages %}
+      <li class="{{ category }}">{{ message }}</li>
+    {% endfor %}
+    </ul>
+  {% endif %}
+{% endwith %}
+        </form>
+        
+
+        <h5>Delete your account</h5>
+        <form id="delete_account-form" method="POST" action="/account/settings">
+          <input type="hidden" name="setting" value="delete_account"/>
+          <button class="btn" id="delete-account" onclick="toggle_delete(); return false;">Delete Account</button>
+          <div class="horizontal hide" id="verify-delete">
+            <h6>Are you sure?</h6>
+            <h6>Your account and all data associated with it will be deleted.</h6>
+            <button class="btn" type="submit">Yes</button>
+            <button class="btn" onclick="toggle_delete(); return false;">No</button>
+          </div>
+        </form>
+        {% with messages = get_flashed_messages(with_categories=true) %}
+  {% if messages %}
+    <ul class=flashes>
+    {% for category, message in messages %}
+      <li class="{{ category }}">{{ message }}</li>
+    {% endfor %}
+    </ul>
+  {% endif %}
+{% endwith %}
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script type="text/javascript">
+  var verify_submit = function() {
+    var button_group = document.getElementById("verify-submit");
+    button_group.classList.toggle("hide");
+  }
+  var decline_submit = function() {
+    var button_group = document.getElementById("verify-submit");
+    button_group.classList.toggle("hide");
+  }
+  var toggle_delete = function() {
+    var button_group = document.getElementById("verify-delete");
+    button_group.classList.toggle("hide");
+  }
+</script>
+{% endblock %}

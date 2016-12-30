@@ -1,0 +1,12 @@
+{% block content %}
+
+ <h3>Change your Password</h3>
+          <h4>{{ email }}</h4>
+          <form method="POST" action="">
+             {% from "user._formhelpers.html" import render_field %}
+              {% for field in form %}
+                {{ render_field(field) }}
+              {% endfor %}
+             <button class="btn" type="submit">Change Password</button>
+          </form>
+{% endblock %}
