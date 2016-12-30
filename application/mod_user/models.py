@@ -18,6 +18,9 @@ class UserEntry(Document):
 	lastname = StringField(required = True)
 
 	type_account = StringField(required = True, default = "hacker")
+	confirmed = BooleanField(required = False, default = False)
+	status = StringField(default = "Not Started")
+
 
 	school = StringField()
 	gender = StringField()
