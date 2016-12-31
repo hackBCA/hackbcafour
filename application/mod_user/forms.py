@@ -57,11 +57,16 @@ shirt_sizes = [
     ("XL", "Extra Large")
 ]
 
+type_account_choices = [
+    ("hacker", "Hacker"),
+    ("mentor", "Mentor")
+]
+
 
 free_response1_prompt = "Why do you want to come to hackBCA?"
 
 
-class RegistrationForm(Form):
+class HackerRegistrationForm(Form):
     email = TextField("Email", [
         validators.Required(message = "Enter an email."),
         validators.Email(message = "Invalid email address.")
@@ -149,6 +154,9 @@ class RegistrationForm(Form):
     def validate_other_gender(form, field):
         if form['gender'].data == 'other' and field.data == "":
             raise ValidationError("Enter your gender.")
+
+class RegistrationForm(Form):
+    type_account = SelectField("Account Type", [validators.Required(message = "You must select an option.")], choices = type_account_choices, description = "Choose account type.")
 
 class LoginForm(Form):
     email = TextField("Email", [

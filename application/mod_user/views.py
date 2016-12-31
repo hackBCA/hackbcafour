@@ -65,8 +65,6 @@ def recover():
 					flash("Something went wrong.", "error")
 	return render_template("user.forgot.html", form = form)
 
-###########
-##########
 @mod_user.route("/recover/<token>", methods = ["GET", "POST"])
 def recover_change(token):
   email = controller.detokenize_email(token)
@@ -108,18 +106,12 @@ def verify():
 
   return render_template("user.confirm.html")
 
-########
-########
-
 @mod_user.route("/account/confirm/<token>")
 def confirm_email(token):
   session.pop("email", None)
   controller.confirm_email(token)
   flash("Account confirmed! Login to start your application!", "success")
   return redirect("/index")
-
-########
-########
 
 @mod_user.route("/account/settings", methods = ["GET", "POST"])
 @login_required
@@ -148,18 +140,7 @@ def settings():
             flash("Something went wrong.", "error")
       else:
         flash("Incorrect password.", "error")
-    # if request.form["setting"] == "type_account":
-    #   if current_user.status == "Submitted":
-    #     flash("Application already submitted.", "error")
-    #   else:
-    #     try:
-    #       controller.change_account_type(current_user.email, request.form["type_account"])
-    #       flash("Account type changed.", "success")
-    #     except Exception as e:
-    #       if CONFIG["DEBUG"]:
-    #         raise e
-    #       else:
-    #         flash("Something went wrong.", "error")
+
     if request.form["setting"] == "delete_account":
       try:
         controller.delete_account(current_user.email)
@@ -175,50 +156,106 @@ def settings():
     name_form = ChangeNameForm(request.form, obj = user)
   return render_template("user.settings.html", name_form = name_form, password_form = password_form)
 
-
-
-
-
-########
-########
-
 @cache.cached()
 @mod_user.route("/register", methods = ["GET", "POST"])
 def register():
-	if current_user.is_authenticated:
-		return redirect("/account")
+  if current_user.is_authenticated:
+    return redirect("/account")
 
-	# if not CONFIG["HACKER_REGISTRATION_ENABLED"]:
-	# 	flash("Registration is not open at this time.", "error")
-	# 	return redirect("/")
+  if not CONFIG["REGISTRATION_ENABLED"]:
+	  flash("Registration is not open at this time.", "error")
+	  return redirect("/")
 
-	form = RegistrationForm(request.form)
-	if request.method == "POST" and form.validate():
+  form = RegistrationForm(request.form)
+  if request.method == "POST" and form.validate():
+    type_account = request.form["type_account"]
 
-		type_account = request.form["type_account"]
+    if type_account == "hacker":
+      if CONFIG["HACKER_REGISTRATION_ENABLED"]:
+        return redirect("/register/hacker")
+      else:
+        flash("Hacker registration is not open at this time.", "error")
+        return render_template("user.register.html", form = form)
+    elif type_account == "mentor":
+      if CONFIG["MENTOR_REGISTRATION_ENABLED"]:
+        return redirect("register/mentor")
+      else:
+        flash("Mentor registration is not open at this time.", "error")
+        return render_template("user.register.html", form = form)
+  return render_template("user.register.html", form = form)
 
-	    # if type_account == "hacker" and not CONFIG["HACKER_REGISTRATION_ENABLED"]:
-	    #   flash("Hacker registration is not open at this time.", "error")
-	    #   return render_template("user.register.html", form = form)
-	    # if type_account == "mentor" and not CONFIG["MENTOR_REGISTRATION_ENABLED"]:
-	    #   flash("Mentor registration is not open at this time.", "error")
-	    #   return render_template("user.register.html", form = form)
-		try:
-			controller.add_user(request.form["email"], request.form["first_name"], request.form["last_name"], request.form["password"], request.form["school"], request.form["gender"], request.form["beginner"], request.form["ethnicity"], request.form["grade"], request.form["num_hackathons"], request.form["link1"], request.form["link2"], request.form["link3"], request.form["t_shirt_size"], request.form["free_response1"], request.form["food_allergies"], request.form["mlh_terms"])
-			flash("Check your inbox for an email to confirm your account!", "success")
-			return redirect("/")
-		except Exception as e:
-			print(e)
-			exceptionType = e.args[0]
-			if exceptionType == "UserExistsError":
-				flash("A user with that email already exists.", "error")
-			else:
-				if CONFIG["DEBUG"]:
-					raise e
-				else:
-					flash("Something went wrong.", "error")
-		return redirect(url_for('user.register'))
-	return render_template("user.register.html", form = form)
+
+
+@cache.cached()
+@mod_user.route("/register/hacker", methods = ["GET", "POST"])
+def hacker_registration():
+  if current_user.is_authenticated:
+    return redirect("/account")
+  elif not CONFIG["REGISTRATION_ENABLED"]:
+    flash("Registration is not open at this time.", "error")
+    return redirect("/")
+
+  if CONFIG["HACKER_REGISTRATION_ENABLED"]:
+    form = HackerRegistrationForm(request.form)
+
+    if request.method == "POST" and form.validate():
+      try:
+        type_account = "hacker"
+        controller.add_hacker(request.form["email"], request.form["first_name"], request.form["last_name"], type_account, request.form["password"], request.form["school"], request.form["gender"], request.form["beginner"], request.form["ethnicity"], request.form["grade"], request.form["num_hackathons"], request.form["link1"], request.form["link2"], request.form["link3"], request.form["t_shirt_size"], request.form["free_response1"], request.form["food_allergies"], request.form["mlh_terms"])
+        flash("Check your inbox for an email to confirm your account!", "success")
+        return redirect("/")
+      except Exception as e:
+        print(e)
+        exceptionType = e.args[0]
+        if exceptionType == "UserExistsError":
+          flash("A user with that email already exists.", "error")
+        else:
+          if CONFIG["DEBUG"]:
+            raise e
+          else:
+            flash("Something went wrong.", "error")
+  else:
+    flash("Hacker registration is not open at this time.", "error")
+    return redirect(url_for("user.register"))
+  return render_template("user.hacker.html", form=form)
+
+
+@cache.cached()
+@mod_user.route("/register/mentor", methods = ["GET", "POST"])
+def mentor_registration():
+  if current_user.is_authenticated:
+    return redirect("/account")
+  elif not CONFIG["REGISTRATION_ENABLED"]:
+    flash("Registration is not open at this time.", "error")
+    return redirect("/")
+
+  if CONFIG["MENTOR_REGISTRATION_ENABLED"]:
+    flash("Mentor registration is not open at this time.", "error")
+    return redirect(url_for("user.register"))
+    ####### uncomment/fix below once mentor criteria is added
+
+    # form = MentorRegistrationForm(request.form)
+    # if request.method == "POST" and form.validate():
+    #   try:
+    #     type_account = "mentor"
+    #     controller.add_mentor()
+    #     flash("Check your inbox for an email to confirm your account!", "success")
+    #     return redirect("/")
+    #   except Exception as e:
+    #     print(e)
+    #     exceptionType = e.args[0]
+    #     if exceptionType == "UserExistsError":
+    #       flash("A user with that email already exists.", "error")
+    #     else:
+    #       if CONFIG["DEBUG"]:
+    #         raise e
+    #       else:
+    #         flash("Something went wrong.", "error")
+  else:
+    flash("Mentor registration is not open at this time.", "error")
+    return redirect(url_for("user.register"))
+  return render_template("user.mentor.html", form=form)
+
 
 
 

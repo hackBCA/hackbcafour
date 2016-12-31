@@ -31,6 +31,11 @@ class UserEntry(Document):
 	t_shirt_size = StringField()
 	food_allergies = StringField()
 	
+	# decision = StringField()
+	# accepted_time = IntField()
+	# attending = StringField()
+	# rsvp = BooleanField(default = False) #Has the user submitted their rsvp form?
+
 
 	link1 = StringField()
 	link2 = StringField()

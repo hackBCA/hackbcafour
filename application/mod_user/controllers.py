@@ -72,16 +72,29 @@ def login(email):
 def logout():
 	logout_user()
 
-def add_user(email, firstname, lastname, password, school, gender, beginner, ethnicity, grade, num_hackathons, link1, link2, link3, t_shirt_size, free_response1, food_allergies, mlh_terms):
+def add_hacker(email, firstname, lastname, password, school, gender, beginner, ethnicity, grade, num_hackathons, link1, link2, link3, t_shirt_size, free_response1, food_allergies, mlh_terms, type_account):
 	existingUser = get_user(email)
 	if existingUser is not None:
 		raise UserExistsError
 	
 	hashed = bcrypt.hashpw(password.encode("utf-8"), bcrypt.gensalt())
-	new_entry = UserEntry(email = email.lower(), hashed = hashed, firstname = firstname, lastname = lastname, type_account = "hacker", school = school, gender = gender, beginner = beginner, ethnicity = ethnicity, grade = grade, num_hackathons = num_hackathons, link1 = link1, link2 = link2, link3 = link3, t_shirt_size = t_shirt_size, free_response1 = free_response1, food_allergies = food_allergies, mlh_terms = mlh_terms)
+	new_entry = UserEntry(email = email.lower(), hashed = hashed, firstname = firstname, lastname = lastname, type_account = type_account, school = school, gender = gender, beginner = beginner, ethnicity = ethnicity, grade = grade, num_hackathons = num_hackathons, link1 = link1, link2 = link2, link3 = link3, t_shirt_size = t_shirt_size, free_response1 = free_response1, food_allergies = food_allergies, mlh_terms = mlh_terms)
 	new_entry.save()
 	
 	validate_email(email)
+
+####### uncomment/fix below once mentor criteria is added
+
+# def add_mentor(#######):
+# 	existingUser = get_user(email)
+# 	if existingUser is not None:
+# 		raise UserExistsError
+	
+# 	hashed = bcrypt.hashpw(password.encode("utf-8"), bcrypt.gensalt())
+# 	new_entry = UserEntry(##########)
+# 	new_entry.save()
+	
+# 	validate_email(email)
 
 def tokenize_email(email):
 	return ts.dumps(email, salt = CONFIG["EMAIL_TOKENIZER_SALT"])
