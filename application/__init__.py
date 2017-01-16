@@ -71,3 +71,6 @@ def error(e):
 
 from application.mod_user import user_module
 app.register_blueprint(user_module)
+
+from application.mod_web import web_module
+app.register_blueprint(web_module)

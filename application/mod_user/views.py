@@ -6,11 +6,6 @@ from .forms import *
 from application import cache
 from application import CONFIG
 
-@mod_user.route('/index')
-@mod_user.route('/')
-def index():
-	return render_template("user.index.html")
-
 
 @cache.cached()
 @mod_user.route("/login", methods = ["GET", "POST"])
@@ -49,21 +44,23 @@ def logout():
 @cache.cached()
 @mod_user.route("/forgot", methods = ["GET", "POST"])
 def recover():
-	form = EmailForm(request.form)
-	if request.method == "POST" and form.validate():
-		try:
-			controller.send_recovery_email(request.form["email"])
-			flash("Email sent to " + request.form["email"] + '.', 'success')
-		except Exception as e:
-			exceptionType = e.args[0]
-			if exceptionType == "UserDoesNotExistError":
-				flash("No account exists with that email.", "error")
-			else:
-				if CONFIG["DEBUG"]:
-					raise e 
-				else:
-					flash("Something went wrong.", "error")
-	return render_template("user.forgot.html", form = form)
+  if current_user.is_authenticated:
+    return redirect("/account")
+  form = EmailForm(request.form)
+  if request.method == "POST" and form.validate():
+    try:
+      controller.send_recovery_email(request.form["email"])
+      flash("Email sent to " + request.form["email"] + '.', 'success')
+    except Exception as e:
+      exceptionType = e.args[0]
+      if exceptionType == "UserDoesNotExistError":
+        flash("No account exists with that email.", "error")
+      else:
+        if CONFIG["DEBUG"]:
+          raise e
+        else:
+          flash("Something went wrong.", "error")
+  return render_template("user.forgot.html", form = form)
 
 @mod_user.route("/recover/<token>", methods = ["GET", "POST"])
 def recover_change(token):

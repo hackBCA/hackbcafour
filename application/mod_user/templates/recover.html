@@ -1,9 +1,14 @@
+{% extends "user.base.html" %}
+
 {% block content %}
+{% with nav_bar = nav_bar %}
+  {% include "navbar.html" %}
+{% endwith %}
 
  <h3>Change your Password</h3>
           <h4>{{ email }}</h4>
           <form method="POST" action="">
-             {% from "user._formhelpers.html" import render_field %}
+       
               {% for field in form %}
                 {{ render_field(field) }}
               {% endfor %}
