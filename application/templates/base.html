@@ -42,7 +42,7 @@
     <meta name="apple-mobile-web-app-capable" content="true">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    
+    <link href="/static/css/main.css" rel="stylesheet" type="text/css">
     <link rel="stylesheet" type="text/css" href="/{% block static_folder %}{% endblock %}/css/style.css">
 
   <!-- Basic Metadata-->
@@ -69,12 +69,9 @@
   <meta property="twitter:title" content="hackBCA">
 
 
-////////
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-  <script src="app.js"></script>
-  /////
-    <script type="text/javascript" src="/static/js/modernizr.js"></script>
-    <script type="text/javascript" src="/static/js/responsive-nav.js"></script>
+  <script src="/static/js/app.js"></script>
+ 
     {% block header %}{% endblock %}
   </head>
   <body>
@@ -88,8 +85,6 @@
       </section>
     </div>
   </body>
-  <script src="/static/js/scroll.js"></script>
-  <script src="/static/js/fixed-responsive-nav.js"></script>
-  <script src="/static/js/init.js"></script>
-  {% block scripts %}{% endblock %}
+
+<!--   {% block scripts %}{% endblock %} -->
 </html>
