@@ -5,7 +5,100 @@
   {% include "navbar.html" %}
 {% endwith %}
 
-<h1>temporary index</h1>
+
+	<section class="jumbo">
+		<img id="splash_img" src="http://blogs.intel.com/evangelists/files/2015/04/IMG_5346.jpg" alt="hackBCA" />
+	</section>
+	<section class="jumbo jumbo--padding">
+		<div class="jumbo__statement">
+			<hgroup class="jumbo__statement__group">
+				<h1 class="jumbo__statement__header">hackBCAIV:<br>Lighting&nbsp;the&nbsp;Torch</h1>
+				<p class="jumbo__statement__text">
+					Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur dignissim dolor et ante pulvinar, eget euismod tortor tempor. Nulla euismod quam quis lacinia tincidunt. Morbi non nisi leo.
+				</p>
+			</hgroup>
+		</div>
+		<figure class="jumbo__img__container flex-center">
+			<img class="jumbo__img" />
+		</figure>
+	</section>
+	<section class="jumbo bg-black">
+		<video id="video">
+		</video>
+		<time>
+			<!--<span time-type="months">02</span><span time-type="days">10</span><span time-type="hours">40</span>-->
+		</time>
+	</section>
+
+	<section class="jumbo--fit jumbo--padding" id="guests">
+		<h1 class="section__header">Guests</h1>
+		<div class="flex-container flex-row-space-between" id="guest__container">
+		</div>
+	</section>
+	<section class="jumbo jumbo--padding" id="faq">
+		<h1 class="section__header">FAQ</h1>
+		<div class="flex-container flex-row-space-between" id="faq__container">
+		</div>
+	</section>
+	{% block scripts %}
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+  
+<script type="text/javascript" src="/static/js/app.min.js">>
+ 
+</script>
+{% endblock %}
+	<section class="jumbo jumbo--padding" id="sponsors">
+
+		<div id="sponsors__container">
+			<h1 class="section__header--center">Sponsors</h1>
+
+			<div class="row row-1">
+				<img src="https://s3.amazonaws.com/hackbcaiv/wolfram.png" />
+			</div>
+
+			<div class="row row-3">
+				<img src="https://s3.amazonaws.com/hackbcaiv/gofoton.png" />
+				<div class="flex-column">
+					<img src="https://s3.amazonaws.com/hackbcaiv/janestreet.png" />
+					<img src="https://s3.amazonaws.com/hackbcaiv/livestream.png" />
+				</div>
+				<img src="https://s3.amazonaws.com/hackbcaiv/twilio.svg" />
+			</div>
+
+			<div class="row row-3">
+				<img src="https://s3.amazonaws.com/hackbcaiv/roughdraft.png"" />
+				<img src="" />
+				<img src="" />
+			</div>
+			<div class="row row-6">
+				<img src="assets/sponsors/genius.png" />
+				<img src="assets/sponsors/mozilla.png" />
+				<img src="assets/sponsors/ci.png" />
+				<img src="" />
+				<img src="" />
+				<img src="" />
+			</div>
+
+			<div class="row row-4">
+				<img src=" />
+				<img src="" />
+				<img src="" />
+				<img src="" />
+			</div>
+
+			<div class="row row-2">
+				<img src="" />
+				<img src="" />
+			</div>
+
+			<h1 class="section__header--center">In Partnership with</h1>
+
+			<div class="row row-2">
+				<img src="https://s3.amazonaws.com/hackbcaiv/mlh.png" />
+				<img src="https://s3.amazonaws.com/hackbcaiv/atcs.png" />
+			</div>
+		</div>
+	</section>
 
 
  {% with messages = get_flashed_messages(with_categories=true) %}
