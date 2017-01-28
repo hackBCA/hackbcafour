@@ -1,174 +1,56 @@
-{% extends "user.base.html" %}
+{% extends "web.base.html" %}
+
+{% set nav_bar = [
+  ("#home", "Home", True),
+  ("#about", "About", False),
+  ("#guests", "Guests", False),
+  ("#faq", "FAQ", False),
+  ("#sponsors", "Sponsors", False)
+] -%}
+
+{% block header %}{% endblock %}
+
 {% block content %}
-{% with nav_bar = nav_bar %}
-{% include "navbar.html" %}
-{% endwith %}
-
-
-<section class="jumbo">
-    <img id="splash_img" src="http://blogs.intel.com/evangelists/files/2015/04/IMG_5346.jpg" alt="hackBCA" />
-</section>
-
-<section class="jumbo jumbo--padding">
-    <div class="jumbo__statement">
-        <hgroup class="jumbo__statement__group">
-            <h1 class="jumbo__statement__header">hackBCAIV:<br>Lighting&nbsp;the&nbsp;Torch</h1>
-            <p class="jumbo__statement__text">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur dignissim dolor et ante pulvinar, eget euismod tortor tempor. Nulla euismod quam quis lacinia tincidunt. Morbi non nisi leo.
-            </p>
-        </hgroup>
-    </div>
-    <figure class="jumbo__img__container flex-center">
-        <img class="jumbo__img" />
-    </figure>
-</section>
-
-<section class="jumbo bg-black">
-    <video id="video">
-    </video>
-    <time>
-        <!--<span time-type="months">02</span><span time-type="days">10</span><span time-type="hours">40</span>-->
-    </time>
-</section>
-
-<section class="jumbo--fit jumbo--padding" id="guests">
-    <h1 class="section__header">Guests</h1>
-    <div class="flex-container flex-row-space-between" id="guest__container">
-        <div class="guest">
-            <figure class="guest__portrait">
-                <img src="https://pbs.twimg.com/profile_images/646408334749339648/V0h5j8sY.png">
-            </figure>
-            <hgroup>
-                <span class="guest__role">Emcee</span>
-                <h1 class="guest__name">Tom Lehman</h1>
-                <h2 class="guest__description">CEO and Co-founder of Genius</h2>
-            </hgroup>
-        </div>
-
-        <div class="guest">
-            <figure class="guest__portrait">
-                <img src="http://i.forbesimg.com/media/lists/people/chris-wanstrath_416x416.jpg">
-            </figure>
-            <hgroup>
-                <span class="guest__role">Speaker</span>
-                <h1 class="guest__name">Chris Wanstrath</h1>
-                <h2 class="guest__description">CEO of Github</h2>
-            </hgroup>
-        </div>
-
-        <div class="guest">
-            <figure class="guest__portrait">
-                <img src="https://pbs.twimg.com/profile_images/730536217503109121/017Pc2vE.jpg">
-            </figure>
-            <hgroup>
-                <span class="guest__role">Judge</span>
-                <h1 class="guest__name">Josh Bancroft</h1>
-                <h2 class="guest__description">Dev relations @Intel</h2>
-            </hgroup>
-        </div>   
-    </div>
-</section>
-
-<section class="jumbo jumbo--padding" id="faq">
-    <h1 class="section__header">FAQ</h1>
-    <div class="flex-container flex-row-space-between" id="faq__container">
-        <div class="faq__container">
-            <div class="faq">
-                <div class="faq__front" onclick="flipped()">
-                    <h1 class="faq__question">What is a hackathon?</h1>
-                </div>
-                <div class="faq__back">
-                    <p class="faq__answer"></p>
-                </div>
-            </div>
-        </div>
-
-        <div class="faq__container">
-            <div class="faq">
-                <div class="faq__front" onclick="flipped()">
-                    <h1 class="faq__question">Who can attend?</h1>
-                </div>
-                <div class="faq__back">
-                    <p class="faq__answer"></p>
-                </div>
-            </div>
-        </div>
-
-        <div class="faq__container">
-            <div class="faq">
-                <div class="faq__front" onclick="flipped()">
-                    <h1 class="faq__question">What should I bring?</h1>
-                </div>
-                <div class="faq__back">
-                    <p class="faq__answer"></p>
-                </div>
-            </div>
-        </div>
-
-        <div class="faq__container">
-            <div class="faq">
-                <div class="faq__front" onclick="flipped()">
-                    <h1 class="faq__question">Can I work alone?</h1>
-                </div>
-                <div class="faq__back">
-                    <p class="faq__answer">You can work on a project individually or with a team. You can come as a team, or form a team at the event. We will have team formation activities at the beginning of the event for anybody looking for team.</p>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
+  {% with nav_bar = nav_bar %}
+    {% include "navbar.html" %}
+  {% endwith %}
 
 
 {% block scripts %}
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 <script type="text/javascript" src="/static/js/app.min.js"> </script>
 {% endblock %}
 
 
-<section class="jumbo jumbo--padding" id="sponsors">
-    <div id="sponsors__container">
-        <h1 class="section__header--center">Sponsors</h1>
-        <div class="row row-1">
-            <img src="https://s3.amazonaws.com/hackbcaiv/wolfram.png" />
-        </div>
-        <div class="row row-3">
-            <img src="https://s3.amazonaws.com/hackbcaiv/gofoton.png" />
-            <div class="flex-column">
-                <img src="https://s3.amazonaws.com/hackbcaiv/janestreet.png" />
-                <img src="https://s3.amazonaws.com/hackbcaiv/livestream.png" />
-            </div>
-            <img src="https://s3.amazonaws.com/hackbcaiv/twilio.svg" />
-        </div>
-        <div class="row row-3">
-            <img src="https://s3.amazonaws.com/hackbcaiv/roughdraft.png"" />
-            <img src="" />
-            <img src="" />
-        </div>
-        <div class="row row-6">
-            <img src="assets/sponsors/genius.png" />
-            <img src="assets/sponsors/mozilla.png" />
-            <img src="assets/sponsors/ci.png" />
-            <img src="" />
-            <img src="" />
-            <img src="" />
-        </div>
-        <div class="row row-4">
-            <img src=" />
-                <img src="" />
-            <img src="" />
-            <img src="" />
-        </div>
-        <div class="row row-2">
-            <img src="" />
-            <img src="" />
-        </div>
-        <h1 class="section__header--center">In Partnership with</h1>
-        <div class="row row-2">
-            <img src="https://s3.amazonaws.com/hackbcaiv/mlh.png" />
-            <img src="https://s3.amazonaws.com/hackbcaiv/atcs.png" />
-        </div>
+    <div class="page-container">
+    <section>
+      <div class="page-section" id="home">
+        {% include "web.home.html" %}
+      </div>
+    </section>
+    <section>
+      <div class="page-section" id="about">
+        {% include "web.about.html" %}
+      </div>
+    </section>
+    <section>
+      <div class="page-section" id="guests">
+        {% include "web.guests.html" %}
+      </div>
+    </section>
+    <section>
+      <div class="page-section" id="faq">
+        {% include "web.faq.html" %}
+      </div>
+    </section>
+    <section>
+      <div class="page-section" id="sponsors">
+        {% include "web.sponsors.html" %}
+      </div>
+    </section>
     </div>
-</section>
+
+
+
 {% with messages = get_flashed_messages(with_categories=true) %}
 {% if messages %}
 <ul class=flashes>

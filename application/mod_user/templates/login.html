@@ -1,22 +1,25 @@
 {% extends "user.base.html" %}
 
+{% set nav_bar = [
+  ("/#home", "Home", False)
+] -%}
 
 {% block content %}
 {% with nav_bar = nav_bar %}
   {% include "navbar.html" %}
 {% endwith %}
 
-          <h2>Login</h2>
-          <form method="POST" action="">
+  <h2>Login</h2>
+  <form method="POST" action="">
 
-           {% for field in form %}
-              {{ render_field(field) }}
-            {% endfor %}
-            
-            <div class="buttons">
-              <button class="btn" type="submit">Login!</button>
-            </div>
-          </form>
+   {% for field in form %}
+      {{ render_field(field) }}
+    {% endfor %}
+    
+    <div class="buttons">
+      <button class="btn" type="submit">Login!</button>
+    </div>
+  </form>
   
      
 {% endblock %}

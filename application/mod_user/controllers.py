@@ -31,7 +31,7 @@ def load_user(user_id):
 	except Exception:
 		raise GenericMongoError
 
-	# if not currUser.rsvp:
+	# if not currseUlr.rsvp:
 	# 	attending = "Undecided"
 	# else:
 	# 	attending = currUser.attending
