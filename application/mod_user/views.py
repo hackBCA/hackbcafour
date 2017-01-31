@@ -198,7 +198,12 @@ def hacker_registration():
     if request.method == "POST" and form.validate():
       try:
         type_account = "hacker"
-        controller.add_hacker(request.form["email"], request.form["first_name"], request.form["last_name"], type_account, request.form["password"], request.form["school"], request.form["gender"], request.form["beginner"], request.form["ethnicity"], request.form["grade"], request.form["num_hackathons"], request.form["link1"], request.form["link2"], request.form["link3"], request.form["t_shirt_size"], request.form["free_response1"], request.form["food_allergies"], request.form["mlh_terms"])
+
+        fields = [request.form["email"], request.form["first_name"], request.form["last_name"], request.form["school"], request.form["gender"], request.form["beginner"], request.form["ethnicity"], request.form["grade"], request.form["age"], request.form["num_hackathons"], request.form["free_response1"], request.form["link1"], request.form["link2"], request.form["link3"], request.form["t_shirt_size"], request.form["dietary_restrictions"], request.form["parent1_name"], request.form["parent1_home_num"], request.form["parent1_cell_num"], request.form["parent1_email"], request.form["parent2_name"], request.form["parent2_home_num"], request.form["parent2_cell_num"], request.form["parent2_email"], request.form["school_street"], request.form["school_town"], request.form["school_state"], request.form["school_phone_num"], request.form["school_principal_name"], request.form["school_principal_email"], request.form["cs_teacher_name"], request.form["cs_teacher_email"], request.form["mlh_coc"], request.form["mlh_terms"]]
+
+
+
+        controller.add_hacker(fields)
         flash("Check your inbox for an email to confirm your account!", "success")
         return redirect("/")
       except Exception as e:

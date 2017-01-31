@@ -1,6 +1,6 @@
-* {
+*{
   font-family: 'akto-sans', sans-serif;
-  -webkit-font-smoothing: antialiased;
+  -webkit-fot-smoothing: antialiased;
   -moz-font-smoothing: antialiased;
   -o-font-smoothing: antialiased;
   -webkit-box-sizing: border-box;
@@ -43,7 +43,7 @@ figure {
   .jumbo:nth-of-type(2), .jumbo--fit:nth-of-type(2) {
     display: flex; }
   .jumbo--padding {
-    padding: 6em; }
+    padding: 4em; }
 
   .jumbo__statement {
     flex: 1;

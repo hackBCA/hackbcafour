@@ -1,8 +1,7 @@
 from flask_login import LoginManager, UserMixin
 from mongoengine import *
 
-application_fields = ["school", "gender", "beginner", "ethnicity", "grade", "num_hackathons", "link1", "link2", "link3", "free_response1",  "mlh_terms"]
-
+application_fields = ["email", "first_name", "last_name", "school", "gender", "beginner", "ethnicity", "grade", "age", "num_hackathons", "free_response1", "link1", "link2", "link3", "t_shirt_size", "dietary_restrictions", "parent1_name", "parent1_home_num", "parent1_cell_num", "parent1_email", "parent2_name", "parent2_home_num", "parent2_cell_num", "parent2_email", "school_street", "school_town", "school_state", "school_phone_num", "school_principal_name", "school_principal_email", "cs_teacher_name", "cs_teacher_email", "mlh_coc", "mlh_terms"]
 
 #Mongo Object
 class UserEntry(Document):
@@ -19,7 +18,7 @@ class UserEntry(Document):
 
 	type_account = StringField(required = True, default = "hacker")
 	confirmed = BooleanField(required = False, default = False)
-	status = StringField(default = "Not Started")
+	# status = StringField(default = "Not Started")
 
 
 	school = StringField()
@@ -29,21 +28,42 @@ class UserEntry(Document):
 	grade = StringField()
 	num_hackathons = StringField()
 	t_shirt_size = StringField()
-	food_allergies = StringField()
+	dietary_restrictions = StringField()
 	
 	# decision = StringField()
 	# accepted_time = IntField()
 	# attending = StringField()
 	# rsvp = BooleanField(default = False) #Has the user submitted their rsvp form?
 
-
+	age = StringField()
 	link1 = StringField()
 	link2 = StringField()
 	link3 = StringField()
+
+	parent1_name = StringField()
+	parent1_home_num = StringField()
+	parent1_cell_num = StringField()
+	parent1_email = StringField()
+
+	parent2_name = StringField()
+	parent2_home_num = StringField()
+	parent2_cell_num = StringField()
+	parent2_email = StringField()
+
+	school_street = StringField()
+	school_town = StringField()
+	school_state = StringField()
+	school_phone_num = StringField()
+	school_principal_name = StringField()
+	school_principal_email = StringField()
+	
+	cs_teacher_name = StringField()
+	cs_teacher_email = StringField()
 	
 	free_response1 = StringField() 
 	
 	mlh_terms = StringField()
+	mlh_coc = StringField()
 
 
 

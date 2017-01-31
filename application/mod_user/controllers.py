@@ -72,14 +72,19 @@ def login(email):
 def logout():
 	logout_user()
 
-def add_hacker(email, firstname, lastname, password, school, gender, beginner, ethnicity, grade, num_hackathons, link1, link2, link3, t_shirt_size, free_response1, food_allergies, mlh_terms, type_account):
+def add_hacker(fields):
 	existingUser = get_user(email)
 	if existingUser is not None:
 		raise UserExistsError
 	
 	hashed = bcrypt.hashpw(password.encode("utf-8"), bcrypt.gensalt())
-	new_entry = UserEntry(email = email.lower(), hashed = hashed, firstname = firstname, lastname = lastname, type_account = type_account, school = school, gender = gender, beginner = beginner, ethnicity = ethnicity, grade = grade, num_hackathons = num_hackathons, link1 = link1, link2 = link2, link3 = link3, t_shirt_size = t_shirt_size, free_response1 = free_response1, food_allergies = food_allergies, mlh_terms = mlh_terms)
-	new_entry.save()
+
+    # @ anyone reading this: hardcoding like this is garbage i know i am sorry but it is 2:49am on a school night and my brain is fried please fix this if you can
+
+    # application_fields = ["firstname", "lastname", "school", "age", "grade", "gender", "free_response1", "link1", "link2", "link3", "dietary_restrictions", "t_shirt_size", "parent1_name", "parent1_home_num", "parent1_cell_num", "parent1_email", "parent2_name", "parent2_home_num", "parent2_cell_num", "parent2_email", "school_street", "school_town", "school_state", "school_phone_num", "school_principal_name", "school_principal_email", "cs_teacher_name", "cs_teacher_email",  "mlh_terms", "mlh_coc"]
+    
+	new_entry = UserEntry()
+	new_entry.save(email = fields[0], hashed = hashed, first_name = fields[1], last_name = fields[2], school = fields[3], gender = fields[4], beginner = fields[5], ethnicity = fields[6], grade = fields[7], age = fields[8], num_hackathons = fields[9], free_response1 = fields[10], link1 = fields[11], link2 = fields[12], link3 = fields[13], t_shirt_size = fields[14], dietary_restrictions = fields[15], parent1_name = fields[16], parent1_home_num = fields[17], parent1_cell_num = fields[18], parent1_email = fields[19], parent2_name = fields[20], parent2_home_num = fields[21], parent2_cell_num = fields[22], parent2_email = fields[23], school_street = fields[24], school_town = fields[25], school_state = fields[26], school_phone_num = fields[27], school_principal_name = fields[28], school_principal_email = fields[29], cs_teacher_name = fields[30], cs_teacher_email = fields[31], mlh_coc = fields[32], mlh_terms = fields[33])
 	
 	validate_email(email)
 
