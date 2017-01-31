@@ -159,27 +159,29 @@ def register():
   if current_user.is_authenticated:
     return redirect("/account")
 
-  if not CONFIG["REGISTRATION_ENABLED"]:
-	  flash("Registration is not open at this time.", "error")
-	  return redirect("/")
+  ####### Below code: changed from form to a hrefs => mentor & hackers opened at the same time
+  # if not CONFIG["REGISTRATION_ENABLED"]:
+	 #  flash("Registration is not open at this time.", "error")
+	 #  return redirect("/")
 
-  form = RegistrationForm(request.form)
-  if request.method == "POST" and form.validate():
-    type_account = request.form["type_account"]
+  # form = RegistrationForm(request.form)
+  # if request.method == "POST" and form.validate():
+  #   type_account = request.form["type_account"]
 
-    if type_account == "hacker":
-      if CONFIG["HACKER_REGISTRATION_ENABLED"]:
-        return redirect("/register/hacker")
-      else:
-        flash("Hacker registration is not open at this time.", "error")
-        return render_template("user.register.html", form = form)
-    elif type_account == "mentor":
-      if CONFIG["MENTOR_REGISTRATION_ENABLED"]:
-        return redirect("register/mentor")
-      else:
-        flash("Mentor registration is not open at this time.", "error")
-        return render_template("user.register.html", form = form)
-  return render_template("user.register.html", form = form)
+  #   if type_account == "hacker":
+  #     if CONFIG["HACKER_REGISTRATION_ENABLED"]:
+  #       return redirect("/register/hacker")
+  #     else:
+  #       flash("Hacker registration is not open at this time.", "error")
+  #       return render_template("user.register.html", form = form)
+  #   elif type_account == "mentor":
+  #     if CONFIG["MENTOR_REGISTRATION_ENABLED"]:
+  #       return redirect("register/mentor")
+  #     else:
+  #       flash("Mentor registration is not open at this time.", "error")
+  #       return render_template("user.register.html", form = form)
+  # return render_template("user.register.html", form = form)
+  return render_template("user.register.html")
 
 
 
@@ -197,11 +199,7 @@ def hacker_registration():
 
     if request.method == "POST" and form.validate():
       try:
-        type_account = "hacker"
-
         fields = [request.form["email"], request.form["first_name"], request.form["last_name"], request.form["school"], request.form["gender"], request.form["beginner"], request.form["ethnicity"], request.form["grade"], request.form["age"], request.form["num_hackathons"], request.form["free_response1"], request.form["link1"], request.form["link2"], request.form["link3"], request.form["t_shirt_size"], request.form["dietary_restrictions"], request.form["parent1_name"], request.form["parent1_home_num"], request.form["parent1_cell_num"], request.form["parent1_email"], request.form["parent2_name"], request.form["parent2_home_num"], request.form["parent2_cell_num"], request.form["parent2_email"], request.form["school_street"], request.form["school_town"], request.form["school_state"], request.form["school_phone_num"], request.form["school_principal_name"], request.form["school_principal_email"], request.form["cs_teacher_name"], request.form["cs_teacher_email"], request.form["mlh_coc"], request.form["mlh_terms"]]
-
-
 
         controller.add_hacker(fields)
         flash("Check your inbox for an email to confirm your account!", "success")
@@ -232,27 +230,25 @@ def mentor_registration():
     return redirect("/")
 
   if CONFIG["MENTOR_REGISTRATION_ENABLED"]:
-    flash("Mentor registration is not open at this time.", "error")
-    return redirect(url_for("user.register"))
-    ####### uncomment/fix below once mentor criteria is added
+    form = MentorRegistrationForm(request.form)
+    
+    if request.method == "POST" and form.validate():
+      try:
+        fields = [request.form["email"], request.form["first_name"], request.form["last_name"], request.form["school"], request.form["phone"], request.form["num_hackathons"], request.form["free_response1"], request.form["free_response2"], request.form["github_link"], request.form["linkedin_link"], request.form["site_link"], request.form["other_link"], request.form["mlh_coc"], request.form["mlh_terms"]]
 
-    # form = MentorRegistrationForm(request.form)
-    # if request.method == "POST" and form.validate():
-    #   try:
-    #     type_account = "mentor"
-    #     controller.add_mentor()
-    #     flash("Check your inbox for an email to confirm your account!", "success")
-    #     return redirect("/")
-    #   except Exception as e:
-    #     print(e)
-    #     exceptionType = e.args[0]
-    #     if exceptionType == "UserExistsError":
-    #       flash("A user with that email already exists.", "error")
-    #     else:
-    #       if CONFIG["DEBUG"]:
-    #         raise e
-    #       else:
-    #         flash("Something went wrong.", "error")
+        controller.add_mentor(fields)
+        flash("Check your inbox for an email to confirm your account!", "success")
+        return redirect("/")
+      except Exception as e:
+        print(e)
+        exceptionType = e.args[0]
+        if exceptionType == "UserExistsError":
+          flash("A user with that email already exists.", "error")
+        else:
+          if CONFIG["DEBUG"]:
+            raise e
+          else:
+            flash("Something went wrong.", "error")
   else:
     flash("Mentor registration is not open at this time.", "error")
     return redirect(url_for("user.register"))

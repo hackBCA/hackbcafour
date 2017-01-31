@@ -1,8 +1,8 @@
 from flask_login import LoginManager, UserMixin
 from mongoengine import *
 
-application_fields = ["email", "first_name", "last_name", "school", "gender", "beginner", "ethnicity", "grade", "age", "num_hackathons", "free_response1", "link1", "link2", "link3", "t_shirt_size", "dietary_restrictions", "parent1_name", "parent1_home_num", "parent1_cell_num", "parent1_email", "parent2_name", "parent2_home_num", "parent2_cell_num", "parent2_email", "school_street", "school_town", "school_state", "school_phone_num", "school_principal_name", "school_principal_email", "cs_teacher_name", "cs_teacher_email", "mlh_coc", "mlh_terms"]
-
+hacker_fields = ["email", "first_name", "last_name", "school", "gender", "beginner", "ethnicity", "grade", "age", "num_hackathons", "free_response1", "link1", "link2", "link3", "t_shirt_size", "dietary_restrictions", "parent1_name", "parent1_home_num", "parent1_cell_num", "parent1_email", "parent2_name", "parent2_home_num", "parent2_cell_num", "parent2_email", "school_street", "school_town", "school_state", "school_phone_num", "school_principal_name", "school_principal_email", "cs_teacher_name", "cs_teacher_email", "mlh_coc", "mlh_terms"]
+fields = ["email", "first_name", "last_name", "school", "phone", "num_hackathons", "free_response1", "free_response2", "github_link", "linkedin_link", "site_link", "other_link", "mlh_coc", "mlh_terms"]
 #Mongo Object
 class UserEntry(Document):
 	meta = {
