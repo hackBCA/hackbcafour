@@ -39,7 +39,7 @@ def load_user(user_id):
 	checked_in = False
 	if "checked_in" in currUser:
 		checked_in = currUser.checked_in
-	user = User(currUser.id, currUser.email, currUser.firstname, currUser.lastname, currUser.type_account) 
+	user = User(currUser.id, currUser.email, currUser.first_name, currUser.last_name, currUser.type_account) 
 	return user
 
 def get_user(email):

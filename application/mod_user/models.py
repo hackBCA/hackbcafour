@@ -78,12 +78,12 @@ class UserEntry(Document):
 
 
 class User(UserMixin):
-	def __init__(self, uid, email, firstname, lastname, type_account):
+	def __init__(self, uid, email, first_name, last_name, type_account):
 		#  status, decision, attending, checked_i
 		self.uid = str(uid)
 		self.email = email
-		self.firstname = firstname
-		self.lastname = lastname
+		self.first_name = first_name
+		self.last_name = last_name
 		self.type_account = type_account
 		# self.status = status
 		# self.decision = decision
@@ -97,4 +97,4 @@ class User(UserMixin):
 		return self.uid
 
 	def full_name(self):
-		return self.firstname + " " + self.lastname
+		return self.first_name + " " + self.last_name
