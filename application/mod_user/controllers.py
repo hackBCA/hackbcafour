@@ -72,7 +72,7 @@ def login(email):
 def logout():
 	logout_user()
 
-def add_hacker(fields):
+def add_hacker(fields, email, password):
 	existingUser = get_user(email)
 	if existingUser is not None:
 		raise UserExistsError
@@ -88,7 +88,7 @@ def add_hacker(fields):
 	validate_email(email)
 
 
-def add_mentor(fields):
+def add_mentor(fields, email, password):
 	existingUser = get_user(email)
 	if existingUser is not None:
 		raise UserExistsError

@@ -13,8 +13,8 @@ class UserEntry(Document):
 	email = StringField(required = True)
 	hashed = StringField(required = True)
 
-	firstname = StringField(required = True)
-	lastname = StringField(required = True)
+	first_name = StringField(required = True)
+	last_name = StringField(required = True)
 
 	type_account = StringField(required = True, default = "hacker")
 	confirmed = BooleanField(required = False, default = False)
