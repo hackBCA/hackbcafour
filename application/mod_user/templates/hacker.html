@@ -15,14 +15,13 @@
          <div class="cover">
             <div class="content">
                <h1 class="title">Hacker Registration</h1>
-                <form method="POST" action="onSubmit = "check_phone();">
+                <form method="POST" onSubmit="check_phone()">
                   {% for field in form %}
+                    {% if field.type == "BooleanField" %}
+                      <h2>{{ field.description }}</h2>
+                    {% endif%}
 
-                  {% if field.type == "BooleanField" %}
-                    <h2>{{ field.description }}</h2>
-                  {% endif%}
-
-                  {{ render_field(field) }}    
+                    {{ render_field(field) }}    
                   {% endfor %}
                   
                   <div class="buttons">
@@ -34,8 +33,9 @@
       </div>
    </div>
 </div>
+{% endblock %}
   
-  {% block scripts %}
+{% block scripts %}
 <script type="text/javascript">
     
   var check_phone = function(){

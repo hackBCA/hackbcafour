@@ -195,7 +195,7 @@ def hacker_registration():
     return redirect("/")
 
   if CONFIG["HACKER_REGISTRATION_ENABLED"]:
-    form = HackerRegistrationForm(request.form)
+    form = HackerRegistrationForm(request.form) 
 
     if request.method == "POST" and form.validate():
       try:
