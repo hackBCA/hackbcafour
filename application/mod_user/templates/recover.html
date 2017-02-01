@@ -5,13 +5,29 @@
   {% include "navbar.html" %}
 {% endwith %}
 
- <h3>Change your Password</h3>
-          <h4>{{ email }}</h4>
-          <form method="POST" action="">
-       
-              {% for field in form %}
-                {{ render_field(field) }}
-              {% endfor %}
-             <button class="btn" type="submit">Change Password</button>
-          </form>
+
+
+ <div class="full-page-container">
+   <div class="page-section" id="login">
+      <div class="container">
+         <div class="cover">
+            <div class="content">
+             <h3>Change your Password</h3>
+	          <h4>{{ email }}</h4>
+	          <form method="POST" action="">
+	       
+	              {% for field in form %}
+	                {{ render_field(field) }}
+	              {% endfor %}
+	             <button class="btn" type="submit">Change Password</button>
+	          </form>
+            </div>
+         </div>
+      </div>
+   </div>
+</div>
+  
+     
 {% endblock %}
+
+
