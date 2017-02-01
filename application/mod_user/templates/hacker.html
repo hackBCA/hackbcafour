@@ -19,10 +19,12 @@
                   {% for field in form %}
                     {% if field.type == "BooleanField" %}
                       <h2>{{ field.description }}</h2>
-                    {% endif%}
+                    {% endif %}
 
                     {{ render_field(field) }}    
                   {% endfor %}
+
+                  {{ form.school(class_='autocomplete') }}
                   
                   <div class="buttons">
                     <button class="button" type="submit">Register!</button>
@@ -36,6 +38,39 @@
 {% endblock %}
   
 {% block scripts %}
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script type='text/javascript' src='../user_static/js/awesomplete.js'></script>
+
+<script type="text/javascript">
+  $( function() {
+    var availableSchools = [];
+    var allText = "";
+
+    var rawFile = new XMLHttpRequest();
+    rawFile.open("GET", "../user_static/high_schools.csv", false);
+    rawFile.onreadystatechange = function ()
+    {
+        if(rawFile.readyState === 4)
+        {
+            if(rawFile.status === 200 || rawFile.status == 0)
+            {
+                allText = rawFile.responseText;
+                console.log(allText[0])
+            }
+        }
+    }
+    rawFile.send(null);
+    
+    var input = document.getElementsByClassName('autocomplete');
+    var awesomplete = new Awesomplete(input);
+
+    /* ...more code... */
+
+    awesomplete.list = ["Ada", "Java", "JavaScript", "Brainfuck", "LOLCODE", "Node.js", "Ruby on Rails"];
+
+  } );
+</script>
+
 <script type="text/javascript">
     
   var check_phone = function(){
