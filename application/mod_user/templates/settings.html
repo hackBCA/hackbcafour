@@ -32,7 +32,6 @@
         <h5>Change your password</h5>
         <form id="password-form" method="POST" action="/account/settings">
           <input type="hidden" name="setting" value="password"/>
- <!--          {% from "user._formhelpers.html" import render_field %} -->
             {% for field in password_form %}
               {{ render_field(field) }}
             {% endfor %}

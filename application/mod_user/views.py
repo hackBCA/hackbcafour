@@ -199,9 +199,11 @@ def hacker_registration():
 
     if request.method == "POST" and form.validate():
       try:
-        email = request.form["email"]
-        password = request.form["password"]
-        fields = [email, request.form["first_name"], request.form["last_name"], request.form["school"], request.form["gender"], request.form["beginner"], request.form["ethnicity"], request.form["grade"], request.form["age"], request.form["num_hackathons"], request.form["free_response1"], request.form["link1"], request.form["link2"], request.form["link3"], request.form["t_shirt_size"], request.form["dietary_restrictions"], request.form["parent1_name"], request.form["parent1_home_num"], request.form["parent1_cell_num"], request.form["parent1_email"], request.form["parent2_name"], request.form["parent2_home_num"], request.form["parent2_cell_num"], request.form["parent2_email"], request.form["school_street"], request.form["school_town"], request.form["school_state"], request.form["school_phone_num"], request.form["school_principal_name"], request.form["school_principal_email"], request.form["cs_teacher_name"], request.form["cs_teacher_email"], request.form["mlh_coc"], request.form["mlh_terms"]]
+        email = request.form['email']
+        password = request.form['password']
+
+        fields = { 'email':email, 'first_name':request.form["first_name"], 'last_name':request.form["last_name"], 'school':request.form["school"], 'gender':request.form["gender"], 'beginner':request.form["beginner"], 'ethnicity':request.form["ethnicity"], 'grade':request.form["grade"], 'age':request.form["age"], 'num_hackathons':request.form["num_hackathons"], 'free_response1':request.form["free_response1"], 'link1':request.form["link1"], 'link2':request.form["link2"], 'link3':request.form["link3"], 't_shirt_size':request.form["t_shirt_size"], 'dietary_restrictions':request.form["dietary_restrictions"], 'parent1_name':request.form["parent1_name"], 'parent1_home_num':request.form["parent1_home_num"], 'parent1_cell_num':request.form["parent1_cell_num"], 'parent1_email':request.form["parent1_email"], 'parent2_name':request.form["parent2_name"], 'parent2_home_num':request.form["parent2_home_num"], 'parent2_cell_num':request.form["parent2_cell_num"], 'parent2_email':request.form["parent2_email"], 'school_street':request.form["school_street"], 'school_town':request.form["school_town"], 'school_state':request.form["school_state"], 'school_phone_num':request.form["school_phone_num"], 'school_principal_name':request.form["school_principal_name"], 'school_principal_email':request.form["school_principal_email"], 'cs_teacher_name':request.form["cs_teacher_name"], 'cs_teacher_email':request.form["cs_teacher_email"], 'mlh_coc':request.form["mlh_coc"], 'mlh_terms':request.form["mlh_terms"] }
+
         controller.add_hacker(fields, email, password)
         flash("Check your inbox for an email to confirm your account!", "success")
         return redirect("/")
@@ -235,9 +237,10 @@ def mentor_registration():
     
     if request.method == "POST" and form.validate():
       try:
-        email = request.form["email"]
-        password = request.form["password"]
-        fields = [email, request.form["first_name"], request.form["last_name"], request.form["school"], request.form["phone"], request.form["num_hackathons"], request.form["free_response1"], request.form["free_response2"], request.form["github_link"], request.form["linkedin_link"], request.form["site_link"], request.form["other_link"], request.form["mlh_coc"], request.form["mlh_terms"]]
+        email = request.form['email']
+        password = request.form['password']
+
+        fields = { 'email':email, 'first_name':request.form["first_name"], 'last_name':request.form["last_name"], 'school':request.form["school"], 'phone':request.form["phone"], 'num_hackathons':request.form["num_hackathons"], 'mentor_free_response1':request.form["mentor_free_response1"], 'mentor_free_response2':request.form["mentor_free_response2"], 'github_link':request.form["github_link"], 'linkedin_link':request.form["linkedin_link"], 'site_link':request.form["site_link"], 'other_link':request.form["other_link"], 'mlh_coc':request.form["mlh_coc"], 'mlh_terms':request.form["mlh_terms"] }
 
         controller.add_mentor(fields, email, password)
         flash("Check your inbox for an email to confirm your account!", "success")

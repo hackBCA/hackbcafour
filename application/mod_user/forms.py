@@ -249,6 +249,19 @@ class HackerRegistrationForm(Form):
             raise ValidationError("Enter your gender.")
 
 class MentorRegistrationForm(Form):
+    email = TextField("Email", [
+        validators.Required(message = "Enter an email."),
+        validators.Email(message = "Invalid email address.")
+    ], description = "Email")
+
+    first_name = TextField("First Name", [
+        validators.Required(message = "You must enter a first name.")
+    ], description = "First Name")
+    
+    last_name = TextField("Last Name", [
+        validators.Required(message = "You must enter a last name.")
+    ], description = "Last Name")
+
     school = TextField("Company/School Name", [
         validators.Required(message = "Enter your company/schools's name.")
     ], description = "Company/School Name")
@@ -260,11 +273,11 @@ class MentorRegistrationForm(Form):
 
     num_hackathons = SelectField("How many hackathons have you mentored at?", [validators.Required(message = "You must select an option.")], choices = num_hackathons_choices_mentor, description = "How many hackathons have you mentored at?")
 
-    free_response1 = TextAreaField(free_response1_prompt_mentor, [
+    mentor_free_response1 = TextAreaField(free_response1_prompt_mentor, [
         validators.Length(max = 500, message = "Response must be less than 500 characters long.")
     ], description = "500 character maximum.")
 
-    free_response2 = TextAreaField(free_response2_prompt_mentor, [
+    mentor_free_response2 = TextAreaField(free_response2_prompt_mentor, [
         validators.Length(max = 500, message = "Response must be less than 500 characters long.")
     ], description = "500 character maximum.")
     
@@ -297,6 +310,12 @@ class MentorRegistrationForm(Form):
         validators.Required(message = "Please read and agree to the MLH Terms and Conditions.")
         ], description = "I have read & agree to the Terms and Conditions", default = False)
  
+    password = PasswordField("Password", [
+        validators.Required(message = "You must enter a password."),
+        validators.Length(min = 8, message = "Password must be at least 8 characters.")
+    ], description = "Password")
+    confirm_password = PasswordField("Confirm Password", description = "Confirm Password")
+
     def validate(self):
         links = ["github_link", "linkedin_link", "site_link", "other_link"]
         originalValues = {}
