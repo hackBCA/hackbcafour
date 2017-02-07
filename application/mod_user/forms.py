@@ -130,7 +130,7 @@ class HackerRegistrationForm(Form):
 
     mlh_terms = BooleanField("I agree", [
         validators.Required(message = "Please read and agree to the MLH Terms and Conditions.")
-        ], description = "I have read & agree to the Terms and Conditions", default = False)
+        ], description = "I agree to the terms of both the MLH Contest Terms and Conditions and the MLH Privacy Policy. Please note that you may receive pre and post-event informational e-mails and occasional messages about hackathons from MLH as per the MLH Privacy Policy.", default = False)
  
     password = PasswordField("Password", [
         validators.Required(message = "You must enter a password."),

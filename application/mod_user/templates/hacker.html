@@ -17,9 +17,13 @@
                <h1 class="title">Hacker Registration</h1>
                 <form method="POST" onSubmit="check_phone()">
                   {% for field in form %}
-                    {% if field.type == "BooleanField" %}
+                    {% if field.name == "mlh_terms" %}
                       <h2>{{ field.description }}</h2>
                     {% endif %}
+                    {% if field.name == "mlh_coc" %}
+                      <a href="https://static.mlh.io/docs/mlh-code-of-conduct.pdf"><h2>{{ field.description }}</h2></a>
+                    {% endif %}
+                    
 
                     {{ render_field(field) }}    
                   {% endfor %}
