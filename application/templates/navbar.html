@@ -1,20 +1,32 @@
-<nav class="nav">
-   <ul>
-      <li><img src="https://s3.amazonaws.com/hackbcaiv/logo.png" alt="hackBCA" /></li>
-
+<div class="hero">
+<div class="nav">
       {% for href, caption, active in nav_bar %}
-      <li class="menu-item {% if active %}active{% endif %}"><a class="scroll-link" href="{{ href|e }}" data-scroll><p>{{ caption|e }}</p></a></li>
+    <a class="no-mobile menu-item {% if active %}active{% endif %}" href="{{ href|e }}" data-scroll><p>{{ caption|e }}</p></a>
       {% endfor %}
 
-
       {% if current_user.is_authenticated %}
-        <li class="account-item"><a href="/logout"><p>Logout</p></a></li>
-        <li class="account-item"><a href="/account"><p>Account <span>({{ current_user.full_name() }})</span></p></a></li>
+      <a href="/logout" class="no-mobile account-item"><p>Logout</p></a>
+        <a href="/account" class="no-mobile account-item"><p>Account <span>({{ current_user.full_name() }})</span></p></a>
       {% else %}
         {% if config['REGISTRATION_ENABLED'] %}
-          <li class="account-item"><a href="/register"><p>Register</p></a></li>
+          <a href="/register" class="account-item"><p>Register</p></a>
         {% endif %}
-        <li class="account-item"><a href="/login"><p>Login</p></a></li>
+          <a href="/login" class="account-item"><p>Login</p></a>
       {% endif %}
-   </ul>
-</nav>
+
+</div>
+<div class="nav" id="scroll-nav">
+     {% for href, caption, active in nav_bar %}
+    <a class="no-mobile menu-item {% if active %}active{% endif %}" href="{{ href|e }}" data-scroll><p>{{ caption|e }}</p></a>
+      {% endfor %}
+
+      {% if current_user.is_authenticated %}
+      <a href="/logout" class="no-mobile account-item"><p>Logout</p></a>
+        <a href="/account" class="no-mobile account-item"><p>Account <span>({{ current_user.full_name() }})</span></p></a>
+      {% else %}
+        {% if config['REGISTRATION_ENABLED'] %}
+          <a href="/register" class="account-item"><p>Register</p></a>
+        {% endif %}
+          <a href="/login" class="account-item"><p>Login</p></a>
+      {% endif %}
+</div>

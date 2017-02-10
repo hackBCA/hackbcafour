@@ -28,14 +28,9 @@
 {% endmacro %}
 
 <!DOCTYPE html>
-
 <html>
   <head>
-    <!--[if IE]>
-      <link rel="shortcut icon" href="https://s3.amazonaws.com/hackbcaiv/favicon.png">
-    <![endif]-->
-
-    <title>hackBCA IV</title>
+   <title>hackBCA IV</title>
     <link rel="icon" href="https://s3.amazonaws.com/hackbcaiv/favicon.png">
     <meta name="X-UA-Compatible" content="ie=edge,chrome=1">
 
@@ -43,50 +38,42 @@
     <meta name="apple-mobile-web-app-capable" content="true">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+      <!-- Basic Metadata-->
+    <meta name="title" content="hackBCA IV — Lighting the Torch">
+    <meta name="description" content="Lighting the Torch">
+    <meta name="keywords" content="hack, bca, hackbca, hackathon, mlh">
+    <meta property="url" content="http://hackbca.com/">
+
+    <!-- Open Graph Data -->
+    <meta property="og:title" content="hackBCA">
+    <meta property="og:type" content="website" />
+    <meta property="og:description" content="hackBCA IV: Lighting the Torch">
+    <meta property="og:url" content="http://hackbca.com/">
+    <meta property="og:image" content="https://s3.amazonaws.com/hackbcawebsite/landing.png">
+    <meta property="og:site_name" content="hackBCA" />
+    <meta property="fb:admins" content="1762730074" />
+
+    <!-- Twitter Card Data -->
+    <meta property="twitter:card" content="summary">
+    <meta property="twitter:creater" content="hackBCA">
+    <meta name="twitter:site" content="@hackBCA">
+    <meta property="twitter:description" content="hackBCA IV:Lighting the Torch">
+    <meta property="twitter:image" content="https://s3.amazonaws.com/hackbcawebsite/landing.png">
+    <meta property="twitter:title" content="hackBCA">
+
+    <!-- Stylesheets -->
     <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <!-- su -->
     <link href="/static/css/main.css" rel="stylesheet" type="text/css">
     <link rel="stylesheet" type="text/css" href="/{% block static_folder %}{% endblock %}/css/style.css">
 
-  <!-- Basic Metadata-->
-  <meta name="title" content="hackBCA IV — Lighting the Torch">
-  <meta name="description" content="Lighting the Torch">
-  <meta name="keywords" content="hack, bca, hackbca, hackathon, mlh">
-  <meta property="url" content="http://hackbca.com/">
-
-  <!-- Open Graph Data -->
-  <meta property="og:title" content="hackBCA">
-  <meta property="og:type" content="website" />
-  <meta property="og:description" content="hackBCA IV: Lighting the Torch">
-  <meta property="og:url" content="http://hackbca.com/">
-  <meta property="og:image" content="https://s3.amazonaws.com/hackbcawebsite/landing.png">
-  <meta property="og:site_name" content="hackBCA" />
-  <meta property="fb:admins" content="1762730074" />
-
-  <!-- Twitter Card Data -->
-  <meta property="twitter:card" content="summary">
-  <meta property="twitter:creater" content="hackBCA">
-  <meta name="twitter:site" content="@hackBCA">
-  <meta property="twitter:description" content="hackBCA IV:Lighting the Torch">
-  <meta property="twitter:image" content="https://s3.amazonaws.com/hackbcawebsite/landing.png">
-  <meta property="twitter:title" content="hackBCA">
-
- {% block scripts %}
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-  
- {% endblock %}
-    {% block header %}{% endblock %}
+    <!-- su -->
+     {% block scripts %}
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
+    {% endblock %}
   </head>
   <body>
-    {{ render_flash_messages() }}
+  {{ render_flash_messages() }}
     {% block content %}{% endblock %}
-    <div class="page-container">
-      <section>
-        <div class="page-section" id="footer">
-          {% include "footer.html" %}
-        </div>
-      </section>
-    </div>
   </body>
-
 </html>

@@ -5,28 +5,16 @@
 {% endwith %}
 
 
-<div class="full-page-container">
-   <div class="page-section" id="register">
-      <div class="container">
-         <div class="cover">
-            <div class="content">
-               
-               <h1 class="title">Register</h1>
-               <h2 class="register-subtitle">March 25-26, 2017. Lighting the Torch.</h2>
-               
-              <!--  <form method="POST" action="">
-                  {% for field in form %}
-                  {{ render_field(field) }}
-                  {% endfor %}
-                  <div class="buttons">
-                     <button class="btn" type="submit">Register!</button>
-                  </div>
-               </form> -->
-               <a class="button-link" href="/register/hacker">Hacker</a>
-               <a class="button-link" href="/register/mentor">Mentor</a>
-            </div>
-         </div>
-      </div>
-   </div>
+<div class="in login register">
+  <!-- div class="bg"></div> -->
+      <h1>hackBCA IV</h1>
+      <br>
+
+      <input type="submit" class="button" value="Hacker" 
+    onclick="window.location='/register/hacker';" /> <br>
+    <input type="submit" class="button" value="Mentor" 
+    onclick="window.location='/register/mentor';" />
+
+
 </div>
 {% endblock %}

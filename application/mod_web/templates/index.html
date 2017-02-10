@@ -17,37 +17,45 @@
 
 
 {% block scripts %}
-<script type="text/javascript" src="/static/js/app.min.js"> </script>
+<script src="https://use.typekit.net/cdh1lxe.js"></script>
+<script>try{Typekit.load({ async: true });}catch(e){}</script>
+<script src="https://use.fontawesome.com/8e5e6b8c4e.js"></script>
+ <script type="text/javascript">
+    (function($) {          
+        $(document).ready(function(){                    
+            $(window).scroll(function(){                          
+                if ($(this).scrollTop() > 200) {
+                    $('#scroll-nav').fadeIn(500);
+                } else {
+                    $('#scroll-nav').fadeOut(500);
+                }
+            });
+        });
+    })(jQuery);
+    </script> 
 {% endblock %}
 
-
-    <div class="page-container">
-    <section>
-      <div class="page-section" id="home">
+    <section id="home">
         {% include "web.home.html" %}
-      </div>
     </section>
-    <section>
-      <div class="page-section" id="about">
+    <section id="about">
         {% include "web.about.html" %}
-      </div>
     </section>
-    <section>
-      <div class="page-section" id="guests">
-        {% include "web.guests.html" %}
-      </div>
-    </section>
-    <section>
-      <div class="page-section" id="faq">
+      <div class="details">
+     <section id="faq">
         {% include "web.faq.html" %}
-      </div>
     </section>
-    <section>
-      <div class="page-section" id="sponsors">
+    <section id="guests">
+        {% include "web.guests.html" %}
+    </section>
+    <section id="sponsors">
         {% include "web.sponsors.html" %}
-      </div>
     </section>
-    </div>
+    <section id="footer">
+          {% include "footer.html" %}
+    </section>
+    
+  
 
 
 

@@ -4,96 +4,35 @@
   ("/#home", "Home", False)
 ] -%}
 
+<div class="apply in">
 {% block content %}
 {% with nav_bar = nav_bar %}
   {% include "navbar.html" %}
 {% endwith %}
 
-  <div class="full-page-container">
-   <div class="page-section" id="register">
-      <div class="container">
-         <div class="cover">
-            <div class="content">
-               <h1 class="title">Hacker Registration</h1>
-                <form method="POST" onSubmit="check_phone()">
-                  {% for field in form %}
-                    {% if field.name == "mlh_terms" %}
-                      <h2>{{ field.description }}</h2>
-                    {% endif %}
-                    {% if field.name == "mlh_coc" %}
-                      <a href="https://static.mlh.io/docs/mlh-code-of-conduct.pdf"><h2>{{ field.description }}</h2></a>
-                    {% endif %}
-                    
+   <h1>Hacker Registration</h1>
+   <br>
+    <p>hackBCA is made possible by the generous donations of companies and private individuals.</p>
+    <p> As such, the event will only run if sufficient funds are received by March 5, 2017.</p>
+    <br>
+      
+    <form method="POST">
+      {% for field in form %}
+        {% if field.name == "mlh_terms" %}
+          <p>{{ field.description }}</p>
+        {% endif %}
+        {% if field.name == "mlh_coc" %}
+          <a href="https://static.mlh.io/docs/mlh-code-of-conduct.pdf"><p>{{ field.description }}</p></a>
+        {% endif %}
+        
 
-                    {{ render_field(field) }}    
-                  {% endfor %}
+        {{ render_field(field) }}    
+      {% endfor %}
 
-                  {{ form.school(class_='autocomplete') }}
-                  <h1 class="title">hackBCA is made possible by the generous donations of companies and private individuals.  As such, the event will only run if sufficient funds are received by March 5, 2017.</h1>
-                  <div class="buttons">
-                    <button class="button" type="submit">Register!</button>
-                  </div>
-                </form>
-            </div>
-         </div>
-      </div>
-   </div>
-</div>
+
+  
+      <input type="submit" value="APPLY" class="button">
+    </form>
+    </div>
 {% endblock %}
   
-{% block scripts %}
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-<script type='text/javascript' src='../user_static/js/awesomplete.js'></script>
-
-<script type="text/javascript">
-  $( function() {
-    var availableSchools = [];
-    var allText = "";
-
-    var rawFile = new XMLHttpRequest();
-    rawFile.open("GET", "../user_static/high_schools.csv", false);
-    rawFile.onreadystatechange = function ()
-    {
-        if(rawFile.readyState === 4)
-        {
-            if(rawFile.status === 200 || rawFile.status == 0)
-            {
-                allText = rawFile.responseText;
-                console.log(allText[0])
-            }
-        }
-    }
-    rawFile.send(null);
-    
-    var input = document.getElementsByClassName('autocomplete');
-    var awesomplete = new Awesomplete(input);
-
-    /* ...more code... */
-
-    awesomplete.list = ["Ada", "Java", "JavaScript", "Brainfuck", "LOLCODE", "Node.js", "Ruby on Rails"];
-
-  } );
-</script>
-
-<script type="text/javascript">
-    
-  var check_phone = function(){
-      var phone_number = document.getElementById("phone");
-      var numbers = phone_number.value.replace(/\D/g, '');
-      if(numbers.length == 10 || numbers.length == 11 || numbers.length == 12){
-          var finalstr = "";
-          if(numbers.length == 10){
-              finalstr += numbers.substr(0,3) + "-" + numbers.substr(3,3) + "-" + numbers.substr(6,4);
-          } 
-          else if(numbers.length == 11){
-              finalstr += "+" + numbers.substr(0,1) + "-" + numbers.substr(1,3) + "-" + numbers.substr(4,3) + "-" + numbers.substr(7,4);
-           }
-           else if(numbers.length == 12){
-              finalstr += "+" + numbers.substr(0,2) + "-" + numbers.substr(2,3) + "-" + numbers.substr(5,3) + "-" + numbers.substr(8,4);
-           }
-           document.getElementById("phone").value = finalstr;
-      }
-  }
-</script>
-     
-{% endblock %}

@@ -84,44 +84,44 @@ class HackerRegistrationForm(Form):
     email = TextField("Email", [
         validators.Required(message = "Enter an email."),
         validators.Email(message = "Invalid email address.")
-    ], description = "Email")
+    ], render_kw={"class": 'text'}, description = "Email")
     first_name = TextField("First Name", [
         validators.Required(message = "You must enter a first name.")
-    ], description = "First Name")
+    ], render_kw={"class": 'text'}, description = "First Name")
     last_name = TextField("Last Name", [
         validators.Required(message = "You must enter a last name.")
-    ], description = "Last Name")
+    ], render_kw={"class": 'text'}, description = "Last Name")
 
     school = TextField("School Name", [
         validators.Required(message = "Enter your school's name.")
-    ], description = "School Name")
+    ], render_kw={"class": 'text'}, description = "School Name")
 
-    gender = SelectField("Gender", [validators.Required(message = "You must select an option.")], choices = gender_choices, description = "Gender")
-    beginner = SelectField("Are you a beginner?", [validators.Required(message = "You must select an option.")], choices = beginner_choices, description = "Are you a beginner?")
-    ethnicity = SelectField("Ethnicity", [validators.Required(message = "You must select an option.")], choices = ethnicity_choices, description = "Ethnicity")
-    grade = SelectField("Grade", [validators.Required(message = "You must select an option.")], choices = grade_choices, description = "Grade")
+    gender = SelectField("Gender", [validators.Required(message = "You must select an option.")], choices = gender_choices, render_kw={"class": 'text'}, description = "Gender")
+    beginner = SelectField("Are you a beginner?", [validators.Required(message = "You must select an option.")], choices = beginner_choices, render_kw={"class": 'text'}, description = "Are you a beginner?")
+    ethnicity = SelectField("Ethnicity", [validators.Required(message = "You must select an option.")], choices = ethnicity_choices, render_kw={"class": 'text'}, description = "Ethnicity")
+    grade = SelectField("Grade", [validators.Required(message = "You must select an option.")], choices = grade_choices, render_kw={"class": 'text'}, description = "Grade")
     age = TextField("Age", [
         validators.Required(message = "Enter your age")
-    ], description = "Age")
-    num_hackathons = SelectField("How many hackathons have you attended?", [validators.Required(message = "You must select an option.")], choices = num_hackathons_choices, description = "How many hackathons have you attended?")
+    ], render_kw={"class": 'text'}, description = "Age")
+    num_hackathons = SelectField("How many hackathons have you attended?", [validators.Required(message = "You must select an option.")], choices = num_hackathons_choices, render_kw={"class": 'text'}, description = "How many hackathons have you attended?")
 
     free_response1 = TextAreaField(free_response1_prompt, [
         validators.Required(message = "You must answer this question."),
         validators.Length(max = 500, message = "Response must be less than 500 characters long.")
-    ], description = "250 words maximum.")
+    ], render_kw={"class": 'text'}, description = "250 words maximum.")
 
     link1 = TextField("Link #1", [
         validators.optional(),
         validators.URL(message = "Invalid URL.")
-    ], description = "Link #1 (Optional)")
+    ], render_kw={"class": 'text'}, description = "Link #1 (Optional)")
     link2 = TextField("Link #2", [
         validators.optional(),
         validators.URL(message = "Invalid URL.")
-    ], description = "Link #2 (Optional)")
+    ], render_kw={"class": 'text'}, description = "Link #2 (Optional)")
     link3 = TextField("Link #3", [
         validators.optional(),
         validators.URL(message = "Invalid URL.")
-    ], description = "Link #3 (Optional)")
+    ], render_kw={"class": 'text'}, description = "Link #3 (Optional)")
     
 
     mlh_coc = BooleanField("I agree", [
@@ -174,68 +174,68 @@ class MentorRegistrationForm(Form):
     email = TextField("Email", [
         validators.Required(message = "Enter an email."),
         validators.Email(message = "Invalid email address.")
-    ], description = "Email")
+    ], render_kw={"class": 'text'}, description = "Email")
 
     first_name = TextField("First Name", [
         validators.Required(message = "You must enter a first name.")
-    ], description = "First Name")
+    ], render_kw={"class": 'text'}, description = "First Name")
     
     last_name = TextField("Last Name", [
         validators.Required(message = "You must enter a last name.")
-    ], description = "Last Name")
+    ], render_kw={"class": 'text'}, description = "Last Name")
 
     school = TextField("Company/School Name", [
         validators.Required(message = "Enter your company/schools's name.")
-    ], description = "Company/School Name")
+    ], render_kw={"class": 'text'}, description = "Company/School Name")
 
     phone = TextField("Phone Number", [
         validators.Required(message = "Enter your preferred contact number."),
         validators.Regexp(phone_regex, message = "Please enter a valid phone number.")
-    ], description = "Phone Number")
+    ], render_kw={"class": 'text'}, description = "###-###-####")
 
-    num_hackathons = SelectField("How many hackathons have you mentored at?", [validators.Required(message = "You must select an option.")], choices = num_hackathons_choices_mentor, description = "How many hackathons have you mentored at?")
+    num_hackathons = SelectField("How many hackathons have you mentored at?", [validators.Required(message = "You must select an option.")], choices = num_hackathons_choices_mentor, render_kw={"class": 'text'}, description = "How many hackathons have you mentored at?")
 
     mentor_free_response1 = TextAreaField(free_response1_prompt_mentor, [
         validators.Length(max = 500, message = "Response must be less than 500 characters long.")
-    ], description = "500 character maximum.")
+    ], render_kw={"class": 'text'}, description = "500 character maximum.")
 
     mentor_free_response2 = TextAreaField(free_response2_prompt_mentor, [
         validators.Length(max = 500, message = "Response must be less than 500 characters long.")
-    ], description = "500 character maximum.")
+    ], render_kw={"class": 'text'}, description = "500 character maximum.")
     
     github_link = TextField("Github Link", [
         validators.optional(),
         validators.URL(message = "Invalid URL.")
-    ], description = "Github Link (Optional)")
+    ], render_kw={"class": 'text'}, description = "Github Link (Optional)")
 
     linkedin_link = TextField("LinkedIn", [
         validators.optional(),
         validators.URL(message = "Invalid URL.")
-    ], description = "LinkedIn Link (Optional)")
+    ], render_kw={"class": 'text'}, description = "LinkedIn Link (Optional)")
 
     site_link = TextField("Personal Site", [
         validators.optional(),
         validators.URL(message = "Invalid URL.")
-    ], description = "Personal Site Link (Optional)")
+    ], render_kw={"class": 'text'}, description = "Personal Site Link (Optional)")
 
     other_link = TextField("other", [
         validators.optional(),
         validators.URL(message = "Invalid URL.")
-    ], description = "Other Link (Optional)")
+    ], render_kw={"class": 'text'}, description = "Other Link (Optional)")
 
     
     mlh_coc = BooleanField("I agree", [
     validators.Required(message = "Please read and agree to the MLH Code of Conduct.")
-    ], description = "I have read & agree to the MLH Code of Conduct.", default = False)
+    ], render_kw={"class": 'text'}, description = "I have read & agree to the MLH Code of Conduct.", default = False)
 
     mlh_terms = BooleanField("I agree", [
         validators.Required(message = "Please read and agree to the MLH Terms and Conditions.")
-        ], description = "I have read & agree to the Terms and Conditions", default = False)
+        ], render_kw={"class": 'text'}, description = "I have read & agree to the Terms and Conditions", default = False)
  
     password = PasswordField("Password", [
         validators.Required(message = "You must enter a password."),
         validators.Length(min = 8, message = "Password must be at least 8 characters.")
-    ], description = "Password")
+    ], render_kw={"class": 'text'}, description = "Password")
     confirm_password = PasswordField("Confirm Password", description = "Confirm Password")
 
     def validate(self):
@@ -267,8 +267,8 @@ class LoginForm(Form):
     email = TextField("Email", [
         validators.Required(message = "Enter an email."),
         validators.Email(message = "Invalid email address."
-    )], description = "Email")
-    password = PasswordField("Password", [], description = "Password")
+    )], render_kw={"class": 'text'},description = "Email")
+    password = PasswordField("Password", [], render_kw={"class": 'text'}, description = "Password")
 
 class EmailForm(Form):
     email = TextField("Email", [

@@ -9,7 +9,7 @@
   {% include "navbar.html" %}
 {% endwith %}
 
-  <div class="full-page-container">
+<!--   <div class="full-page-container">
    <div class="page-section" id="login">
       <div class="container">
          <div class="cover">
@@ -32,7 +32,20 @@
          </div>
       </div>
    </div>
-</div>
+</div> -->
   
-     
+<div class="in login">
+  <div class="bg"></div>
+      <h1>hackBCA IV</h1>
+      <br>
+      <form>
+      {% for field in form %}
+          {{ render_field(field) }}<br>    
+      {% endfor %}
+      
+        <input type="submit" value="LOGIN" class="button">
+        <a href="/forgot"><p>Forgot Password?</p></a>
+      </form>
+</div>
+
 {% endblock %}
