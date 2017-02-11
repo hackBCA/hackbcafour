@@ -935,3 +935,7 @@ body {
         padding: 5% 5%
     }
 }
+
+.checkboxes {
+  display: inline-block;
+}

@@ -3,14 +3,23 @@
     {% if messages %}
       <ul class="flashes">
         {% for category, message in messages %}
-          <li class="{{ category }}"><p>{% if category != "neutral" %}{{ category.capitalize()+": " }}{% endif %}{{ message }}</p><div class="close"><div class="icon-container"><i class="close-icon fa fa-times" onclick="var f = document.getElementsByClassName('flashes')[0]; f.classList.add('fade-out')"></i></div></div></li>
+          <li class="{{ category }}"><p>{% if category != "neutral" %}{{ category.capitalize()+": " }}{% endif %}{{ message }}</p><div class="close"></div></li>
         {% endfor %}
       </ul>
     {% endif %}
   {% endwith %}
 {% endmacro %}
 
+<!-- <div class="icon-container"><i class="close-icon fa fa-times" onclick="var f = document.getElementsByClassName('flashes')[0]; f.classList.add('fade-out')"></i></div> -->
 {% macro render_field(field, disabled = false, char_limit = None) %}
+{% if field.type == "BooleanField" %}
+  <div class="checkboxes {% if field.errors %}error{% endif %}">
+    {{ field(placeholder = field.description, disabled = disabled) }}
+  </div>
+  {% if field.errors %}
+      <p class="error-msg">{{ field.errors[0] }}</p>
+    {% endif %}
+{% else %}
   <div class="form-elt {% if field.errors %}error{% endif %}">
     {% if field.type == "TextAreaField" %}
       <p>{{ field.label }}</p>
@@ -25,6 +34,7 @@
       <p class="error-msg">{{ field.errors[0] }}</p>
     {% endif %}
   </div>
+  {% endif %}
 {% endmacro %}
 
 <!DOCTYPE html>

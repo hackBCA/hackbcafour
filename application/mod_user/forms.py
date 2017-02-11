@@ -135,8 +135,7 @@ class HackerRegistrationForm(Form):
 
     mlh_terms = BooleanField("I agree", [
         validators.Required(message = "Please read and agree to the MLH Terms and Conditions.")
-        ], description = "I agree to the terms of both the MLH Contest Terms and Conditions and the MLH Privacy Policy. Please note that you may receive pre and post-event informational e-mails and occasional messages about hackathons from MLH as per the MLH Privacy Policy.", default = False)
- 
+        ], description = "I agree to the MLH Contest Terms and Conditions and the MLH Privacy Policy.", default = False)
 
     def validate_confirm_password(form, field):
         password = form['password'].data
@@ -191,7 +190,7 @@ class MentorRegistrationForm(Form):
     phone = TextField("Phone Number", [
         validators.Required(message = "Enter your preferred contact number."),
         validators.Regexp(phone_regex, message = "Please enter a valid phone number.")
-    ], render_kw={"class": 'text'}, description = "###-###-####")
+    ], render_kw={"class": 'text'}, description = "Phone Number")
 
     num_hackathons = SelectField("How many hackathons have you mentored at?", [validators.Required(message = "You must select an option.")], choices = num_hackathons_choices_mentor, render_kw={"class": 'text'}, description = "How many hackathons have you mentored at?")
 
@@ -235,7 +234,7 @@ class MentorRegistrationForm(Form):
 
     mlh_terms = BooleanField("I agree", [
         validators.Required(message = "Please read and agree to the MLH Terms and Conditions.")
-        ], description = "I agree to the terms of both the MLH Contest Terms and Conditions and the MLH Privacy Policy. Please note that you may receive pre and post-event informational e-mails and occasional messages about hackathons from MLH as per the MLH Privacy Policy.", default = False)
+        ], description = "I agree to the MLH Contest Terms and Conditions and the MLH Privacy Policy.", default = False)
 
 
     def validate(self):
