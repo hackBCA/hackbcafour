@@ -381,7 +381,7 @@ textarea {
 body {
   font-family: Avenir, sans-serif;
   font-size: 16px;
-  color: #191921;
+  color: #333333;
   margin: 0;
   padding: 0; }
 
@@ -513,6 +513,14 @@ body {
         width: 100%; }
         .info .info-1:last-child {
           margin-right: 0; } }
+  .info .info-2 h1 {
+      font-weight: 100;
+      color: #2a2a2a; }
+    .info .info-2 h2 {
+      font-size: 1em;
+      font-weight: 100;
+      color: #999999;
+      line-height: 2; }
   .info .info-2 {
     float: left;
     display: block;
@@ -954,4 +962,12 @@ body {
 
 :-ms-input-placeholder {  
   padding-top: 5px;  
+}
+
+#hack_fix {
+  margin-left: 4px;
+}
+
+h2 .subtext {
+  color: #202020 !important;
 }
