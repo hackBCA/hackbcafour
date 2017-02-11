@@ -128,7 +128,7 @@ class HackerRegistrationForm(Form):
         validators.Length(min = 8, message = "Password must be at least 8 characters.")
     ], render_kw={"class": 'text'}, description = "Password")
     confirm_password = PasswordField("Confirm Password", render_kw={"class": 'text'}, description = "Confirm Password")
-    
+
     mlh_coc = BooleanField("I agree", [
     validators.Required(message = "Please read and agree to the MLH Code of Conduct.")
     ], description = "I have read & agree to the MLH Code of Conduct.", default = False)
@@ -274,7 +274,7 @@ class EmailForm(Form):
     email = TextField("Email", [
         validators.Required(message = "Enter an email."),
         validators.Email(message = "Invalid email address."
-    )], description = "Email")
+    )], render_kw={"class": 'text'}, description = "Email")
 
 
 class ApplicantInformation(Form):
@@ -363,7 +363,7 @@ class RecoverForm(Form):
         validators.Required(message = "You must enter a password."),
         validators.Length(min = 8, message = "Password must be at least 8 characters.")
     ], description = "Password")
-    confirm_password = PasswordField("Confirm Password", description = "Confirm Password")
+    confirm_password = PasswordField("Confirm Password", render_kw={"class": 'text'}, description = "Confirm Password")
 
     def validate_confirm_password(form, field):
         password = form['password'].data
@@ -373,22 +373,22 @@ class RecoverForm(Form):
 class ChangeNameForm(Form):
     firstname = TextField("First Name", [
         validators.Required(message = "You must enter a first name.")
-    ], description = "First Name")
+    ], render_kw={"class": 'text'}, description = "First Name")
     lastname = TextField("Last Name", [
         validators.Required(message = "You must enter a last name.")
-    ], description = "Last Name")
+    ], render_kw={"class": 'text'}, description = "Last Name")
 
 class ChangePasswordForm(Form):
     password = PasswordField("Password", [
         validators.Required(message = "You must enter your current password."),
         validators.Length(min = 8, message = "Password must be at least 8 characters.")
-    ], description = "Password")
+    ], render_kw={"class": 'text'}, description = "Password")
 
     new_password = PasswordField("New Password", [
         validators.Required(message = "You must choose a new password."),
         validators.Length(min = 8, message = "Password must be at least 8 characters.")
-    ], description = "New Password")
-    confirm_password = PasswordField("Confirm New Password", description = "Confirm New Password")
+    ], render_kw={"class": 'text'}, description = "New Password")
+    confirm_password = PasswordField("Confirm New Password", render_kw={"class": 'text'}, description = "Confirm New Password")
 
     def validate_confirm_password(form, field):
         password = form['new_password'].data

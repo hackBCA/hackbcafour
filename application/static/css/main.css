@@ -1,3 +1,11 @@
+.text {
+    width: 30em;
+    height: 3em;
+    border: 1px solid #FFFFFF;
+    padding: 0 0.5em;
+    margin: 0.5em 0;
+}
+
 html {
   box-sizing: border-box; }
 
@@ -698,20 +706,12 @@ body {
     .details .sponsors .flex-column img {
       width: 100%; }
 
-.text {
-    width: 30em;
-    height: 3em;
-    border: 1px solid #FFFFFF;
-    padding: 0 0.5em;
-    margin: 0.5em 0;
-}
-
 .in {
   background-color: #000000;
   text-align: center;
   color: #FFFFFF;
   height: 100%;
-  padding: 7em 0;
+  padding: 10% 0;
   background-color: #000000; }
   .in h1 {
     font-size: 4em;
@@ -776,21 +776,43 @@ body {
 
 .apply {
   padding: 10% 0; }
+  @media screen and (max-width: 650px) {
+    .apply h1 {
+      font-size: 3em;
+      padding-top: 1em; } }
 
 .profile {
-  background-color: #FFFFFF; }
-  .profile .header {
+  background-color: #FFFFFF;
+  color: #000000; }
+  .profile .nav a {
+    color: #4c4c4c; }
+    .profile .nav a:hover {
+      color: #000000; }
+  .profile h1 {
+    font-size: 4em;
+    font-weight: 100;
+    margin: 0; }
+    @media screen and (max-width: 700px) {
+      .profile h1 {
+        font-size: 3em;
+        padding-top: 1em; } }
+  .profile .text {
+    border: 2px solid #000000; }
+  .profile .button {
+    border: 2px solid #000000;
+    font-weight: 400;
+    color: #FFFFFF;
     background-color: #000000; }
 
 .footer {
   right: 0;
   bottom: 0;
   left: 0;
-  padding: 1em 5em 4em 5em;
+  padding: 0.7em 0 1em 0;
   margin-top: 20%;
   background-color: #000000;
   color: #FFFFFF;
-  text-align: left; }
+  text-align: center; }
   .footer h1 {
     font-weight: 100;
     font-size: 3em; }
@@ -800,16 +822,17 @@ body {
     margin: 0; }
   .footer i {
     color: #FFFFFF;
+    font-size: 2em;
+    margin-right: 1em; }
+    .footer i:hover {
+      transform: scale(1.1);
+      text-shadow: 0 0 2px #FFFFFF;
       -webkit-transition-duration: 0.2s;
       -moz-transition-duration: 0.2s;
       transition-duration: 0.2s; }
   .footer .links {
     margin-top: 2em;
     margin-bottom: 1em; }
-    font-size: 2em;
-    margin-right: 1em; }
-    .footer i:hover {
-      color: #cccccc;
   .footer small {
     margin-top: 10em; }
 
@@ -822,4 +845,3 @@ body {
   top: 0;
   width: 15%;
   z-index: 1000; }
-
