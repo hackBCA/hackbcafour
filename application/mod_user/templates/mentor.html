@@ -1,10 +1,10 @@
 {% extends "user.base.html" %}
-<div class="apply in">
    {% set nav_bar = [
    ("/#home", "Home", False)
    ] -%}
    {% block content %}
    {% with nav_bar = nav_bar %}
+   <div class="apply in">
    {% include "navbar.html" %}
    {% endwith %}
 
