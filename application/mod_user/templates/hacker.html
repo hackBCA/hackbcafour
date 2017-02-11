@@ -4,19 +4,19 @@
   ("/#home", "Home", False)
 ] -%}
 
-<div class="apply in">
 {% block content %}
 {% with nav_bar = nav_bar %}
   {% include "navbar.html" %}
 {% endwith %}
 
+<div class="apply in">
    <h1>Hacker Registration</h1>
    <br>
     <p>hackBCA is made possible by the generous donations of companies and private individuals.</p>
     <p> As such, the event will only run if sufficient funds are received by March 5, 2017.</p>
     <br>
       
-    <form method="POST">
+    <form method="POST" action="">
       {% for field in form %}
         {% if field.name == "mlh_terms" %}
           <p>{{ field.description }}</p>
@@ -24,12 +24,11 @@
         {% if field.name == "mlh_coc" %}
           <a href="https://static.mlh.io/docs/mlh-code-of-conduct.pdf"><p>{{ field.description }}</p></a>
         {% endif %}
-        
-
+        {% if field.id == "link1" %}
+          <p>Feel free to include up to 3 links of your choice.</p>
+        {% endif %}
         {{ render_field(field) }}    
       {% endfor %}
-
-
   
       <input type="submit" value="APPLY" class="button">
     </form>

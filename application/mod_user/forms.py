@@ -135,8 +135,8 @@ class HackerRegistrationForm(Form):
     password = PasswordField("Password", [
         validators.Required(message = "You must enter a password."),
         validators.Length(min = 8, message = "Password must be at least 8 characters.")
-    ], description = "Password")
-    confirm_password = PasswordField("Confirm Password", description = "Confirm Password")
+    ], render_kw={"class": 'text'}, description = "Password")
+    confirm_password = PasswordField("Confirm Password", render_kw={"class": 'text'}, description = "Confirm Password")
 
     def validate_confirm_password(form, field):
         password = form['password'].data
@@ -226,11 +226,11 @@ class MentorRegistrationForm(Form):
     
     mlh_coc = BooleanField("I agree", [
     validators.Required(message = "Please read and agree to the MLH Code of Conduct.")
-    ], render_kw={"class": 'text'}, description = "I have read & agree to the MLH Code of Conduct.", default = False)
+    ], description = "I have read & agree to the MLH Code of Conduct.", default = False)
 
     mlh_terms = BooleanField("I agree", [
         validators.Required(message = "Please read and agree to the MLH Terms and Conditions.")
-        ], render_kw={"class": 'text'}, description = "I have read & agree to the Terms and Conditions", default = False)
+        ], description = "I agree to the terms of both the MLH Contest Terms and Conditions and the MLH Privacy Policy. Please note that you may receive pre and post-event informational e-mails and occasional messages about hackathons from MLH as per the MLH Privacy Policy.", default = False)
  
     password = PasswordField("Password", [
         validators.Required(message = "You must enter a password."),

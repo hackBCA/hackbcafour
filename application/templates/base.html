@@ -13,7 +13,7 @@
 {% macro render_field(field, disabled = false, char_limit = None) %}
   <div class="form-elt {% if field.errors %}error{% endif %}">
     {% if field.type == "TextAreaField" %}
-      <h6>{{ field.label }}</h6>
+      <p>{{ field.label }}</p>
       {{ field(placeholder = field.description, maxlength = field.max, disabled = disabled) }}
       {% if char_limit != None %}
         <p class="count" id="{{ field.name }}">Characters left: {{ char_limit }}</p>

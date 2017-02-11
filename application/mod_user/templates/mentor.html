@@ -18,6 +18,9 @@
         {% if field.type == "BooleanField" %}
           <p>{{ field.description }}</p>
         {% endif %}
+        {% if field.id == "github_link" %}
+          <p>Feel free to include these links.</p>
+        {% endif %}
         {{ render_field(field) }}    
       {% endfor %}
       <input type="submit" value="APPLY" class="button">
