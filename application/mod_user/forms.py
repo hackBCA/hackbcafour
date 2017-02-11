@@ -371,10 +371,10 @@ class RecoverForm(Form):
             raise ValidationError("Passwords must match.")
 
 class ChangeNameForm(Form):
-    firstname = TextField("First Name", [
+    first_name = TextField("First Name", [
         validators.Required(message = "You must enter a first name.")
     ], render_kw={"class": 'text'}, description = "First Name")
-    lastname = TextField("Last Name", [
+    last_name = TextField("Last Name", [
         validators.Required(message = "You must enter a last name.")
     ], render_kw={"class": 'text'}, description = "Last Name")
 
@@ -382,7 +382,7 @@ class ChangePasswordForm(Form):
     password = PasswordField("Password", [
         validators.Required(message = "You must enter your current password."),
         validators.Length(min = 8, message = "Password must be at least 8 characters.")
-    ], render_kw={"class": 'text'}, description = "Password")
+    ], render_kw={"class": 'text'}, description = "Current Password")
 
     new_password = PasswordField("New Password", [
         validators.Required(message = "You must choose a new password."),

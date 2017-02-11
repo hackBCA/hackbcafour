@@ -11,11 +11,13 @@
 <div class="message">
         <h2>Hey, {{ current_user.first_name }}! Watch out for an email from us in the future, and check back here to see if you've got in!</h2>
         <p>Have a question? Shoot us an email at <a href="mailto:contact@hackbca.com">contact@hackbca.com</a>.</p>
-        <input type="submit" value="SETTINGS" class="button"><br>
-        <input type="submit" value="LOG OUT" class="button"><br>
+        <input type="submit" value="SETTINGS" onclick="window.location='/account/settings';" class="button"><br>
+        <input type="submit" value="LOG OUT" onclick="window.location='/logout';"class="button"><br>
       </div>
 
 </div>
  {% include "footer.html" %}
-
+ {% block scripts %}
+ <script src="https://use.fontawesome.com/8e5e6b8c4e.js"></script>
+ {% endblock %}
 {% endblock %}

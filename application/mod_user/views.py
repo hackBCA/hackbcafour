@@ -118,7 +118,7 @@ def settings():
   if request.method == "POST":
     if request.form["setting"] == "name" and name_form.validate():
       try:
-        controller.change_name(current_user.email, request.form["firstname"], request.form["lastname"])
+        controller.change_name(current_user.email, request.form["first_name"], request.form["last_name"])
         flash("Name changed.", "success")
       except Exception as e:
         if CONFIG["DEBUG"]:

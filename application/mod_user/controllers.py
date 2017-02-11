@@ -121,14 +121,14 @@ def send_recovery_email(email):
 	mail.personalizations[0].add_substitution(Substitution("%token%", token)) 
 	response = sg.client.mail.send.post(request_body=mail.get())
 
-def change_name(email, firstname, lastname):
+def change_name(email, first_name, last_name):
 	account = get_user(email)
 
 	if account is None:
 		raise UserDoesNotExistError
 
-	account.firstname = firstname
-	account.lastname = lastname
+	account.first_name = first_name
+	account.last_name = last_name
 	account.save()
 
 	login(email) #To update navbar
