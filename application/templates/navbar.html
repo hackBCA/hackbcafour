@@ -17,3 +17,19 @@
       {% endif %}
 
 </div>
+
+<div class="nav" id="scroll-nav">
+        {% for href, caption, active in nav_bar %}
+    <a class="no-mobile menu-item {% if active %}active{% endif %}" href="{{ href|e }}" data-scroll>{{ caption|e }}</a>
+      {% endfor %}
+
+      {% if current_user.is_authenticated %}
+      <a href="/logout" class="no-mobile account-item">Logout</a>
+        <a href="/account" class="no-mobile account-item">Account <span>({{ current_user.full_name() }})</span></a>
+      {% else %}
+        {% if config['REGISTRATION_ENABLED'] %}
+          <a href="/register" class="account-item">Register</a>
+        {% endif %}
+          <a href="/login" class="account-item">Login</a>
+      {% endif %}
+      </div>

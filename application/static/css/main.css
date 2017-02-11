@@ -381,7 +381,7 @@ textarea {
 body {
   font-family: Avenir, sans-serif;
   font-size: 16px;
-  color: #111111;
+  color: #191921;
   margin: 0;
   padding: 0; }
 
@@ -938,4 +938,20 @@ body {
 
 .checkboxes {
   display: inline-block;
+}
+
+::-webkit-input-placeholder {
+  padding-top: 5px;
+}
+
+:-moz-placeholder { /* Firefox 18- */
+  padding-top: 5px;
+}
+
+::-moz-placeholder {  /* Firefox 19+ */
+  padding-top: 5px;
+}
+
+:-ms-input-placeholder {  
+  padding-top: 5px;  
 }
