@@ -11,3 +11,12 @@ from application import CONFIG
 def index():
 	return render_template("web.index.html")
 
+@mod_web.route("/sponsors", methods = ["GET"])
+def sponsors():
+    return mod_web.send_static_file("prospectus.pdf")
+
+@mod_web.route("/sponsors.pdf", methods = ["GET"])
+@mod_web.route("/sponsor.pdf", methods = ["GET"])
+@mod_web.route("/sponsor", methods = ["GET"])
+def foward_sponsors():
+    return redirect("/sponsors")
