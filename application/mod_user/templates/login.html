@@ -9,36 +9,12 @@
   {% include "navbar.html" %}
 {% endwith %}
 
-<!--   <div class="full-page-container">
-   <div class="page-section" id="login">
-      <div class="container">
-         <div class="cover">
-            <div class="content">
-               <h1 class="title">Login</h1>
-                <form method="POST" action="">
-                 {% for field in form %}
-                    {% if field.type == "BooleanField" %}
-                      <h2>{{ field.description }}</h2>
-                    {% endif%}
-                    {{ render_field(field) }}    
-                  {% endfor %}
-                  
-                  <div class="buttons">
-                    <button class="button" type="submit">Login!</button>
-                  </div>
-                  <a href="/forgot"><p>Forgot your password?</p></a>
-                </form>
-            </div>
-         </div>
-      </div>
-   </div>
-</div> -->
   
 <div class="in login">
   <div class="bg"></div>
       <h1>hackBCA IV</h1>
       <br>
-      <form>
+      <form method="POST" action="">
       {% for field in form %}
           {{ render_field(field) }}<br>    
       {% endfor %}

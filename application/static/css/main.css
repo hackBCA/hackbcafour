@@ -703,20 +703,20 @@ body {
   text-align: center;
   color: #FFFFFF;
   height: 100%;
-  padding: 20% 0;
+  padding: 7em 0;
   background-color: #000000; }
   .in h1 {
     font-size: 4em;
     font-weight: 100;
     margin: 0; }
-  .in input[type="text"], .in select {
+  .in .text {
     width: 30em;
     height: 3em;
     border: 1px solid #FFFFFF;
     padding: 0 0.5em;
     margin: 0.5em 0; }
     @media screen and (max-width: 650px) {
-      .in input[type="text"], .in select {
+      .in .text {
         width: 90%; } }
   .in .button {
     width: 30em;
@@ -748,10 +748,10 @@ body {
 .login {
   height: 100vh;
   padding: 15em 0; }
-  .login input[type="text"], .login select {
+  .login .text {
     width: 23em; }
     @media screen and (max-width: 600px) {
-      .login input[type="text"], .login select {
+      .login .text {
         width: 90%; } }
   .login .button {
     width: 23em; }
@@ -792,16 +792,16 @@ body {
     margin: 0; }
   .footer i {
     color: #FFFFFF;
-    font-size: 2em;
-    margin-right: 1em; }
-    .footer i:hover {
-      color: #cccccc;
       -webkit-transition-duration: 0.2s;
       -moz-transition-duration: 0.2s;
       transition-duration: 0.2s; }
   .footer .links {
     margin-top: 2em;
     margin-bottom: 1em; }
+    font-size: 2em;
+    margin-right: 1em; }
+    .footer i:hover {
+      color: #cccccc;
   .footer small {
     margin-top: 10em; }
 
@@ -815,9 +815,3 @@ body {
   width: 15%;
   z-index: 1000; }
 
-  label {
-    color: #ffffff;
-    text-align: center;
-    font-family: 'akto-sans', sans-serif;
-    font-size: 16px;
-  }
