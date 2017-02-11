@@ -123,7 +123,12 @@ class HackerRegistrationForm(Form):
         validators.URL(message = "Invalid URL.")
     ], render_kw={"class": 'text'}, description = "Link #3 (Optional)")
     
-
+    password = PasswordField("Password", [
+        validators.Required(message = "You must enter a password."),
+        validators.Length(min = 8, message = "Password must be at least 8 characters.")
+    ], render_kw={"class": 'text'}, description = "Password")
+    confirm_password = PasswordField("Confirm Password", render_kw={"class": 'text'}, description = "Confirm Password")
+    
     mlh_coc = BooleanField("I agree", [
     validators.Required(message = "Please read and agree to the MLH Code of Conduct.")
     ], description = "I have read & agree to the MLH Code of Conduct.", default = False)
@@ -132,11 +137,6 @@ class HackerRegistrationForm(Form):
         validators.Required(message = "Please read and agree to the MLH Terms and Conditions.")
         ], description = "I agree to the terms of both the MLH Contest Terms and Conditions and the MLH Privacy Policy. Please note that you may receive pre and post-event informational e-mails and occasional messages about hackathons from MLH as per the MLH Privacy Policy.", default = False)
  
-    password = PasswordField("Password", [
-        validators.Required(message = "You must enter a password."),
-        validators.Length(min = 8, message = "Password must be at least 8 characters.")
-    ], render_kw={"class": 'text'}, description = "Password")
-    confirm_password = PasswordField("Confirm Password", render_kw={"class": 'text'}, description = "Confirm Password")
 
     def validate_confirm_password(form, field):
         password = form['password'].data
@@ -222,8 +222,13 @@ class MentorRegistrationForm(Form):
         validators.optional(),
         validators.URL(message = "Invalid URL.")
     ], render_kw={"class": 'text'}, description = "Other Link (Optional)")
+ 
+    password = PasswordField("Password", [
+        validators.Required(message = "You must enter a password."),
+        validators.Length(min = 8, message = "Password must be at least 8 characters.")
+    ], render_kw={"class": 'text'}, description = "Password")
+    confirm_password = PasswordField("Confirm Password", render_kw={"class": 'text'}, description = "Confirm Password")
 
-    
     mlh_coc = BooleanField("I agree", [
     validators.Required(message = "Please read and agree to the MLH Code of Conduct.")
     ], description = "I have read & agree to the MLH Code of Conduct.", default = False)
@@ -231,12 +236,7 @@ class MentorRegistrationForm(Form):
     mlh_terms = BooleanField("I agree", [
         validators.Required(message = "Please read and agree to the MLH Terms and Conditions.")
         ], description = "I agree to the terms of both the MLH Contest Terms and Conditions and the MLH Privacy Policy. Please note that you may receive pre and post-event informational e-mails and occasional messages about hackathons from MLH as per the MLH Privacy Policy.", default = False)
- 
-    password = PasswordField("Password", [
-        validators.Required(message = "You must enter a password."),
-        validators.Length(min = 8, message = "Password must be at least 8 characters.")
-    ], render_kw={"class": 'text'}, description = "Password")
-    confirm_password = PasswordField("Confirm Password", description = "Confirm Password")
+
 
     def validate(self):
         links = ["github_link", "linkedin_link", "site_link", "other_link"]

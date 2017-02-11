@@ -19,17 +19,19 @@
     <form method="POST" action="">
       {% for field in form %}
         {% if field.name == "mlh_terms" %}
-          <p>{{ field.description }}</p>
-        {% endif %}
-        {% if field.name == "mlh_coc" %}
-          <a href="https://static.mlh.io/docs/mlh-code-of-conduct.pdf"><p>{{ field.description }}</p></a>
-        {% endif %}
-        {% if field.id == "link1" %}
+          <p>{{ field.description }} {{ render_field(field) }}</p>
+
+        {% elif field.name == "mlh_coc" %}
+        <a href="https://static.mlh.io/docs/mlh-code-of-conduct.pdf"><p>{{ field.description }} {{ render_field(field) }}</p></a>
+
+        {% elif field.id == "link1" %}
           <p>Feel free to include up to 3 links of your choice.</p>
-        {% endif %}
-        {{ render_field(field) }}    
-      {% endfor %}
-  
+          {{ render_field(field) }}
+
+        {% else %}
+          {{ render_field(field) }}
+        {% endif %}    
+      {% endfor %}  
       <input type="submit" value="APPLY" class="button">
     </form>
     </div>

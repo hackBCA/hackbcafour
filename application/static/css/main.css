@@ -698,6 +698,14 @@ body {
     .details .sponsors .flex-column img {
       width: 100%; }
 
+.text {
+    width: 30em;
+    height: 3em;
+    border: 1px solid #FFFFFF;
+    padding: 0 0.5em;
+    margin: 0.5em 0;
+}
+
 .in {
   background-color: #000000;
   text-align: center;
@@ -814,3 +822,4 @@ body {
   top: 0;
   width: 15%;
   z-index: 1000; }
+
