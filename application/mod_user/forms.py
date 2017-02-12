@@ -107,8 +107,8 @@ class HackerRegistrationForm(Form):
 
     free_response1 = TextAreaField(free_response1_prompt, [
         validators.Required(message = "You must answer this question."),
-        validators.Length(max = 500, message = "Response must be less than 500 characters long.")
-    ], render_kw={"class": 'text'}, description = "250 words maximum.")
+        validators.Length(max = 1500, message = "Response must be less than 1500 characters long.")
+    ], render_kw={"class": 'text'}, description = "1500 characters maximum.")
 
     link1 = TextField("Link #1", [
         validators.optional(),
@@ -195,12 +195,12 @@ class MentorRegistrationForm(Form):
     num_hackathons = SelectField("How many hackathons have you mentored at?", [validators.Required(message = "You must select an option.")], choices = num_hackathons_choices_mentor, render_kw={"class": 'text'}, description = "How many hackathons have you mentored at?")
 
     mentor_free_response1 = TextAreaField(free_response1_prompt_mentor, [
-        validators.Length(max = 500, message = "Response must be less than 500 characters long.")
-    ], render_kw={"class": 'text'}, description = "500 character maximum.")
+        validators.Length(max = 1500, message = "Response must be less than 1500 characters long.")
+    ], render_kw={"class": 'text'}, description = "1500 characters maximum.")
 
     mentor_free_response2 = TextAreaField(free_response2_prompt_mentor, [
-        validators.Length(max = 500, message = "Response must be less than 500 characters long.")
-    ], render_kw={"class": 'text'}, description = "500 character maximum.")
+        validators.Length(max = 1500, message = "Response must be less than 1500 characters long.")
+    ], render_kw={"class": 'text'}, description = "1500 characters maximum.")
     
     github_link = TextField("Github Link", [
         validators.optional(),
