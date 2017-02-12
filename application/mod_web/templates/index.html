@@ -17,11 +17,13 @@
 
 
 {% block scripts %}
- <script src="https://use.typekit.net/cdh1lxe.js"></script>
-      <script>try{Typekit.load({ async: true });}catch(e){}</script>
-      <script src="https://use.fontawesome.com/8e5e6b8c4e.js"></script>
-<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
- <script type="text/javascript">
+<script src="https://use.typekit.net/cdh1lxe.js"></script>
+<script>try{Typekit.load({ async: true });}catch(e){}</script>
+<script src="https://use.fontawesome.com/8e5e6b8c4e.js"></script>
+<!-- <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script> -->
+    <script type="text/javascript" src="static/js/countdown.js"></script>
+    <script type="text/javascript">
+    
     (function($) {          
         $(document).ready(function(){                    
             $(window).scroll(function(){                          
@@ -33,7 +35,23 @@
             });
         });
     })(jQuery);
-    </script> 
+    </script>
+    <script type="text/javascript">
+      $(document).ready(function () {
+     $('a[href^="#"]').on('click', function (e) {
+         e.preventDefault();
+
+         var target = this.hash,
+             $target = $(target);
+
+         $('html, body').stop().animate({
+             'scrollTop': $target.offset().top - 80
+         }, 900, 'swing', function () {
+             window.location.hash = target;
+         });
+     });
+ });
+    </script>
 {% endblock %}
 
     <section id="home">
@@ -44,8 +62,8 @@
         {% include "web.about.html" %}
     </section>
 
-      <section id="where_when">
-      {% include "web.where_when.html" %}
+      <section id="countdown">
+      {% include "web.countdown.html" %}
     </section>
     <br>
       <div class="details">
@@ -68,3 +86,6 @@
 
 
 {% endblock %}
+
+
+

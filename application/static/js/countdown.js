@@ -1,4 +1,12 @@
-function getTimeRemaining(endtime) {
+var jq = document.createElement("script");
+
+jq.addEventListener("load", proceed); // pass my hoisted function
+jq.src = "//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js";
+document.querySelector("head").appendChild(jq);
+
+function proceed () {
+    // jQuery load complete, do your magic
+    function getTimeRemaining(endtime) {
   var t = Date.parse(endtime) - Date.parse(new Date());
   var seconds = Math.floor((t / 1000) % 60);
   var minutes = Math.floor((t / 1000 / 60) % 60);
@@ -35,5 +43,8 @@ function initializeClock(id, endtime) {
   var timeinterval = setInterval(updateClock, 1000);
 }
 
-var deadline = '2017-05-16T15:00:00.000Z';
+var deadline = '2017-03-25T15:00:00.000Z';
 initializeClock('countdown', deadline);
+
+
+}

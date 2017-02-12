@@ -1,11 +1,3 @@
-.text {
-    width: 30em;
-    height: 3em;
-    border: 1px solid #FFFFFF;
-    padding: 0 0.5em;
-    margin: 0.5em 0;
-}
-
 html {
   box-sizing: border-box; }
 
@@ -379,16 +371,17 @@ textarea {
   /* 2 */ }
 
 body {
-  font-family: Avenir, sans-serif;
-  font-size: 16px;
-  color: #333333;
-  margin: 0;
-  padding: 0; }
-
-body {
   font-family: 'azo-sans-web', 'Atlas Grotesk';
+  font-size: 16px;
+  color: #111111;
   margin: 0;
   padding: 0; }
+  @media screen and (max-width: 700px) {
+    body {
+      border: none; } }
+
+.main {
+  border-left: 12px solid #000000; }
 
 .nav {
   padding: 2em 0 0 2em;
@@ -477,102 +470,102 @@ body {
     display: none; } }
 
 .info {
-  width: 100%;
-  padding: 4em 7%;
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 4em 0;
   background-color: #FFFFFF; }
+  .info::after {
+    clear: both;
+    content: "";
+    display: block; }
   @media screen and (max-width: 1000px) {
     .info {
       padding: 4em 2em; } }
   @media screen and (max-width: 650px) {
     .info {
       padding: 4em 1em; } }
-  .info .info-1 {
+  .info h1 {
+    font-weight: 100;
+    font-size: 3em;
+    text-align: center;
+    color: #2a2a2a; }
+    @media screen and (max-width: 760px) {
+      .info h1 {
+        font-size: 2em; } }
+  .info h2 {
+    font-size: 1.1em;
+    font-weight: 100;
+    color: #666;
+    line-height: 2;
+    margin-bottom: 2em; }
+    @media screen and (max-width: 760px) {
+      .info h2 {
+        font-size: 1em;
+        line-height: 1.8; } }
+  .info .logo {
+    display: block;
+    width: 12.5em;
+    height: 12.5em;
+    margin-left: auto;
+    margin-right: auto; }
+  .info .info-pic {
     float: left;
     display: block;
     margin-right: 2.35765%;
-    width: 48.82117%;
-    padding: 0 3em; }
-    .info .info-1:last-child {
+    width: 31.76157%; }
+    .info .info-pic:last-child {
       margin-right: 0; }
-    .info .info-1 h1 {
-      font-weight: 100;
-      color: #2a2a2a; }
-    .info .info-1 h2 {
-      font-size: 1em;
-      font-weight: 100;
-      color: #999999;
-      line-height: 2; }
-      @media screen and (max-width: 650px) {
-        .info .info-1 h2 {
-          line-height: 1.8; } }
-    @media screen and (max-width: 850px) {
-      .info .info-1 {
+    @media screen and (max-width: 650px) {
+      .info .info-pic {
         float: left;
         display: block;
         margin-right: 2.35765%;
         width: 100%; }
-        .info .info-1:last-child {
+        .info .info-pic:last-child {
           margin-right: 0; } }
-  .info .info-2 h1 {
-      font-weight: 100;
-      color: #2a2a2a; }
-    .info .info-2 h2 {
-      font-size: 1em;
-      font-weight: 100;
-      color: #999999;
-      line-height: 2; }
-  .info .info-2 {
+
+#countdown {
+  background-color: #000000; }
+  #countdown .time {
+    padding: 2em 0;
+    /*font-family: Avenir;*/
     float: left;
     display: block;
     margin-right: 2.35765%;
-    width: 48.82117%;
-    padding-bottom: 4em; }
-    .info .info-2:last-child {
-      margin-right: 0; }
-    @media screen and (max-width: 850px) {
-      .info .info-2 {
-        float: left;
-        display: block;
-        margin-right: 2.35765%;
-        width: 100%;
-        padding: 2em 4em 4em 4em; }
-        .info .info-2:last-child {
-          margin-right: 0; } }
-    .info .info-2 img {
-      width: 100%; }
-
-#countdown .time {
-  padding: 2em 0;
-  font-family: Avenir;
-  float: left;
-  display: block;
-  margin-right: 2.35765%;
-  width: 31.76157%;
-  color: #000000;
-  text-align: center;
-  margin: 0; }
-  #countdown .time:last-child {
-    margin-right: 0; }
-  #countdown .time h2 {
-    margin: 0;
-    padding: 0;
-    font-size: 8em;
-    font-weight: 500;
-    line-height: 1;
+    width: 31.76157%;
+    width: 33.33%;
+    color: #FFFFFF;
+    background-color: #000000;
     text-align: center;
-    text-shadow: 1px 1px 5px #FFFFFF; }
-  #countdown .time h3 {
-    margin: 0;
-    padding: 0;
-    font-size: 2em;
-    font-weight: 500;
-    text-align: center; }
+    margin: 0; }
+    #countdown .time:last-child {
+      margin-right: 0; }
+    #countdown .time h2 {
+      margin: 0;
+      padding: 0;
+      font-size: 8em;
+      font-weight: 500;
+      line-height: 1;
+      text-align: center;
+      text-shadow: 1px 1px 5px #FFFFFF; }
+      @media screen and (max-width: 700px) {
+        #countdown .time h2 {
+          font-size: 4em; } }
+    #countdown .time h3 {
+      margin: 0;
+      padding: 0;
+      font-size: 2em;
+      font-weight: 500;
+      text-align: center; }
+      @media screen and (max-width: 700px) {
+        #countdown .time h3 {
+          font-size: 1.5em; } }
 
 .details {
   width: 100%;
   height: 100%;
-  padding: 4em 10%;
-  background-color: #FFFFFF; }
+  padding: 15em 10%; }
   @media screen and (max-width: 1000px) {
     .details {
       padding: 4em 2em; } }
@@ -583,12 +576,20 @@ body {
     font-weight: 400;
     font-size: 3em;
     color: #2a2a2a;
-    margin-top: 6em; }
+    margin-top: 2em; }
+  .details .event p {
+    font-size: 1.1em; }
   .details .faq h2 {
     margin-top: 2em;
     font-weight: 500; }
   .details .faq h3 {
-    font-weight: 100; }
+    font-weight: 100;
+    color: #444; }
+    @media screen and (max-width: 700px) {
+      .details .faq h3 {
+        font-size: 1em; } }
+  .details .faq .important {
+    font-weight: 600; }
   .details .guests {
     width: 100%;
     height: 100%;
@@ -715,7 +716,7 @@ body {
       width: 100%; }
 
 .in {
-  background-image: url("https://s3.amazonaws.com/hackbcaiv/web_static/bg.png");
+  background: url("https://s3.amazonaws.com/hackbcaiv/web_static/bg.png"); 
   text-align: center;
   color: #FFFFFF;
   height: 100%;
@@ -800,7 +801,7 @@ body {
   .profile h1 {
     font-size: 4em;
     font-weight: 100;
-    margin: 0; }
+    margin-bottom: 0.2em; }
     @media screen and (max-width: 700px) {
       .profile h1 {
         font-size: 3em;
@@ -818,7 +819,7 @@ body {
   bottom: 0;
   left: 0;
   padding: 0.7em 0 1em 0;
-  margin-top: 15.5%;
+  margin-top: 20%;
   background-color: #000000;
   color: #FFFFFF;
   text-align: center; }
@@ -855,6 +856,7 @@ body {
   width: 15%;
   z-index: 1000; }
 
+/*# sourceMappingURL=main.css.map */
 /*tbt*/
 .flashes {
     width: 100%;
@@ -971,4 +973,8 @@ body {
 
 h2 .subtext {
   color: #202020 !important;
+}
+
+#sponsors {
+  padding-top: 25vh;
 }
