@@ -361,7 +361,7 @@ class RecoverForm(Form):
     password = PasswordField("Password", [
         validators.Required(message = "You must enter a password."),
         validators.Length(min = 8, message = "Password must be at least 8 characters.")
-    ], description = "Password")
+    ], render_kw={"class": 'text'}, description = "Password")
     confirm_password = PasswordField("Confirm Password", render_kw={"class": 'text'}, description = "Confirm Password")
 
     def validate_confirm_password(form, field):
