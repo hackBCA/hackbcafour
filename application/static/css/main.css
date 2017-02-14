@@ -717,6 +717,7 @@ body {
 
 .in {
   background: url("https://s3.amazonaws.com/hackbcaiv/web_static/bg.png"); 
+  background-size: cover;
   text-align: center;
   color: #FFFFFF;
   height: 100%;
