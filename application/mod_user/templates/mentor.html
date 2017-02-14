@@ -14,34 +14,32 @@
    <p> As such, the event will only run if sufficient funds are received by March 5, 2017.</p>
 
    <form method="POST" action="">
-
-
-      {% for field in form %}
-        {% if field.name == "mlh_terms" %}
-        <br>
-        <br>
-        <a href="https://github.com/MLH/mlh-policies/blob/master/data-sharing.md">{{ field.description }}</a> {{ render_field(field) }}
-          
-
-        {% elif field.name == "mlh_coc" %}
-        <br>
-        <br>
-        <a href="https://static.mlh.io/docs/mlh-code-of-conduct.pdf">{{ field.description }}</a> {{ render_field(field) }}
-
-        {% elif field.id == "github_link" %}
-          <p>Feel free to include these links.</p>
-          {{ render_field(field) }}
+    {% for field in form %}
+      {% if field.name == "mlh_terms" %}
+      <br>
+      <br>
+      <a href="https://github.com/MLH/mlh-policies/blob/master/data-sharing.md">{{ field.description }}</a> {{ render_field(field) }}
         
-        {% elif field.type == "TextAreaField" %}
-         <div class="ta">{{ render_field(field) }}</div>
 
-        {% else %}
-          {{ render_field(field) }}
-        {% endif %}    
-      {% endfor %}
+      {% elif field.name == "mlh_coc" %}
       <br>
       <br>
-      <input type="submit" value="APPLY" class="button">
+      <a href="https://static.mlh.io/docs/mlh-code-of-conduct.pdf">{{ field.description }}</a> {{ render_field(field) }}
+
+      {% elif field.id == "github_link" %}
+        <p>Feel free to include these links.</p>
+        {{ render_field(field) }}
+      
+      {% elif field.type == "TextAreaField" %}
+       <div class="ta">{{ render_field(field) }}</div>
+
+      {% else %}
+        {{ render_field(field) }}
+      {% endif %}    
+    {% endfor %}
+    <br>
+    <br>
+    <input type="submit" value="APPLY" class="button">
    </form>
 
 </div>

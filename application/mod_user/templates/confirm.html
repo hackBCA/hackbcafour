@@ -1,19 +1,16 @@
 {% extends "user.base.html" %}
-
 {% block content %}
 {% with nav_bar = nav_bar %}
- <div class="in login">
-  {% include "navbar.html" %}
+	<div class="in login">
+{% include "navbar.html" %}
 {% endwith %}
 
-          
-				 <h1>Confirm</h1><br>
-				  <form method="POST" action="">
-				    <p>You haven't yet confirmed your email address. Please check your inbox!</p>
-				    <p>To resend the confirmation email:</p>
-				    <input type="submit" value="click here" class="button">
-				</form>
+<h1>Confirm</h1>
+<br>
 
-
-
+<form method="POST" action="">
+   <p>You haven't yet confirmed your email address. Please check your inbox!</p>
+   <p>To resend the confirmation email:</p>
+   <input type="submit" value="click here" class="button">
+</form>
 {% endblock  %}
