@@ -427,7 +427,9 @@ body {
   color: #FFFFFF;
   text-align: center;
   padding-top: 20%;
-  background: url("https://s3.amazonaws.com/hackbcaiv/web_static/bg.png"); }
+  background: url("https://s3.amazonaws.com/hackbcaiv/web_static/bg.png"); 
+  background-size: cover;
+  background-repeat: no-repeat; }
   .hero h1 {
     font-size: 4em;
     font-weight: 100;
@@ -548,7 +550,7 @@ body {
       font-weight: 500;
       line-height: 1;
       text-align: center;
-      text-shadow: 1px 1px 5px #FFFFFF; }
+      text-shadow: 1px 1px 1px #FFFFFF; }
       @media screen and (max-width: 700px) {
         #countdown .time h2 {
           font-size: 4em; } }
@@ -686,6 +688,7 @@ body {
       max-height: 110vh;
       background-image: url("http://blogs.intel.com/evangelists/files/2015/04/IMG_5346.jpg");
       background-size: cover;
+      background-repeat: no-repeat;
       transform: translate(-50%, -50%) scale(1.2); }
     .details .sponsors .row-1 {
       display: flex;
@@ -717,6 +720,8 @@ body {
 
 .in {
   background: url("https://s3.amazonaws.com/hackbcaiv/web_static/bg.png"); 
+  background-size: cover;
+  background-repeat: no-repeat;
   text-align: center;
   color: #FFFFFF;
   height: 100%;
@@ -978,3 +983,61 @@ h2 .subtext {
 #sponsors {
   padding-top: 25vh;
 }
+
+.error_page {
+  width: 100vw;
+  height: 100vh;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 4em 0;
+  background-color: black; 
+  background: url("https://s3.amazonaws.com/hackbcaiv/web_static/bg.png"); 
+  background-size: cover;
+  background-repeat: no-repeat; }
+  .error_page::after {
+    clear: both;
+    content: "";
+    display: block; }
+  @media screen and (max-width: 1000px) {
+    .error_page {
+      padding: 4em 2em; } }
+  @media screen and (max-width: 650px) {
+    .error_page {
+      padding: 4em 1em; } }
+  .error_page h1 {
+    font-weight: 100;
+    font-size: 3em;
+    text-align: center;
+    color: white; }
+    @media screen and (max-width: 760px) {
+      .error_page h1 {
+        font-size: 2em; } }
+  .error_page h2 {
+    font-size: 1.1em;
+    font-weight: 100;
+    color: #666;
+    line-height: 2;
+    margin-bottom: 2em; }
+    @media screen and (max-width: 760px) {
+      .error_page h2 {
+        font-size: 1em;
+        line-height: 1.8; } }
+  .error_page .logo {
+    display: block;
+    width: 9em;
+    height: 9em;
+    -webkit-animation: mover 3.2s infinite  alternate;
+    animation: mover 3.2s infinite  alternate;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 5%; }
+    @-webkit-keyframes mover {
+    0% { transform: translateY(0); }
+    100% { transform: translateY(-13px); }
+    }
+    @keyframes mover {
+        0% { transform: translateY(0); }
+        100% { transform: translateY(-13px); }
+    }
+
+
