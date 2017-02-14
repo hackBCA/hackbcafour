@@ -548,7 +548,7 @@ body {
       font-weight: 500;
       line-height: 1;
       text-align: center;
-      text-shadow: 1px 1px 5px #FFFFFF; }
+      text-shadow: 1px 1px 1px #FFFFFF; }
       @media screen and (max-width: 700px) {
         #countdown .time h2 {
           font-size: 4em; } }
