@@ -81,7 +81,7 @@ def add_hacker(fields, email, password):
 
     # application_fields = ["firstname", "lastname", "school", "age", "grade", "gender", "free_response1", "link1", "link2", "link3", "mlh_terms", "mlh_coc"]
     
-	new_entry = UserEntry(type_account = "hacker", email = email, hashed = hashed, first_name = fields['first_name'], last_name = fields['last_name'], school = fields['school'], gender = fields['gender'], beginner = fields['beginner'], ethnicity = fields['ethnicity'], grade = fields['grade'], age = fields['age'], num_hackathons = fields['num_hackathons'], free_response1 = fields['free_response1'], link1 = fields['link1'], link2 = fields['link2'], link3 = fields['link3'], mlh_coc = fields['mlh_coc'], mlh_terms = fields['mlh_terms'])
+	new_entry = UserEntry(type_account = "hacker", email = email.lower(), hashed = hashed, first_name = fields['first_name'], last_name = fields['last_name'], school = fields['school'], gender = fields['gender'], beginner = fields['beginner'], ethnicity = fields['ethnicity'], grade = fields['grade'], age = fields['age'], num_hackathons = fields['num_hackathons'], free_response1 = fields['free_response1'], link1 = fields['link1'], link2 = fields['link2'], link3 = fields['link3'], mlh_coc = fields['mlh_coc'], mlh_terms = fields['mlh_terms'])
 	new_entry.save()
 	validate_email(email)
 
@@ -93,7 +93,7 @@ def add_mentor(fields, email, password):
 	
 	hashed = bcrypt.hashpw(password.encode("utf-8"), bcrypt.gensalt())
 
-	new_entry = UserEntry(type_account = "mentor", email = email, hashed = hashed, first_name = fields['first_name'], last_name = fields['last_name'], school = fields['school'], phone = fields['phone'], num_hackathons = fields['num_hackathons'], mentor_free_response1 = fields['mentor_free_response1'], mentor_free_response2 = fields['mentor_free_response2'], github_link = fields['github_link'], linkedin_link = fields['linkedin_link'], site_link = fields['site_link'], other_link = fields['other_link'], mlh_coc = fields['mlh_coc'], mlh_terms = fields['mlh_terms'])
+	new_entry = UserEntry(type_account = "mentor", email = email.lower(), hashed = hashed, first_name = fields['first_name'], last_name = fields['last_name'], school = fields['school'], phone = fields['phone'], num_hackathons = fields['num_hackathons'], mentor_free_response1 = fields['mentor_free_response1'], mentor_free_response2 = fields['mentor_free_response2'], github_link = fields['github_link'], linkedin_link = fields['linkedin_link'], site_link = fields['site_link'], other_link = fields['other_link'], mlh_coc = fields['mlh_coc'], mlh_terms = fields['mlh_terms'])
 	new_entry.save()
 	
 	validate_email(email)

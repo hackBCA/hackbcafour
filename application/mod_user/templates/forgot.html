@@ -1,26 +1,22 @@
 {% extends "user.base.html" %}
 
 {% set nav_bar = [
-  ("/#home", "Home", False)
+("/#home", "Home", False)
 ] -%}
 
 {% block content %}
 {% with nav_bar = nav_bar %}
- <div class="in login">
-  {% include "navbar.html" %}
+	<div class="in login">
+{% include "navbar.html" %}
 {% endwith %}
 
-               <h1 class="title">Forgot</h1>
-                <h2>Password Recovery</h2>
-			           <form method="POST" action="">
-			         
-		              {% for field in form %}
-		                {{ render_field(field) }}
-		              {% endfor %}
-			         
-			         <input type="submit" value="SEND EMAIL" class="button">
-                </form>
-           
-  
-     
+	<h1 class="title">Forgot</h1>
+	<h2>Password Recovery</h2>
+	<form method="POST" action="">
+		   {% for field in form %}
+		   		{{ render_field(field) }}
+		   {% endfor %}
+	   <input type="submit" value="SEND EMAIL" class="button">
+	</form>
+
 {% endblock %}
