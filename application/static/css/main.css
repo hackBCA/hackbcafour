@@ -660,9 +660,11 @@ body {
       align-items: center;
       width: 100%; }
     .details .sponsors .row-4 img {
-      flex: 1;
       width: calc(100% / 4);
       height: 100%; }
+    #makeschool img {
+      flex: 1;
+    }
     .details .sponsors .row-5 {
       display: flex;
       align-items: center;
@@ -697,7 +699,7 @@ body {
       align-items: center;
       width: 100%; }
     .details .sponsors .row-1 img {
-      width: 50%;
+      width: 35%;
       height: 100%; }
     .details .sponsors .row-2 {
       display: flex;
@@ -706,8 +708,8 @@ body {
       align-items: center;
       width: 100%; }
     .details .sponsors .row-2 img {
-      width: 25%;
-      height: 100%; }
+      width: 35%;
+      height: 90%; }
     .details .sponsors [class^="row"] img {
       padding: 2vw; }
     .details .sponsors .flex-column {
@@ -717,6 +719,9 @@ body {
       flex-direction: column; }
     .details .sponsors .flex-column img {
       width: 100%; }
+    .img-big {
+      height: 75% !important;
+    }
 
 .in {
   background: url("https://s3.amazonaws.com/hackbcaiv/web_static/bg.png"); 
@@ -824,7 +829,7 @@ body {
   bottom: 0;
   left: 0;
   padding: 0.7em 0 1em 0;
-  margin-top: 14%;
+  margin-top: 16.5%;
   background-color: #000000;
   color: #FFFFFF;
   text-align: center; }
