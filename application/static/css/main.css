@@ -626,6 +626,9 @@ body {
             margin-right: 0; } }
   .details .sponsors {
     text-align: center; }
+    .sponsors img:hover {
+      cursor: pointer;
+    }
     .details .sponsors h1 {
       font-size: 4em;
       font-weight: 500; }
