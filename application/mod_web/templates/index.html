@@ -2,10 +2,11 @@
 
 {% set nav_bar = [
   ("#home", "Home", True),
-  ("#about", "About", False),
-  ("#faq", "FAQ", False),
-  ("#guests", "Guests", False),
-  ("#sponsors", "Sponsors", False)
+  (".info", "About", False),
+  ("#divider_faq", "FAQ", False),
+  ("#divider_guests", "Guests", False),
+  ("#divider_schedule", "Schedule", False),
+  ("#divider_sponsors", "Sponsors", False)
 ] -%}
 
 {% block header %}{% endblock %}
@@ -15,6 +16,68 @@
     {% include "navbar.html" %}
   {% endwith %}
 
+
+
+    <section id="home">
+        {% include "web.home.html" %}
+    </section>
+  
+    <section id="about">
+        {% include "web.about.html" %}
+    </section>
+
+    <section id="countdown">
+      {% include "web.countdown.html" %}
+    </section>
+    
+    <div class="ww">
+    <section id="when_where">
+      {% include "web.when_where.html" %}
+    </section>
+    </div>
+    <div id="map-container"></div>
+     <section id="divider">
+      {% include "web.divider_faq.html" %}
+    </section>
+    <br>
+      <div class="details">
+     <section id="faq">
+        {% include "web.faq.html" %}
+    </section> 
+    </div>
+    <section id="divider">
+      {% include "web.divider_guests.html" %}
+    </section>
+     <div class="details">
+    <section id="guests">
+        {% include "web.guests.html" %}
+    </section>
+    </div>
+    <section id="divider">
+      {% include "web.divider_schedule.html" %}
+    </section>
+     <div class="details">
+    <section id="schedule">
+        {% include "web.schedule.html" %}
+    </section>
+    </div>
+    <section id="divider">
+      {% include "web.divider_sponsors.html" %}
+    </section>
+     <div class="details">
+    <section id="sponsors">
+        {% include "web.sponsors.html" %}
+    </section>
+    </div>
+    <section id="footer">
+          {% include "footer.html" %}
+    </section>
+    
+  
+
+
+
+{% endblock %}
 
 {% block scripts %}
 <script src="https://use.typekit.net/cdh1lxe.js"></script>
@@ -52,40 +115,25 @@
      });
  });
     </script>
+
+    <script>
+      function initMap() {
+        var bca = {lat: 40.9025, lng: -74.0339};
+        var map = new google.maps.Map(document.getElementById('map-container'), {
+          zoom: 15,
+          scrollwheel: false,
+          center: bca
+        });
+        var marker = new google.maps.Marker({
+          position: bca,
+          title: "Bergen County Academies",
+          map: map
+        });
+      }
+    </script>
+    <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDuRMzzLIXFaKFkVf_QRH9xpeESjs75wnk&callback=initMap">
+    </script>
 {% endblock %}
-
-    <section id="home">
-        {% include "web.home.html" %}
-    </section>
-  
-    <section id="about">
-        {% include "web.about.html" %}
-    </section>
-
-      <section id="countdown">
-      {% include "web.countdown.html" %}
-    </section>
-    <br>
-      <div class="details">
-     <section id="faq">
-        {% include "web.faq.html" %}
-    </section>
-    <section id="guests">
-        {% include "web.guests.html" %}
-    </section>
-    <section id="sponsors">
-        {% include "web.sponsors.html" %}
-    </section>
-    </div>
-    <section id="footer">
-          {% include "footer.html" %}
-    </section>
-    
-  
-
-
-
-{% endblock %}
-
 
 
