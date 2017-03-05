@@ -534,8 +534,8 @@ body {
   width: 100%;
   padding: 4em 7%;
   background-color: #FFFFFF; }
-   .schedule .schedule h1 {
-      font-size: 3em;
+   .schedule .schedule-1 h1 {
+      font-size: 2.5em;
       font-weight: 100;
       color: #2a2a2a; }
   @media screen and (max-width: 1000px) {
@@ -569,18 +569,18 @@ body {
       color: #666;
     }
     
-    @media screen and (max-width: 650px) {
+    /*@media screen and (max-width: 650px) {
         .schedule .schedule-1 h2 {
           line-height: 1.8; } }
-    }
+    }*/
     @media screen and (max-width: 850px) {
       .schedule .schedule-1 {
-        float: left;
-        display: block;
+        /*float: left;
+        display: block;*/
         margin-right: 2.35765%;
         width: 100%; }
-        .schedule .schedule-1:last-child {
-          margin-right: 0; } }
+        /*.schedule .schedule-1:last-child {
+          margin-right: 0; } */}
   .schedule .schedule-2 {
     float: left;
     display: block;
@@ -773,6 +773,7 @@ body {
 #divider_sponsors {
   background-image: url("https://s3.amazonaws.com/hackbcawebsite/sponsors.jpg");
   margin-bottom: 5%;
+  margin-top: 5%;
 }
 
 #divider_schedule {
@@ -806,7 +807,7 @@ body {
     font-weight: 600; }
   .qww {
     padding-top: 20%;
-    padding-bottom: 12%;
+    padding-bottom: 10%;
   }
 
 
@@ -847,13 +848,19 @@ body {
   .details .faq h3 {
     font-weight: 100;
     color: #444; }
-    @media screen and (max-width: 700px) {
+    @media screen and (max-width: 800px) {
       .details .faq h3 {
         font-size: 1em; } 
       .details .faq h2 {
         color: black;
         font-style: bold;
-        background-color: transparent; }}
+        background-color: transparent; }
+      .details .faq h1 {
+        font-size: 1.2em;
+        text-align: center; } 
+      #faq-contact {
+        font-size: 1.2em;
+        text-align: center; } }
   .details .faq .important {
     font-weight: 600; }
   .details .guests {
