@@ -855,12 +855,15 @@ body {
         color: black;
         font-style: bold;
         background-color: transparent; }
-      .details .faq h1 {
+      .details .faq .question h1 {
         font-size: 1.2em;
         text-align: center; } 
       #faq-contact {
         font-size: 1.2em;
         text-align: center; } }
+  .question {
+      text-align: center;
+    }
   .details .faq .important {
     font-weight: 600; }
   .details .guests {
@@ -991,6 +994,12 @@ body {
       width: 25%;
       height: 100%; }
     }
+
+    @media screen and (max-width: 1000px) {
+    #partners img {
+      width: 25%;
+      height: 100%;
+    } }
     .details .sponsors [class^="row"] img {
       padding: 2vw; }
     .details .sponsors .flex-column {
@@ -1003,6 +1012,7 @@ body {
     .img-big {
       height: 75% !important;
     }
+
 
 .in {
   background: url("https://s3.amazonaws.com/hackbcaiv/web_static/bg.png"); 
