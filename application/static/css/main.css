@@ -534,13 +534,8 @@ body {
   width: 100%;
   padding: 4em 7%;
   background-color: #FFFFFF; }
-   .schedule .schedule-1 h1 {
-      font-size: 2.5em;
-      font-weight: 100;
-      color: #2a2a2a; }
-
-    .schedule .schedule-2 h1 {
-      font-size: 2.5em;
+   .schedule .schedule h1 {
+      font-size: 3em;
       font-weight: 100;
       color: #2a2a2a; }
   @media screen and (max-width: 1000px) {
@@ -811,7 +806,7 @@ body {
     font-weight: 600; }
   .qww {
     padding-top: 20%;
-    padding-bottom: 9.5%;
+    padding-bottom: 12%;
   }
 
 
@@ -819,7 +814,7 @@ body {
 .details {
   width: 100%;
   height: 100%;
-  padding: 10em 10%; }
+  padding: 15em 10%; }
   @media screen and (max-width: 1000px) {
     .details {
       padding: 4em 2em; } }
@@ -835,11 +830,11 @@ body {
   .details .event p {
     font-size: 1.1em; }
   .details .faq h2 {
+    font-size: 1.5em;
     background: black;
     color: white;
     padding: 10px;
     text-align: center;
-    border-bottom: 3px solid #8BDA48;
    /* #FFC522*/
     /*#70ff00;*/
     margin-top: 2em;
@@ -854,7 +849,11 @@ body {
     color: #444; }
     @media screen and (max-width: 700px) {
       .details .faq h3 {
-        font-size: 1em; } }
+        font-size: 1em; } 
+      .details .faq h2 {
+        color: black;
+        font-style: bold;
+        background-color: transparent; }}
   .details .faq .important {
     font-weight: 600; }
   .details .guests {
