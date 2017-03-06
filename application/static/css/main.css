@@ -466,12 +466,12 @@ body {
       transition: all 0.8s;
       opacity: 1;
       cursor: pointer; }
-    @media screen and (max-width: 700px) {
+    @media screen and (max-width: 710px) {
       .hero .button {
         width: 20em;
         margin: 0.3em 1em; } }
 
-@media screen and (max-width: 700px) {
+@media screen and (max-width: 710px) {
   .no-mobile {
     display: none; } }
 
@@ -652,7 +652,6 @@ body {
         #countdown .time h2 {
           font-size: 4em; } }
     #countdown .time h3 {
-      color: #8BDA48;
       /*rgb(52,206,132)*/
       margin: 0;
       padding: 0;
@@ -725,13 +724,13 @@ body {
           font-size: 1.5em; } }
 
 #faq-contact {
-  color: #8BDA48;
   display: inline-block;
+  color: black;
 }
 
 .faq-link {
-  color: #8BDA48;
   display: inline-block;
+  color: black;
 }
 
 /*  SECTIONS  */
@@ -747,6 +746,8 @@ body {
   line-height: 200%;
   display: block;
   float:left;
+  padding: 1%;
+  text-align: center;
   margin: 1% 0 1% 1.6%;
 }
 .faq-box:first-child { margin-left: 0; }
