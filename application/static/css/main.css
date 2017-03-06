@@ -228,6 +228,9 @@ textarea {
   /* 1 */
   margin: 0;
   /* 2 */ }
+.text {
+  color: initial;
+}
 
 /**
  * Restore the font weight unset by the previous rule.
@@ -721,8 +724,14 @@ body {
         .divider .time h3 {
           font-size: 1.5em; } }
 
-.pure-g [class *="pure-u"] {
-  font-family: 'azo-sans-web', 'Atlas Grotesk';
+#faq-contact {
+  color: #8BDA48;
+  display: inline-block;
+}
+
+.faq-link {
+  color: #8BDA48;
+  display: inline-block;
 }
 
 /*  SECTIONS  */
@@ -731,6 +740,7 @@ body {
   padding: 0px;
   margin: 0px;
 }
+
 
 /*  COLUMN SETUP  */
 .faq-box {
@@ -832,19 +842,15 @@ body {
     font-size: 1.1em; }
   .details .faq h2 {
     font-size: 1.5em;
-    background: black;
-    color: white;
+    /*background: black;
+    color: white;*/
+   /* border-bottom: 2px solid #4c4c4c;*/
     padding: 10px;
     text-align: center;
    /* #FFC522*/
     /*#70ff00;*/
     margin-top: 2em;
-    font-weight: 500; }
-    #faq-contact {
-      color: #8BDA48;
-      display: inline-block;
-      font-size: 1.5em;
-    }
+    font-weight: 600; }
   .details .faq h3 {
     font-weight: 100;
     color: #444; }
