@@ -20,3 +20,7 @@ def sponsors():
 @mod_web.route("/sponsor", methods = ["GET"])
 def foward_sponsors():
     return redirect("/sponsors")
+
+@mod_web.route("/livestream", methods = ["GET"])
+def livestream():
+	return redirect("https://livestream.com/accounts/18225475/hackbca")
