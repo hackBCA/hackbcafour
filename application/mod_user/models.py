@@ -37,7 +37,7 @@ class UserEntry(Document):
 	
 	decision = StringField()
 	# accepted_time = IntField()
-	attending = StringField()
+	attending = BooleanField()
 	rsvp = BooleanField(default = False) #Has the user submitted their rsvp form?
 
 	age = StringField()

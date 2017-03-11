@@ -106,9 +106,11 @@ def rsvp():
       if not rsvp_submitted:
         if "submit" in request.form:
           controller.save_form_data(current_user.email, request.form)
-          if ('attending' in request.form and request.form['attending'] == 'Not Attending') or form.validate():
-            flash("Submitted.", "succes")
+          # if ('attending' in request.form and request.form['attending'] == 'Not Attending') or form.validate():
+          if form.validate():
+            flash("Submitted.", "success")
             controller.set_user_attr(current_user.email, "rsvp", True)
+            controller.set_user_attr(current_user.email, "attending", True)
             controller.login(current_user.email)
           else:
             flash("Please correct any errors.", "error")
@@ -121,11 +123,12 @@ def rsvp():
       flash("Something went wrong.", "error")
   else:
     user = controller.get_user(current_user.email)
+    return redirect("/account")
     # if current_user.type_account == "mentor":
     #     form = MentorRsvpForm(request.form, obj = user)
     #   else:
     #     form = RsvpForm(request.form, obj = user)
-    form = RsvpForm(request.form, obj = user) ## obj=user / app saving; rmv in future
+    # form = RsvpForm(request.form, obj = user) ## obj=user / app saving; rmv in future
   return render_template("user.rsvp.html", form = form)
 
 @mod_user.route("/account/confirm", methods = ["GET", "POST"])
