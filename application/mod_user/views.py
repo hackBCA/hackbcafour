@@ -82,7 +82,9 @@ def recover_change(token):
 @mod_user.route("/account")
 @login_required
 def account():
-  return render_template("user.account.html")
+  rsvp = controller.get_user_attr(current_user.email, "rsvp")
+  decision = controller.get_user_attr(current_user.email, "decision")
+  return render_template("user.account.html", rsvp=rsvp, decision=decision)
 
 ################ NEW CODE
 @mod_user.route("/account/rsvp", methods = ["GET", "POST"])

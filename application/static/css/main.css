@@ -1342,3 +1342,15 @@ h2 .subtext {
         0% { transform: translateY(0); }
         100% { transform: translateY(-13px); }
     }
+
+#twrap{
+  max-width: 35%;
+  margin: 0 auto;
+  line-height: 2;
+}
+
+.w {
+  color: #365023;
+  font-style: italic;
+  font-weight: bold;
+}
