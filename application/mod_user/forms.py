@@ -347,26 +347,26 @@ class RsvpForm(Form):
         validators.Email(message = "Invalid email address."
     )], render_kw={"class": 'text'}, description = "Guardian Email")
 
-    parent2_name = TextField("Emergency Contact Full Name", [
+    emergency_name = TextField("Emergency Contact Full Name", [
         validators.Required(message = "You must enter a name.")
     ], render_kw={"class": 'text'}, description = "Emergency Contact Name")
 
-    parent2_home_num = TextField("Emergency Contact Home Number", [
+    emergency_home_num = TextField("Emergency Contact Home Number", [
         validators.Required(message = "Enter your emergency contact's home number."),
         validators.Regexp(phone_regex, message = "Please enter a valid phone number.")
     ], render_kw={"class": 'text'}, description = "Emergency Contact Home Number")
 
-    parent2_cell_num = TextField("Emergency Contact Cellphone", [
+    emergency_cell_num = TextField("Emergency Contact Cellphone", [
         validators.Required(message = "Enter your emergency contact's cellphone."),
         validators.Regexp(phone_regex, message = "Please enter a valid phone number.")
     ], render_kw={"class": 'text'}, description = "Emergency Contact Cellphone")
 
-    parent2_email = TextField("Emergency Contact Email", [
+    emergency_email = TextField("Emergency Contact Email", [
         validators.Required(message = "Enter an email."),
         validators.Email(message = "Invalid email address."
     )], render_kw={"class": 'text'}, description = "Emergency Contact Email")
 
-    school_street = TextField("School Address", [
+    school_address = TextField("School Address", [
          validators.Required(message = "Enter your school address."),
     ], render_kw={"class": 'text'}, description = "School Address")
 
