@@ -314,10 +314,17 @@ class ChangePasswordForm(Form):
         if len(password) >= 8 and password != field.data:
             raise ValidationError("Passwords must match.")
 
-class RsvpForm(Form):
-    t_shirt_size = SelectField("What is your shirt size?", [validators.Required(message = "You must select an option.")], choices = shirt_sizes, description = "What is your shirt size?")
+attending_choices = [
+    ("Attending", "Yes, I will!"),
+    ("Not Attending", "No, I won't.")
+]
 
-    dietary_restrictions = TextAreaField("Dietary Restrictions", [
+class RsvpForm(Form):
+    # attending = RadioField("Are you attending hackBCA III?", [validators.Required(message = "Please tell us if you are attending hackBCA III.")], render_kw={"class": 'text'}, choices = attending_choices,  description = "Will you be at hackBCA?")
+
+    # t_shirt_size = SelectField("What is your shirt size?", [validators.Required(message = "You must select an option.")], choices = shirt_sizes, description = "What is your shirt size?")
+
+    dietary_restrictions = TextField("Dietary Restrictions", [
         validators.optional(),
     ], render_kw={"class": 'text'}, description = "Do you have any dietary restrictions?")
 
@@ -392,7 +399,7 @@ class RsvpForm(Form):
     cs_teacher_email = TextField("CS Teacher Email", [
         validators.optional(),
         validators.Email(message = "Invalid email address."
-    )], render_kw={"class": 'text'}, description = "Email (if applicable)")
+    )], render_kw={"class": 'text'}, description = "CS Teacher Email (if applicable)")
 # class MentorRsvpForm(Form):
 #     attending = RadioField("Are you attending hackBCA III?", [validators.Required(message = "Please tell us if you are attending hackBCA III.")], choices = attending_choices)
 
