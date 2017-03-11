@@ -37,7 +37,7 @@ class UserEntry(Document):
 	
 	decision = StringField()
 	# accepted_time = IntField()
-	attending = BooleanField()
+	# attending = BooleanField()
 	rsvp = BooleanField(default = False) #Has the user submitted their rsvp form?
 
 	age = StringField()
@@ -45,17 +45,17 @@ class UserEntry(Document):
 	link2 = StringField()
 	link3 = StringField()
 
-	parent1_name = StringField()
-	parent1_home_num = StringField()
-	parent1_cell_num = StringField()
-	parent1_email = StringField()
+	guardian_name = StringField()
+	guardian_home_num = StringField()
+	guardian_cell_num = StringField()
+	guardian_email = StringField()
 
-	parent2_name = StringField()
-	parent2_home_num = StringField()
-	parent2_cell_num = StringField()
-	parent2_email = StringField()
+	emergency_name = StringField()
+	emergency_home_num = StringField()
+	emergency_cell_num = StringField()
+	emergency_email = StringField()
 
-	school_street = StringField()
+	school_address = StringField()
 	school_town = StringField()
 	school_state = StringField()
 	school_phone_num = StringField()
