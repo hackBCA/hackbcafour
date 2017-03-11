@@ -15,11 +15,21 @@ def index():
 def sponsors():
     return mod_web.send_static_file("prospectus.pdf")
 
+@mod_web.route("/waiver", methods = ["GET"])
+def waiver():
+    return mod_web.send_static_file("waiver.pdf")
+
 @mod_web.route("/sponsors.pdf", methods = ["GET"])
 @mod_web.route("/sponsor.pdf", methods = ["GET"])
 @mod_web.route("/sponsor", methods = ["GET"])
 def foward_sponsors():
     return redirect("/sponsors")
+
+@mod_web.route("/waiver.pdf", methods = ["GET"])
+@mod_web.route("/waiver.pdf", methods = ["GET"])
+@mod_web.route("/waiver", methods = ["GET"])
+def foward_waiver():
+    return redirect("/waiver")
 
 @mod_web.route("/livestream", methods = ["GET"])
 def livestream():

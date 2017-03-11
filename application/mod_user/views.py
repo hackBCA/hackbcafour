@@ -84,6 +84,13 @@ def recover_change(token):
 def account():
   return render_template("user.account.html")
 
+# @mod_user.route("/account/rsvp", methods = ["GET", "POST"])
+# @login_required
+# def rsvp():
+#   if current_user.decision != "Accepted":
+#     return redirect("/account")
+#   if current_user.
+
 
 @mod_user.route("/account/confirm", methods = ["GET", "POST"])
 def verify():
