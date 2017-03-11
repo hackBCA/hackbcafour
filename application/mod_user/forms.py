@@ -276,86 +276,6 @@ class EmailForm(Form):
     )], render_kw={"class": 'text'}, description = "Email")
 
 
-class ApplicantInformation(Form):
-    t_shirt_size = SelectField("What is your shirt size?", [validators.Required(message = "You must select an option.")], choices = shirt_sizes, description = "What is your shirt size?")
-
-    dietary_restrictions = TextAreaField("Dietary Restrictions", [
-        validators.optional(),
-    ], description = "Do you have any dietary restrictions?")
-
-    parent1_name = TextField("Parent1 Name", [
-        validators.Required(message = "You must enter a first name.")
-    ], description = "Parent1 Name")
-
-    parent1_home_num = TextField("Parent1 Home Num", [
-        validators.Required(message = "Enter parent 1's home number."),
-        validators.Regexp(phone_regex, message = "Please enter a valid phone number.")
-    ], description = "Parent1 Home Num")
-
-    parent1_cell_num = TextField("Parent1 Cell Num", [
-        validators.Required(message = "Enter parent 1's home number."),
-        validators.Regexp(phone_regex, message = "Please enter a valid phone number.")
-    ], description = "Parent1 Cell Num")
-
-    parent1_email = TextField("Parent1 Email", [
-        validators.Required(message = "Enter an email."),
-        validators.Email(message = "Invalid email address."
-    )], description = "Parent1 Email")
-
-    parent2_name = TextField("Parent2 Name", [
-        validators.Required(message = "You must enter a first name.")
-    ], description = "Parent2 Name")
-
-    parent2_home_num = TextField("Parent1 Home Num", [
-        validators.Required(message = "Enter parent 1's home number."),
-        validators.Regexp(phone_regex, message = "Please enter a valid phone number.")
-    ], description = "Parent2 Home Num")
-
-    parent2_cell_num = TextField("Parent2 Cell Num", [
-        validators.Required(message = "Enter parent 1's home number."),
-        validators.Regexp(phone_regex, message = "Please enter a valid phone number.")
-    ], description = "Parent2 Cell Num")
-
-    parent2_email = TextField("Parent2 Email", [
-        validators.Required(message = "Enter an email."),
-        validators.Email(message = "Invalid email address."
-    )], description = "Parent1 Email")
-
-    school_street = TextField("School Street", [
-         validators.Required(message = "Enter your school street."),
-    ], description = "School Street")
-
-    school_town = TextField("School Town", [
-         validators.Required(message = "Enter your school town."),
-    ], description = "School Town")
-
-    school_state = TextField("School State", [
-         validators.Required(message = "Enter your school state."),
-    ], description = "School State")
-
-    school_phone_num = TextField("School Phone Number", [
-        validators.Required(message = "Enter school's home number."),
-        validators.Regexp(phone_regex, message = "Please enter a valid phone number.")
-    ], description = "School Phone Number")
-
-    school_principal_name = TextField("Principal Name", [
-        validators.Required(message = "You must enter a name."),
-    ], description = "Principal Name")
-
-    school_principal_email = TextField("Principal Email", [
-        validators.Required(message = "Enter an email."),
-        validators.Email(message = "Invalid email address."
-    )], description = "Principal Email")
-
-    cs_teacher_name = TextField("CS Teacher Name", [
-        validators.optional(),
-    ], description = "CS Teacher Name")
-
-    cs_teacher_email = TextField("CS Teacher Email", [
-        validators.optional(),
-        validators.Email(message = "Invalid email address."
-    )], description = "Email")
-
 
 class RecoverForm(Form):
     password = PasswordField("Password", [
@@ -394,6 +314,117 @@ class ChangePasswordForm(Form):
         if len(password) >= 8 and password != field.data:
             raise ValidationError("Passwords must match.")
 
+attending_choices = [
+    ("Attending", "Yes, I will!"),
+    ("Not Attending", "No, I won't.")
+]
+
+class RsvpForm(Form):
+    # attending = RadioField("Are you attending hackBCA III?", [validators.Required(message = "Please tell us if you are attending hackBCA III.")], render_kw={"class": 'text'}, choices = attending_choices,  description = "Will you be at hackBCA?")
+
+    # t_shirt_size = SelectField("What is your shirt size?", [validators.Required(message = "You must select an option.")], choices = shirt_sizes, description = "What is your shirt size?")
+
+    dietary_restrictions = TextField("Dietary Restrictions", [
+        validators.optional(),
+    ], render_kw={"class": 'text'}, description = "Do you have any dietary restrictions?")
+
+    parent1_name = TextField("Parent1 Name", [
+        validators.Required(message = "You must enter a first name.")
+    ], render_kw={"class": 'text'}, description = "Parent1 Name")
+
+    parent1_home_num = TextField("Parent1 Home Num", [
+        validators.Required(message = "Enter parent 1's home number."),
+        validators.Regexp(phone_regex, message = "Please enter a valid phone number.")
+    ], render_kw={"class": 'text'}, description = "Parent1 Home Num")
+
+    parent1_cell_num = TextField("Parent1 Cell Num", [
+        validators.Required(message = "Enter parent 1's home number."),
+        validators.Regexp(phone_regex, message = "Please enter a valid phone number.")
+    ], render_kw={"class": 'text'}, description = "Parent1 Cell Num")
+
+    parent1_email = TextField("Parent1 Email", [
+        validators.Required(message = "Enter an email."),
+        validators.Email(message = "Invalid email address."
+    )], render_kw={"class": 'text'}, description = "Parent1 Email")
+
+    parent2_name = TextField("Parent2 Name", [
+        validators.Required(message = "You must enter a first name.")
+    ], render_kw={"class": 'text'}, description = "Parent2 Name")
+
+    parent2_home_num = TextField("Parent2 Home Num", [
+        validators.Required(message = "Enter parent 1's home number."),
+        validators.Regexp(phone_regex, message = "Please enter a valid phone number.")
+    ], render_kw={"class": 'text'}, description = "Parent2 Home Num")
+
+    parent2_cell_num = TextField("Parent2 Cell Num", [
+        validators.Required(message = "Enter parent 1's home number."),
+        validators.Regexp(phone_regex, message = "Please enter a valid phone number.")
+    ], render_kw={"class": 'text'}, description = "Parent2 Cell Num")
+
+    parent2_email = TextField("Parent2 Email", [
+        validators.Required(message = "Enter an email."),
+        validators.Email(message = "Invalid email address."
+    )], render_kw={"class": 'text'}, description = "Parent1 Email")
+
+    school_street = TextField("School Street", [
+         validators.Required(message = "Enter your school street."),
+    ], render_kw={"class": 'text'}, description = "School Street")
+
+    school_town = TextField("School Town", [
+         validators.Required(message = "Enter your school town."),
+    ], render_kw={"class": 'text'}, description = "School Town")
+
+    school_state = TextField("School State", [
+         validators.Required(message = "Enter your school state."),
+    ], render_kw={"class": 'text'}, description = "School State")
+
+    school_phone_num = TextField("School Phone Number", [
+        validators.Required(message = "Enter school's home number."),
+        validators.Regexp(phone_regex, message = "Please enter a valid phone number.")
+    ], render_kw={"class": 'text'}, description = "School Phone Number")
+
+    school_principal_name = TextField("Principal Name", [
+        validators.Required(message = "You must enter a name."),
+    ], render_kw={"class": 'text'}, description = "Principal Name")
+
+    school_principal_email = TextField("Principal Email", [
+        validators.Required(message = "Enter an email."),
+        validators.Email(message = "Invalid email address."
+    )], render_kw={"class": 'text'}, description = "Principal Email")
+
+    cs_teacher_name = TextField("CS Teacher Name", [
+        validators.optional(),
+    ], render_kw={"class": 'text'}, description = "CS Teacher Name (if applicable)")
+
+    cs_teacher_email = TextField("CS Teacher Email", [
+        validators.optional(),
+        validators.Email(message = "Invalid email address."
+    )], render_kw={"class": 'text'}, description = "CS Teacher Email (if applicable)")
+# class MentorRsvpForm(Form):
+#     attending = RadioField("Are you attending hackBCA III?", [validators.Required(message = "Please tell us if you are attending hackBCA III.")], choices = attending_choices)
+
+#     phone = TextField("Phone Number", [
+#         validators.Required(message = "Confirm your preferred contact number."),
+#         validators.Regexp(phone_regex, message = "Please enter a valid phone number.")
+#     ], description = "Phone Number Confirmation")
+
+#     t_shirt_size = SelectField("What is your shirt size?", [validators.Required(message = "You must select an option.")], choices = shirt_sizes, description = "What is your shirt size?")
+
+#     food_allergies = TextAreaField("Allergies", [
+#         validators.optional(),
+#     ], description = "Do you have any allergies?")
+
+#     medical_information = TextAreaField("Medical Information", [
+#         validators.optional(),
+#     ], description = "Are there any other medical issues that we should know about? (ex. Other allergies, illnesses, etc.)")
+
+#     hackbca_rules = BooleanField("I agree",[
+#         validators.Required(message = "Please read and agree to our rules.")
+#     ], description = "I agree to the rules set forth by hackBCA.", default = False)
+
+#     mlh_terms = BooleanField("I agree",[
+#         validators.Required(message = "Please read and agree to the MLH Code of Conduct.")
+#     ], description = "I agree to the MLH Code of Conduct.", default = False)
 
 
   

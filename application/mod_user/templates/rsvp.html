@@ -1,0 +1,63 @@
+{% extends "user.base.html" %}
+
+{% block content %}
+{% with nav_bar = nav_bar %}
+<div class="in profile">
+  {% include "navbar.html" %}
+{% endwith %}
+
+
+<h1>RSVP</h1>
+<div class="message">
+        <h2>Hey, {{ current_user.first_name }}!</h2>
+        <h2>We're so excited to see you at hackBCA!</h2>
+        <p>Have a question? Shoot us an email at <a href="mailto:contact@hackbca.com">contact@hackbca.com</a>.</p>
+</div>
+
+      <form id="rsvp-form" method="POST" action="" onsubmit="">
+      	
+      	{% for field in form %}
+
+      		{% if field == form.dietary_restrictions %}
+      			<div id="partition1" style="display: block;">
+   			{% elif field == form.school_street %}
+   				<input id="p1" type="button" value="Next" onclick = "replace();" class="button">
+   				</div>
+   				<div id="partition2" style="display: none;">
+   			{% endif %}
+
+   			{{ render_field(field) }}
+
+   			{% if field == form.cs_teacher_email %}
+   				<input id="p2" type="button" value="Go Back" onclick = "replace();" class="button"><br>
+   				<input type="submit" name="submit" value="Submit" class="button">
+   				</div>
+   			{% endif %}
+      		
+   		{% endfor %}
+   
+      </form>
+
+</div>
+ {% include "footer.html" %}
+ {% block scripts %}
+  <script src="https://use.typekit.net/cdh1lxe.js"></script>
+  <script>try{Typekit.load({ async: true });}catch(e){}</script>
+  <script src="https://use.fontawesome.com/8e5e6b8c4e.js"></script>
+  <script type = "text/javascript">
+	function replace() {
+		var e1 = document.getElementById("partition1");
+		var e2 = document.getElementById("partition2");
+
+		if (e1.style.display == 'block') {
+			e1.style.display = 'none';
+		  	e2.style.display = 'block';	
+		} else {
+			e1.style.display = 'block';
+			e2.style.display = 'none';
+		}
+		 
+	}
+</script>
+ {% endblock %}
+{% endblock %}
