@@ -18,7 +18,7 @@ class UserEntry(Document):
 
 	type_account = StringField(required = True, default = "hacker")
 	confirmed = BooleanField(required = False, default = False)
-	# status = StringField(default = "Not Started")
+	
 
 
 	school = StringField()
@@ -35,10 +35,10 @@ class UserEntry(Document):
 	site_link = StringField()
 	other_link = StringField()
 	
-	# decision = StringField()
+	decision = StringField()
 	# accepted_time = IntField()
-	# attending = StringField()
-	# rsvp = BooleanField(default = False) #Has the user submitted their rsvp form?
+	attending = BooleanField()
+	rsvp = BooleanField(default = False) #Has the user submitted their rsvp form?
 
 	age = StringField()
 	link1 = StringField()
@@ -75,7 +75,9 @@ class UserEntry(Document):
 	mlh_terms = StringField()
 	mlh_coc = StringField()
 
-
+	waiver = BooleanField(default = False)
+	smsblast_optin = BooleanField(default = False)
+	checked_in = BooleanField(default = False)
 
 	review1 = IntField()
 	reviewer1 = StringField()
