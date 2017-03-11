@@ -86,7 +86,6 @@ def account():
   decision = controller.get_user_attr(current_user.email, "decision")
   return render_template("user.account.html", rsvp=rsvp, decision=decision)
 
-################ NEW CODE
 @mod_user.route("/account/rsvp", methods = ["GET", "POST"])
 @login_required
 def rsvp():
