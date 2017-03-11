@@ -15,10 +15,11 @@
 	<h1>Hey {{ current_user.first_name }}!</h1>
 	<h2>You're all set! We'll see you soon :)</h2>
 
-	<p style="font-size: 1.5em;">March 23 - <a href="/waiver">Waivers</a></p>
-	<br>
+	<div id="twrap">
+	
+	<p>In order to finishing claiming your acceptance, submit a signed <a href="/waiver">hackbca.com/waiver</a> before March 23rd. Waivers can be scanned and emailed to <a href= target="_blank"mailto:waivers@hackbca.com">waivers@hackbca.com</a> or submitted to BCA's main office. </p> <p class="w">No waiver, no attendance.</p>	</div><br>
 	<input type="submit" value="SETTINGS" onclick="window.location='/account/settings';" class="button"><br>
-    <input type="submit" value="LOG OUT" onclick="window.location='/logout';" class="button"><br><br>
+    <input type="submit" value="Log Out" onclick="window.location='/logout';" class="button"><br><br>
     <p>Have a question? Shoot us an email at <a href= target="_blank"mailto:contact@hackbca.com">contact@hackbca.com</a>.</p>
 {% elif decision == "accepted" %}
 	{% if current_user.type_account == "hacker" %}
@@ -26,10 +27,11 @@
 	<h2>Congrats on getting into hackBCA :)</h2>
 	<br>
 	<div id="twrap">
-		<p>Firstly, please either email a picture/scan of our waiver at <a href="/waiver">hackbca.com/waiver</a> or submit it to the BCA Main Office by the 23rd (latest). </p><p class="w">No waver, no attendance.</p>
+		<p>In order to claim your acceptance, RSVP and submit a signed <a href="/waiver">hackbca.com/waiver</a> before March 23rd. Waivers can be scanned and emailed to <a href= target="_blank"mailto:waivers@hackbca.com">waivers@hackbca.com</a> or submitted to BCA's main office. </p> <p class="w">No waiver, no attendance.</p>
 		</div>
 		
 		
+
 		<!-- <p>Alternatively, you can submit it to the BCA Main Office.</p>
 		 -->
 <!-- 
@@ -38,7 +40,7 @@
 		<br>
       
         <input type="submit" value="RSVP Form" onclick="window.location='/account/rsvp';" class="button"><br>
-        <input type="submit" value="LOG OUT" onclick="window.location='/logout';" class="button"><br>
+        <input type="submit" value="Log Out" onclick="window.location='/logout';" class="button"><br>
         
           <p>Have a question? Shoot us an email at <a href= target="_blank"mailto:contact@hackbca.com">contact@hackbca.com</a>.</p>
     {% elif current_user.type_account == "mentor" %}
@@ -48,7 +50,7 @@
         <br>
         <p>Emails and RSVP forms for mentors will be released shortly.</p>
         <input type="submit" value="SETTINGS" onclick="window.location='/account/settings';" class="button"><br>
-        <input type="submit" value="LOG OUT" onclick="window.location='/logout';" class="button"><br>
+        <input type="submit" value="Log Out" onclick="window.location='/logout';" class="button"><br>
         <p>Have a question? Shoot us an email at <a href= target="_blank"mailto:contact@hackbca.com">contact@hackbca.com</a>.</p>
     {% endif %}
     
@@ -61,7 +63,7 @@
 		<br>
         <p>Have a question? Shoot us an email at <a href= target="_blank"mailto:contact@hackbca.com">contact@hackbca.com</a>.</p>
         <input type="submit" value="SETTINGS" onclick="window.location='/account/settings';" class="button"><br>
-        <input type="submit" value="LOG OUT" onclick="window.location='/logout';" class="button"><br>
+        <input type="submit" value="Log Out" onclick="window.location='/logout';" class="button"><br>
 
 {% else %}
 	<h1>Hey {{ current_user.first_name }}!</h1>
@@ -74,7 +76,7 @@
     
     <p>Have a question? Shoot us an email at <a href= target="_blank"mailto:contact@hackbca.com">contact@hackbca.com</a>.</p>
     <input type="submit" value="SETTINGS" onclick="window.location='/account/settings';" class="button"><br>
-    <input type="submit" value="LOG OUT" onclick="window.location='/logout';"class="button">
+    <input type="submit" value="Log Out" onclick="window.location='/logout';"class="button">
 {% endif %}
 
         

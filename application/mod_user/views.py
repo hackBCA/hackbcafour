@@ -113,6 +113,7 @@ def rsvp():
             controller.set_user_attr(current_user.email, "rsvp", True)
             controller.set_user_attr(current_user.email, "attending", True)
             controller.login(current_user.email)
+            return redirect("/")
           else:
             flash("Please correct any errors.", "error")
         else:
