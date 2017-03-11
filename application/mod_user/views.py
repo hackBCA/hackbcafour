@@ -125,7 +125,7 @@ def rsvp():
       flash("Something went wrong.", "error")
   else:
     user = controller.get_user(current_user.email)
-    return redirect("/account")
+    # return redirect("/account")
     # if current_user.type_account == "mentor":
     #     form = MentorRsvpForm(request.form, obj = user)
     #   else:
