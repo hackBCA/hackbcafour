@@ -15,9 +15,11 @@
 	<h1>Hey {{ current_user.first_name }}!</h1>
 	<h2>You're all set! We'll see you soon :)</h2>
 
-	<div id="twrap">
+	<div id="twrap" style=" max-width: 35%;margin: 0 auto;line-height: 2;">
 
-	<p>In order to finishing claiming your acceptance, submit a signed <a href="/waiver">hackbca.com/waiver</a> before March 23rd. Waivers can be scanned and emailed to <a target="_blank" href="mailto:waivers@hackbca.com">waivers@hackbca.com</a> or submitted to BCA's main office. </p> <p class="w">No waiver, no attendance.</p>	</div><br>
+
+	<p>In order to finishing claiming your acceptance, submit a signed <a href="/waiver">hackbca.com/waiver</a> before March 23rd. Waivers can be scanned and emailed to <a target="_blank" href="mailto:waivers@hackbca.com">waivers@hackbca.com</a> or submitted to BCA's main office. </p> <p class="w" style="font-style: italic;
+  font-weight: bold;">No waiver, no attendance.</p>	</div><br>
 	<input type="submit" value="SETTINGS" onclick="window.location='/account/settings';" class="button"><br>
     <input type="submit" value="Log Out" onclick="window.location='/logout';" class="button"><br><br>
     <p>Have a question? Shoot us an email at <a target="_blank" href="mailto:contact@hackbca.com">contact@hackbca.com</a>.</p>
@@ -26,8 +28,9 @@
 	<h1>Time to RSVP!</h1>
 	<h2>Congrats on getting into hackBCA :)</h2>
 	<br>
-	<div id="twrap">
-		<p>In order to claim your acceptance, RSVP and submit a signed <a href="/waiver">hackbca.com/waiver</a> before March 23rd. Waivers can be scanned and emailed to <a target="_blank" href="mailto:waivers@hackbca.com">waivers@hackbca.com</a> or submitted to BCA's main office. </p> <p class="w">No waiver, no attendance.</p>
+	<div id="twrap" style=" max-width: 35%;margin: 0 auto;line-height: 2;">
+		<p>In order to claim your acceptance, RSVP and submit a signed <a href="/waiver">hackbca.com/waiver</a> before March 23rd. Waivers can be scanned and emailed to <a target="_blank" href="mailto:waivers@hackbca.com">waivers@hackbca.com</a> or submitted to BCA's main office. </p> <p class="w" style="font-style: italic;
+  font-weight: bold;">No waiver, no attendance.</p>
 		</div>
 		
 		
@@ -67,7 +70,7 @@
 
 {% else %}
 	<h1>Hey {{ current_user.first_name }}!</h1>
-	<div id="twrap">
+	<div id="twrap" style=" max-width: 35%;margin: 0 auto;line-height: 2;">
 	<h2>Watch out for an email from us in the near future. Check back here to see if you've got in!</h2>
 	</div>
     
