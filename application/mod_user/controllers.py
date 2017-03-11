@@ -175,7 +175,7 @@ def get_user_attr(email, attr):
 	if user is None:
 		raise UserDoesNotExistError
 	
-	return getattr(user, attr)
+	return getattr(user, attr, False)
 
 def set_user_attr(email, attr, value):
 	user = get_user(email)
@@ -198,17 +198,17 @@ def get_application(email):
 			app[key] = getattr(user, key)
 	return app
 
-# def save_form_data(email, app):
-# 	user = get_user(email)
+def save_form_data(email, app):
+	user = get_user(email)
 	
-# 	if user is None:
-# 		raise UserDoesNotExistError
-# 	for key in app:		
-# 		if key == "save" or key == "submit":
-# 			continue
-# 		setattr(user, key, app[key])
+	if user is None:
+		raise UserDoesNotExistError
+	for key in app:		
+		if key == "submit":
+			continue
+		setattr(user, key, app[key])
 
-# 	user.save()
+	user.save()
 
 # def accept_applicant(uid):
 # 	if CONFIG["DEBUG"]:

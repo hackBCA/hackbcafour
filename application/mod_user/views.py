@@ -84,13 +84,49 @@ def recover_change(token):
 def account():
   return render_template("user.account.html")
 
-# @mod_user.route("/account/rsvp", methods = ["GET", "POST"])
-# @login_required
-# def rsvp():
-#   if current_user.decision != "Accepted":
-#     return redirect("/account")
-#   if current_user.
+################ NEW CODE
+@mod_user.route("/account/rsvp", methods = ["GET", "POST"])
+@login_required
+def rsvp():
+  # if current_user.decision != "accepted":
+  if controller.get_user_attr(current_user.email, "decision") != "accepted":
+    return redirect("/account")
+  # if current_user.type_account == "mentor":
+  #   form = MentorRsvpForm(request.form)
+  # else:
+  #   form = RsvpForm(request.form)
+  if current_user.type_account == "hacker":
+    form = RsvpForm(request.form)
 
+
+  rsvp_submitted = controller.get_user_attr(current_user.email, "rsvp")
+
+  if request.method == "POST":
+    try:
+      if not rsvp_submitted:
+        if "submit" in request.form:
+          controller.save_form_data(current_user.email, request.form)
+          if ('attending' in request.form and request.form['attending'] == 'Not Attending') or form.validate():
+            flash("Submitted.", "succes")
+            controller.set_user_attr(current_user.email, "rsvp", True)
+            controller.login(current_user.email)
+          else:
+            flash("Please correct any errors.", "error")
+        else:
+          if CONFIG["DEBUG"]:
+                flash("You didn't seem to tell us to do anything.", "error")
+    except Exception as e:
+      if CONFIG["DEBUG"]:
+        raise e 
+      flash("Something went wrong.", "error")
+  else:
+    user = controller.get_user(current_user.email)
+    # if current_user.type_account == "mentor":
+    #     form = MentorRsvpForm(request.form, obj = user)
+    #   else:
+    #     form = RsvpForm(request.form, obj = user)
+    form = RsvpForm(request.form, obj = user) ## obj=user / app saving; rmv in future
+  return render_template("user.rsvp.html", form = form)
 
 @mod_user.route("/account/confirm", methods = ["GET", "POST"])
 def verify():
