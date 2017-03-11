@@ -328,47 +328,47 @@ class RsvpForm(Form):
         validators.optional(),
     ], render_kw={"class": 'text'}, description = "Do you have any dietary restrictions?")
 
-    parent1_name = TextField("Parent1 Name", [
-        validators.Required(message = "You must enter a first name.")
-    ], render_kw={"class": 'text'}, description = "Parent1 Name")
+    guardian_name = TextField("Guardian Full Name", [
+        validators.Required(message = "You must enter a name.")
+    ], render_kw={"class": 'text'}, description = "Guardian Name")
 
-    parent1_home_num = TextField("Parent1 Home Num", [
-        validators.Required(message = "Enter parent 1's home number."),
+    guardian_home_num = TextField("Guardian Home Number", [
+        validators.Required(message = "Enter your guardian's home number."),
         validators.Regexp(phone_regex, message = "Please enter a valid phone number.")
-    ], render_kw={"class": 'text'}, description = "Parent1 Home Num")
+    ], render_kw={"class": 'text'}, description = "Guardian Home Number")
 
-    parent1_cell_num = TextField("Parent1 Cell Num", [
-        validators.Required(message = "Enter parent 1's home number."),
+    guardian_cell_num = TextField("Guardian Cellphone", [
+        validators.Required(message = "Enter your guardian's cellphone number."),
         validators.Regexp(phone_regex, message = "Please enter a valid phone number.")
-    ], render_kw={"class": 'text'}, description = "Parent1 Cell Num")
+    ], render_kw={"class": 'text'}, description = "Guardian Cellphone")
 
-    parent1_email = TextField("Parent1 Email", [
+    guardian_email = TextField("Guardian Email", [
         validators.Required(message = "Enter an email."),
         validators.Email(message = "Invalid email address."
-    )], render_kw={"class": 'text'}, description = "Parent1 Email")
+    )], render_kw={"class": 'text'}, description = "Guardian Email")
 
-    parent2_name = TextField("Parent2 Name", [
-        validators.Required(message = "You must enter a first name.")
-    ], render_kw={"class": 'text'}, description = "Parent2 Name")
+    parent2_name = TextField("Emergency Contact Full Name", [
+        validators.Required(message = "You must enter a name.")
+    ], render_kw={"class": 'text'}, description = "Emergency Contact Name")
 
-    parent2_home_num = TextField("Parent2 Home Num", [
-        validators.Required(message = "Enter parent 1's home number."),
+    parent2_home_num = TextField("Emergency Contact Home Number", [
+        validators.Required(message = "Enter your emergency contact's home number."),
         validators.Regexp(phone_regex, message = "Please enter a valid phone number.")
-    ], render_kw={"class": 'text'}, description = "Parent2 Home Num")
+    ], render_kw={"class": 'text'}, description = "Emergency Contact Home Number")
 
-    parent2_cell_num = TextField("Parent2 Cell Num", [
-        validators.Required(message = "Enter parent 1's home number."),
+    parent2_cell_num = TextField("Emergency Contact Cellphone", [
+        validators.Required(message = "Enter your emergency contact's cellphone."),
         validators.Regexp(phone_regex, message = "Please enter a valid phone number.")
-    ], render_kw={"class": 'text'}, description = "Parent2 Cell Num")
+    ], render_kw={"class": 'text'}, description = "Emergency Contact Cellphone")
 
-    parent2_email = TextField("Parent2 Email", [
+    parent2_email = TextField("Emergency Contact Email", [
         validators.Required(message = "Enter an email."),
         validators.Email(message = "Invalid email address."
-    )], render_kw={"class": 'text'}, description = "Parent1 Email")
+    )], render_kw={"class": 'text'}, description = "Emergency Contact Email")
 
-    school_street = TextField("School Street", [
-         validators.Required(message = "Enter your school street."),
-    ], render_kw={"class": 'text'}, description = "School Street")
+    school_street = TextField("School Address", [
+         validators.Required(message = "Enter your school address."),
+    ], render_kw={"class": 'text'}, description = "School Address")
 
     school_town = TextField("School Town", [
          validators.Required(message = "Enter your school town."),
