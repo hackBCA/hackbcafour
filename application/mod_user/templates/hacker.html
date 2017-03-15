@@ -20,28 +20,19 @@
     <form method="POST" action="">
       {% for field in form %}
         {% if field.name == "mlh_terms" %}
-        <br>
-        <br>
-        <a href="https://github.com/MLH/mlh-policies/blob/master/data-sharing.md">{{ field.description }}</a> {{ render_field(field) }}
-          
-
+          <p style="display: inline-block;">I agree to the <a href="https://github.com/MLH/mlh-policies/tree/master/prize-terms-and-conditions">MLH Contest Terms and Conditions</a> and the <a href="https://mlh.io/privacy">MLH Privacy Policy</a>.&nbsp;{{ render_field(field) }}</p> 
         {% elif field.name == "mlh_coc" %}
-        <br>
-        <br>
-        <a href="https://static.mlh.io/docs/mlh-code-of-conduct.pdf">{{ field.description }}</a> {{ render_field(field) }}
-
+          <p style="display: inline-block;">I have read &amp; agree to the <a href="https://static.mlh.io/docs/mlh-code-of-conduct.pdf">MLH Code of Conduct</a>.&nbsp;</p>{{ render_field(field) }}
+          <br>
         {% elif field.id == "link1" %}
           <p>Feel free to include up to 3 links of your choice.</p>
           {{ render_field(field) }}
-
         {% elif field.type == "TextAreaField" %}
          <div class="ta">{{ render_field(field) }}</div>
         {% else %}
           {{ render_field(field) }}
         {% endif %}    
       {% endfor %}  
-      <br>
-      <br>
       <input type="submit" value="APPLY" class="button">
     </form>
     </div>
