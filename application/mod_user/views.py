@@ -206,6 +206,10 @@ def settings():
 def register():
   if current_user.is_authenticated:
     return redirect("/account")
+  if not CONFIG["REGISTRATION_ENABLED"]:
+    flash("Registration is now closed.", "error")
+    return redirect("/")
+
 
   ####### Below code: changed from form to a hrefs => mentor & hackers opened at the same time
   # if not CONFIG["REGISTRATION_ENABLED"]:
@@ -239,7 +243,7 @@ def hacker_registration():
   if current_user.is_authenticated:
     return redirect("/account")
   elif not CONFIG["REGISTRATION_ENABLED"]:
-    flash("Registration is not open at this time.", "error")
+    flash("Registration is now closed.", "error")
     return redirect("/")
 
   if CONFIG["HACKER_REGISTRATION_ENABLED"]:
@@ -277,7 +281,7 @@ def mentor_registration():
   if current_user.is_authenticated:
     return redirect("/account")
   elif not CONFIG["REGISTRATION_ENABLED"]:
-    flash("Registration is not open at this time.", "error")
+    flash("Registration is now closed.", "error")
     return redirect("/")
 
   if CONFIG["MENTOR_REGISTRATION_ENABLED"]:
