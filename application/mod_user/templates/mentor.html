@@ -9,12 +9,14 @@
    {% endwith %}
 
 
-   <h1>Mentor Registration</h1>
+   <h1 id="mentor_text">Mentor Registration</h1>
     <br>
       <p>Please note that all applications are reviewed.</p>
     <br>
 
+
    <form method="POST" action="">
+   <div id="mentor_f">
     {% for field in form %}
      {% if field.name == "mlh_terms" %}
           <p style="display: inline-block;">I agree to the <a href="https://github.com/MLH/mlh-policies/tree/master/prize-terms-and-conditions">MLH Contest Terms and Conditions</a> and the <a href="https://mlh.io/privacy">MLH Privacy Policy</a>.&nbsp;{{ render_field(field) }}</p> 
@@ -34,6 +36,7 @@
       {% endif %}    
     {% endfor %}
     <input type="submit" value="APPLY" class="button">
+    </div>
    </form>
 
 </div>
