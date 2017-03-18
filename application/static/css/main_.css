@@ -594,11 +594,12 @@ body  {
      width:  32.26%;
  }
 @media only screen and (max-width: 700px)  {
-    .col  {
+   /* .col  {
      margin:  1% 0 1% 0%;
- }
+ }*/
 .faq-box  {
-     text-align:  center;
+    text-align:  center;
+    margin:  1% 0 1% 0%;
  }
 .span_3_of_3,  .span_2_of_3,  .span_1_of_3  {
      width:  100%;
@@ -1280,12 +1281,29 @@ h2 .subtext  {
     font-style:  italic;
     font-weight:  bold;
 }
-.guest  {
+.guest_row1  {
     display:  inline-block;
     padding:  0;
     margin:  0;
     outline:  0;
-    width:  100%;
+    width:  70%;
+}
+.guest_row2  {
+    display:  inline-block;
+    padding:  0;
+    margin:  0;
+    outline:  0;
+    width: 70%;
+}
+.guest_inner {
+    display: inline-block;
+    width: 65.57%;
+}
+#guest_row2_left {
+  float: right;
+}
+#guest_row2_right {
+  float: left;
 }
 .guest__role  {
     background-color:  #8BDA48;
@@ -1325,7 +1343,7 @@ h2 .subtext  {
     margin:  0px;
 }
 .col  {
-    display:  block;
+    display: inline-block;
     float: left;
     margin:  1% 0 1% 1.6%;
 }
@@ -1373,8 +1391,32 @@ h2 .subtext  {
      width:  100%;
  }
 }
+
+/*  GRID OF TWO  */
+.span_2_of_2 {
+  width: 100%;
+}
+.span_1_of_2 {
+  /*width: 32.26%;*/
+  width: 49.2%;
+}
+
+/*  GO FULL WIDTH AT LESS THAN 480 PIXELS */
+
+@media only screen and (max-width: 480px) {
+  .col { 
+    margin: 1% 0 1% 0%;
+  }
+}
+
+@media only screen and (max-width: 480px) {
+  .span_2_of_2, .span_1_of_2 { width: 100%; }
+}
+
 #s_guests  {
-    padding-top:  5%;
+    padding-top: 5%;
+    margin: 0 auto;
+    text-align: center;
 }
 .partnership_text  {
     text-align:  center;
@@ -1395,4 +1437,10 @@ h2 .subtext  {
     .partnership_text  {
     font-size:  1em;
 }
+}
+
+.hg_guest {
+  width: 85%;
+    margin: 0 auto;
+    padding-top: 3.5px;
 }
