@@ -3,3 +3,6 @@ application/__pycache__/*
 __pycache__/
 config.cfg
 *.pyc
+hackbcafour.csr
+hackbcafour.key
+uwsgi_config.ini
