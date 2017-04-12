@@ -117,6 +117,7 @@
 
     <script>
       function initMap() {
+        if($("#map-container").length != 0) {
         var bca = {lat: 40.9025, lng: -74.0339};
         var map = new google.maps.Map(document.getElementById('map-container'), {
           zoom: 15,
@@ -129,6 +130,7 @@
           map: map
         });
       }
+    }
     </script>
     <script async defer
     src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDuRMzzLIXFaKFkVf_QRH9xpeESjs75wnk&callback=initMap">

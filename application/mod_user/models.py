@@ -77,7 +77,8 @@ class UserEntry(Document):
 
 	waiver = BooleanField(default = False)
 	smsblast_optin = BooleanField(default = False)
-	checked_in = BooleanField(default = False)
+	checked_in1 = BooleanField(default = False)
+	checked_in2 = BooleanField(default = False)
 
 	review1 = IntField()
 	reviewer1 = StringField()
